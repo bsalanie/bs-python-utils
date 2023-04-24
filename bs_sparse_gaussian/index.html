@@ -870,7 +870,7 @@
           <td>
                 <code><span title="bs_python_utils.bsnputils.TwoArrays">TwoArrays</span></code>
           </td>
-          <td><p><code>nodes</code> has <code>ndims</code>-1 columns and weights is a vector</p></td>
+          <td><p><code>nodes</code> has <code>ndims</code>-1 columns and <code>weights</code> is a vector</p></td>
         </tr>
     </tbody>
   </table>
@@ -911,7 +911,8 @@
 <span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
-<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">setup_sparse_gaussian</span><span class="p">(</span>
+<span class="normal">46</span>
+<span class="normal">47</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">setup_sparse_gaussian</span><span class="p">(</span>
     <span class="n">ndims</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">iprec</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">GHsparsedir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TwoArrays</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -925,7 +926,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        a pair of  arrays `nodes` and `weights`;</span>
-<span class="sd">        `nodes` has `ndims`-1 columns and weights is a vector</span>
+<span class="sd">        `nodes` has `ndims`-1 columns and `weights` is a vector</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">GHdir</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;Dropbox&quot;</span> <span class="o">/</span> <span class="s2">&quot;GHsparseGrids&quot;</span>
@@ -946,6 +947,7 @@
         <span class="n">bs_error_abort</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;We only do sparse integration in one to five dimensions, not </span><span class="si">{</span><span class="n">ndims</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># for mypy</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
