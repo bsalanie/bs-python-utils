@@ -1,0 +1,2593 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="my Python utilities">
+      
+      
+        <meta name="author" content="Bernard Salanie">
+      
+      
+        <link rel="canonical" href="https://bsalanie.github.io/bs-python-utils/bsstats/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>`bsstats` module - bs-python-utils</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bsstats-module" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="bs-python-utils" class="md-header__button md-logo" aria-label="bs-python-utils" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            bs-python-utils
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              `bsstats` module
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bsalanie/bs-python-utils" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bsalanie/bs-python-utils
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../bsutils/" class="md-tabs__link md-tabs__link--active">
+        Modules
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="bs-python-utils" class="md-nav__button md-logo" aria-label="bs-python-utils" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    bs-python-utils
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bsalanie/bs-python-utils" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bsalanie/bs-python-utils
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Modules
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Modules" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          General utilities
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="General utilities" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          General utilities
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bsutils/" class="md-nav__link">
+        `bsutils` module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bs_logging/" class="md-nav__link">
+        `bs_logging` module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bs_mathstr/" class="md-nav__link">
+        `bs_mathstr` module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Timer/" class="md-nav__link">
+        `Timer` module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bs_mem/" class="md-nav__link">
+        `bs_mem` module
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Scientific
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Scientific" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Scientific
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bsnputils/" class="md-nav__link">
+        `bsnputils` module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bssputils/" class="md-nav__link">
+        `bssputils` module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas_utils/" class="md-nav__link">
+        `pandas_utils` module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          `bsstats` module
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        `bsstats` module
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats" class="md-nav__link">
+    bs_python_utils.bsstats
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.TslsResults" class="md-nav__link">
+    TslsResults
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.bs_multivariate_normal_pdf" class="md-nav__link">
+    bs_multivariate_normal_pdf()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.estimate_densities_at_quantiles" class="md-nav__link">
+    estimate_densities_at_quantiles()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.estimate_pdf" class="md-nav__link">
+    estimate_pdf()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.flexible_reg" class="md-nav__link">
+    flexible_reg()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.proj_Z" class="md-nav__link">
+    proj_Z()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.reg_nonpar" class="md-nav__link">
+    reg_nonpar()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.reg_nonpar_fit" class="md-nav__link">
+    reg_nonpar_fit()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.tsls" class="md-nav__link">
+    tsls()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sklearn_utils/" class="md-nav__link">
+        `sklearn_utils` module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distance_covariances/" class="md-nav__link">
+        `distance_covariances` module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bs_opt/" class="md-nav__link">
+        `bs_opt` module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bs_sparse_gaussian/" class="md-nav__link">
+        `bs_sparse_gaussian` module
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          Plotting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Plotting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Plotting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bs_plots/" class="md-nav__link">
+        `bs_plots` module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bsmplutils/" class="md-nav__link">
+        `bsmplutils` module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bs_seaborn/" class="md-nav__link">
+        `bs_seaborn` module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bs_altair/" class="md-nav__link">
+        `bs_altair` module
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats" class="md-nav__link">
+    bs_python_utils.bsstats
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.TslsResults" class="md-nav__link">
+    TslsResults
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.bs_multivariate_normal_pdf" class="md-nav__link">
+    bs_multivariate_normal_pdf()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.estimate_densities_at_quantiles" class="md-nav__link">
+    estimate_densities_at_quantiles()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.estimate_pdf" class="md-nav__link">
+    estimate_pdf()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.flexible_reg" class="md-nav__link">
+    flexible_reg()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.proj_Z" class="md-nav__link">
+    proj_Z()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.reg_nonpar" class="md-nav__link">
+    reg_nonpar()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.reg_nonpar_fit" class="md-nav__link">
+    reg_nonpar_fit()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsstats.tsls" class="md-nav__link">
+    tsls()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/bsalanie/bs-python-utils/edit/main/docs/bsstats.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="bsstats-module"><code>bsstats</code> module<a class="headerlink" href="#bsstats-module" title="Permanent link">&para;</a></h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+<a id="bs_python_utils.bsstats"></a>
+  <div class="doc doc-contents first">
+  
+      <p>Contains some statistical routines.</p>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="bs_python_utils.bsstats.TslsResults" class="doc doc-heading">
+        <code>TslsResults</code>
+
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#bs_python_utils.bsstats.TslsResults" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+  <div class="doc doc-contents ">
+
+  
+      <p>contains full results of a TSLS regression</p>
+
+
+        <details class="quote">
+          <summary>Source code in <code>bs_python_utils/bsstats.py</code></summary>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">TslsResults</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    contains full results of a TSLS regression</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">iv_estimates</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">r2_first_iv</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">r2_y</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">r2_second</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">y_proj</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">y_coeffs</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">X_IV_proj</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">b_proj_IV</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span>
+</code></pre></div></td></tr></table></div>
+        </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="bs_python_utils.bsstats.bs_multivariate_normal_pdf" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">bs_multivariate_normal_pdf</span><span class="p">(</span><span class="n">values_x</span><span class="p">,</span> <span class="n">means_x</span><span class="p">,</span> <span class="n">cov_mat</span><span class="p">)</span></code>
+
+<a href="#bs_python_utils.bsstats.bs_multivariate_normal_pdf" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Multivariate (or univariate) normal probability density function at values_x</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>values_x</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>values at which to evaluate the pdf, an <code>n</code>-vector or an <code>(n, nvars)</code> matrix</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>means_x</code></td>
+          <td>
+                <code>float | <span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>means of the multivariate normal, a float or an <code>(nvars)</code> vector</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>cov_mat</code></td>
+          <td>
+                <code>float | <span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>covariance matrix of the multivariate normal, a float or an <code>(nvars, nvars)</code> matrix</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>the values of the density at <code>values_x</code></p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>bs_python_utils/bsstats.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">bs_multivariate_normal_pdf</span><span class="p">(</span>
+    <span class="n">values_x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">means_x</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">cov_mat</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Multivariate (or univariate) normal probability density function at values_x</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        values_x: values at which to evaluate the pdf, an `n`-vector or an `(n, nvars)` matrix</span>
+<span class="sd">        means_x: means of the multivariate normal, a float or an `(nvars)` vector</span>
+<span class="sd">        cov_mat: covariance matrix of the multivariate normal, a float or an `(nvars, nvars)` matrix</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        the values of the density at `values_x`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ndims_values</span> <span class="o">=</span> <span class="n">check_vector_or_matrix</span><span class="p">(</span><span class="n">values_x</span><span class="p">,</span> <span class="s2">&quot;bs_multivariate_normal_pdf&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ndims_values</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># we are evaluating a univariate normal</span>
+        <span class="c1"># if not type(means_x) == float:</span>
+        <span class="c1">#     bs_error_abort(f&quot;means_x should be a float as values_x is a vector&quot;)</span>
+        <span class="c1"># if not type(cov_mat) == float:</span>
+        <span class="c1">#     bs_error_abort(f&quot;cov_mat should be a float as values_x is a vector&quot;)</span>
+        <span class="n">sigma2</span> <span class="o">=</span> <span class="n">cov_mat</span>
+        <span class="n">resid</span> <span class="o">=</span> <span class="n">values_x</span> <span class="o">-</span> <span class="n">means_x</span>
+        <span class="n">dval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">resid</span> <span class="o">*</span> <span class="n">resid</span> <span class="o">/</span> <span class="n">sigma2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">dval</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># we are evaluating a multivariate normal</span>
+        <span class="n">n</span><span class="p">,</span> <span class="n">nvars</span> <span class="o">=</span> <span class="n">values_x</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">n_means</span> <span class="o">=</span> <span class="n">check_vector</span><span class="p">(</span><span class="n">means_x</span><span class="p">,</span> <span class="s2">&quot;bs_multivariate_normal_pdf&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n_means</span> <span class="o">!=</span> <span class="n">nvars</span><span class="p">:</span>
+            <span class="n">bs_error_abort</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;means_x should be a vector of size </span><span class="si">{</span><span class="n">nvars</span><span class="si">}</span><span class="s2"> not </span><span class="si">{</span><span class="n">n_means</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="n">check_matrix</span><span class="p">(</span><span class="n">cov_mat</span><span class="p">,</span> <span class="s2">&quot;bs_multivariate_normal_pdf&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nrows</span> <span class="o">!=</span> <span class="n">ncols</span> <span class="ow">or</span> <span class="n">nrows</span> <span class="o">!=</span> <span class="n">nvars</span><span class="p">:</span>
+            <span class="n">bs_error_abort</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;cov_mat should be a matrix (</span><span class="si">{</span><span class="n">nvars</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">nvars</span><span class="si">}</span><span class="s2">) not (</span><span class="si">{</span><span class="n">nrows</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">ncols</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="p">)</span>
+        <span class="n">resid</span> <span class="o">=</span> <span class="n">values_x</span> <span class="o">-</span> <span class="n">means_x</span>
+        <span class="n">argresid</span> <span class="o">=</span> <span class="n">spla</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">cov_mat</span><span class="p">,</span> <span class="n">resid</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">argexp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">argexp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">resid</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">argresid</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span>
+        <span class="n">dval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">argexp</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+            <span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">**</span> <span class="n">nvars</span><span class="p">)</span> <span class="o">*</span> <span class="n">spla</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">cov_mat</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">dval</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="bs_python_utils.bsstats.estimate_densities_at_quantiles" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">estimate_densities_at_quantiles</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">qtiles</span><span class="p">)</span></code>
+
+<a href="#bs_python_utils.bsstats.estimate_densities_at_quantiles" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>estimate densities of margins at prespecified quantiles (Silverman rule)
+and the joint density at each vector of these quantiles</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>X</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p><code>n</code>-vector or <code>(n, nx)</code>-matrix</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>qtiles</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>vector of <code>nq</code> numbers between 0 and 1</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>tuple</code>
+          </td>
+          <td><p>if <code>X</code> is a matrix, the <code>({nq}^{nx}, {nx})</code> matrices of estimated margin densities      and the <code>{nq}^{nx}</code> vector of the joint density on the lexicographic grid of quantiles;</p></td>
+        </tr>
+        <tr>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span>, <span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span>, <span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>if <code>X</code> is a vector, the <code>nq</code>-vector of the density at the quantiles, twice</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>bs_python_utils/bsstats.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">estimate_densities_at_quantiles</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">qtiles</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    estimate densities of margins at prespecified quantiles (Silverman rule)</span>
+<span class="sd">    and the joint density at each vector of these quantiles</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        X: `n`-vector or `(n, nx)`-matrix</span>
+<span class="sd">        qtiles: vector of `nq` numbers between 0 and 1</span>
+
+<span class="sd">    Returns: </span>
+<span class="sd">        if `X` is a matrix, the `({nq}^{nx}, {nx})` matrices of estimated margin densities \</span>
+<span class="sd">     and the `{nq}^{nx}` vector of the joint density on the lexicographic grid of quantiles;</span>
+<span class="sd">        if `X` is a vector, the `nq`-vector of the density at the quantiles, twice</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ndims_X</span> <span class="o">=</span> <span class="n">check_vector_or_matrix</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="s2">&quot;estimate_densities_&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ndims_X</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">f_X</span> <span class="o">=</span> <span class="n">estimate_pdf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">qtiles</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">f_X</span><span class="p">,</span> <span class="n">f_X</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">nx</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">nq</span> <span class="o">=</span> <span class="n">qtiles</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">f_X_k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nq</span><span class="p">,</span> <span class="n">nx</span><span class="p">))</span>
+        <span class="n">nodes_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nq</span><span class="p">,</span> <span class="n">nx</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i_x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span><span class="p">):</span>
+            <span class="n">X_ix</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="n">i_x</span><span class="p">]</span>
+            <span class="n">nodes_mat</span><span class="p">[:,</span> <span class="n">i_x</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">X_ix</span><span class="p">,</span> <span class="n">qtiles</span><span class="p">)</span>
+            <span class="n">f_X_k</span><span class="p">[:,</span> <span class="n">i_x</span><span class="p">]</span> <span class="o">=</span> <span class="n">estimate_pdf</span><span class="p">(</span><span class="n">X_ix</span><span class="p">,</span> <span class="n">nodes_mat</span><span class="p">[:,</span> <span class="n">i_x</span><span class="p">])</span>
+        <span class="n">f_margins</span> <span class="o">=</span> <span class="n">make_lexico_grid</span><span class="p">(</span><span class="n">f_X_k</span><span class="p">)</span>
+        <span class="n">values_X</span> <span class="o">=</span> <span class="n">make_lexico_grid</span><span class="p">(</span><span class="n">nodes_mat</span><span class="p">)</span>
+        <span class="n">f_X</span> <span class="o">=</span> <span class="n">estimate_pdf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">values_X</span><span class="p">)</span>  <span class="c1"># joint density</span>
+        <span class="k">return</span> <span class="n">f_margins</span><span class="p">,</span> <span class="n">f_X</span><span class="p">,</span> <span class="n">values_X</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="bs_python_utils.bsstats.estimate_pdf" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">estimate_pdf</span><span class="p">(</span><span class="n">x_obs</span><span class="p">,</span> <span class="n">x_points</span><span class="p">,</span> <span class="n">MIN_SIZE_NONPAR</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#bs_python_utils.bsstats.estimate_pdf" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>return an estimate of the conditional densities of <code>x</code> at points <code>values_x</code> (Silverman rule)</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>x_obs</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>an <code>n</code>-vector or an <code>(n, nvars)</code> matrix of the observed values of <code>x</code></p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>x_points</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>an <code>m</code>-vector or an <code>(m, nvars)</code> matrix of x values</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>MIN_SIZE_NONPAR</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>minimum size above which we use kernel density estimators</p></td>
+          <td>
+                <code>200</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>weights</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span> | None</code>
+          </td>
+          <td><p>an <code>n</code>-vector of weights for the observations, if present</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>the density estimates at <code>values_x</code></p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>bs_python_utils/bsstats.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">estimate_pdf</span><span class="p">(</span>
+    <span class="n">x_obs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">x_points</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">MIN_SIZE_NONPAR</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="n">weights</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    return an estimate of the conditional densities of `x` at points `values_x` (Silverman rule)</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x_obs: an `n`-vector or an `(n, nvars)` matrix of the observed values of `x`</span>
+<span class="sd">        x_points: an `m`-vector or an `(m, nvars)` matrix of x values</span>
+<span class="sd">        MIN_SIZE_NONPAR: minimum size above which we use kernel density estimators</span>
+<span class="sd">        weights: an `n`-vector of weights for the observations, if present</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        the density estimates at `values_x`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ndims_x</span> <span class="o">=</span> <span class="n">check_vector_or_matrix</span><span class="p">(</span><span class="n">x_obs</span><span class="p">,</span> <span class="s2">&quot;estimate_pdf&quot;</span><span class="p">)</span>
+    <span class="n">ndims_valx</span> <span class="o">=</span> <span class="n">check_vector_or_matrix</span><span class="p">(</span><span class="n">x_points</span><span class="p">,</span> <span class="s2">&quot;estimate_pdf&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">ndims_x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">n_obs</span> <span class="o">=</span> <span class="n">x_obs</span><span class="o">.</span><span class="n">size</span>
+        <span class="k">if</span> <span class="n">ndims_valx</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">bs_error_abort</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x_points should have one dimension, not </span><span class="si">{</span><span class="n">ndims_valx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">xt_obs</span> <span class="o">=</span> <span class="n">x_obs</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">nvars</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">xt_points</span> <span class="o">=</span> <span class="n">x_points</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># ndims_x == 2</span>
+        <span class="n">n_obs</span><span class="p">,</span> <span class="n">nvars</span> <span class="o">=</span> <span class="n">x_obs</span><span class="o">.</span><span class="n">shape</span>
+        <span class="k">if</span> <span class="n">ndims_valx</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># only one x point with  nv elements</span>
+            <span class="n">nv</span> <span class="o">=</span> <span class="n">x_points</span><span class="o">.</span><span class="n">size</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># several x points with  nv elements</span>
+            <span class="n">nv</span> <span class="o">=</span> <span class="n">x_points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">nv</span> <span class="o">!=</span> <span class="n">nvars</span><span class="p">:</span>
+            <span class="n">bs_error_abort</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x_points should have </span><span class="si">{</span><span class="n">nvars</span><span class="si">}</span><span class="s2"> variables, not </span><span class="si">{</span><span class="n">nv</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">xt_obs</span> <span class="o">=</span> <span class="n">x_obs</span>
+        <span class="n">xt_points</span> <span class="o">=</span> <span class="n">x_points</span>
+
+    <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">n_w</span> <span class="o">=</span> <span class="n">check_vector</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="s2">&quot;estimate_pdf&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n_w</span> <span class="o">!=</span> <span class="n">n_obs</span><span class="p">:</span>
+            <span class="n">bs_error_abort</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;if weights is given, it should be a vector of size </span><span class="si">{</span><span class="n">n_obs</span><span class="si">}</span><span class="s2"> not </span><span class="si">{</span><span class="n">n_w</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+    <span class="n">min_size_np</span> <span class="o">=</span> <span class="n">MIN_SIZE_NONPAR</span> <span class="o">**</span> <span class="p">((</span><span class="mf">4.0</span> <span class="o">+</span> <span class="n">nvars</span><span class="p">)</span> <span class="o">/</span> <span class="mf">5.0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">n_obs</span> <span class="o">&gt;</span> <span class="n">min_size_np</span><span class="p">:</span>  <span class="c1"># cell large enough to use nonparametrics</span>
+        <span class="c1"># fit joint density of x</span>
+        <span class="n">kde</span> <span class="o">=</span> <span class="n">sts</span><span class="o">.</span><span class="n">gaussian_kde</span><span class="p">(</span><span class="n">xt_obs</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">bw_method</span><span class="o">=</span><span class="s2">&quot;silverman&quot;</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+        <span class="c1"># density of x at values_x</span>
+        <span class="n">f_x</span> <span class="o">=</span> <span class="n">kde</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xt_points</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># sample too small, we fit a normal</span>
+        <span class="k">if</span> <span class="n">ndims_x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># univariate</span>
+            <span class="n">mean_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_obs</span><span class="p">)</span>
+            <span class="n">var_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x_obs</span><span class="p">)</span>
+            <span class="n">f_x</span> <span class="o">=</span> <span class="n">bs_multivariate_normal_pdf</span><span class="p">(</span><span class="n">x_points</span><span class="p">,</span> <span class="n">mean_x</span><span class="p">,</span> <span class="n">var_x</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># multivariate</span>
+            <span class="n">means_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_obs</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">cov_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">x_obs</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+            <span class="n">f_x</span> <span class="o">=</span> <span class="n">bs_multivariate_normal_pdf</span><span class="p">(</span><span class="n">x_points</span><span class="p">,</span> <span class="n">means_x</span><span class="p">,</span> <span class="n">cov_mat</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">f_x</span> <span class="o">*=</span> <span class="n">weights</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">f_x</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="bs_python_utils.bsstats.flexible_reg" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">flexible_reg</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;NP&#39;</span><span class="p">,</span> <span class="n">var_types</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_sub</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_res</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#bs_python_utils.bsstats.flexible_reg" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>flexible regression  of <code>Y</code> on <code>X</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>Y</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>independent variable <code>(nobs)</code> or <code>(nobs, ny)</code></p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>X</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>covariates <code>(nobs)</code> or <code>(nobs, nx)</code>; should <strong>not</strong> include a constant term</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>mode</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>what flexible means
+* 'NP': non parametric
+* 'SPL': spline regression, only on one covariate
+* '1': linear
+* '2': quadratic</p></td>
+          <td>
+                <code>&#39;NP&#39;</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>var_types</code></td>
+          <td>
+                <code>str | None</code>
+          </td>
+          <td><p>[for 'NP' only]  specify types of all <code>X</code> variables if not all of them are continuous; 
+one character per variable
+* 'c' for continuous
+* 'u' discrete unordered
+* 'o' discrete ordered</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>n_sub</code></td>
+          <td>
+                <code>int | None</code>
+          </td>
+          <td><p>[for 'NP' only] size of subsample for cross-validation;             by default it is <code>200^{(m+4)/5}</code></p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>n_res</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>[for 'NP' only] how many subsamples we draw; 1 if <code>None</code></p></td>
+          <td>
+                <code>1</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>verbose</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>prints stuff if True</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p><code>E(y|X)</code> at the sample points</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>bs_python_utils/bsstats.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">flexible_reg</span><span class="p">(</span>
+    <span class="n">Y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;NP&quot;</span><span class="p">,</span>
+    <span class="n">var_types</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">n_sub</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">n_res</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    flexible regression  of `Y` on `X`</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        Y: independent variable `(nobs)` or `(nobs, ny)`</span>
+<span class="sd">        X: covariates `(nobs)` or `(nobs, nx)`; should **not** include a constant term</span>
+<span class="sd">        mode: what flexible means</span>
+<span class="sd">            * &#39;NP&#39;: non parametric</span>
+<span class="sd">            * &#39;SPL&#39;: spline regression, only on one covariate</span>
+<span class="sd">            * &#39;1&#39;: linear</span>
+<span class="sd">            * &#39;2&#39;: quadratic</span>
+<span class="sd">        var_types: [for &#39;NP&#39; only]  specify types of all `X` variables if not all of them are continuous; </span>
+<span class="sd">            one character per variable</span>
+<span class="sd">            * &#39;c&#39; for continuous</span>
+<span class="sd">            * &#39;u&#39; discrete unordered</span>
+<span class="sd">            * &#39;o&#39; discrete ordered</span>
+<span class="sd">        n_sub: [for &#39;NP&#39; only] size of subsample for cross-validation; \</span>
+<span class="sd">            by default it is `200^{(m+4)/5}`</span>
+<span class="sd">        n_res: [for &#39;NP&#39; only] how many subsamples we draw; 1 if `None`</span>
+<span class="sd">        verbose: prints stuff if True</span>
+
+<span class="sd">    Returns: </span>
+<span class="sd">        `E(y|X)` at the sample points</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;NP&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">Y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">ny</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">Y_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">iy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ny</span><span class="p">):</span>
+                <span class="n">Y_fit</span><span class="p">[:,</span> <span class="n">iy</span><span class="p">]</span> <span class="o">=</span> <span class="n">reg_nonpar_fit</span><span class="p">(</span>
+                    <span class="n">Y</span><span class="p">[:,</span> <span class="n">iy</span><span class="p">],</span>
+                    <span class="n">X</span><span class="p">,</span>
+                    <span class="n">var_types</span><span class="o">=</span><span class="n">var_types</span><span class="p">,</span>
+                    <span class="n">n_sub</span><span class="o">=</span><span class="n">n_sub</span><span class="p">,</span>
+                    <span class="n">n_res</span><span class="o">=</span><span class="n">n_res</span><span class="p">,</span>
+                    <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">return</span> <span class="n">Y_fit</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">reg_nonpar_fit</span><span class="p">(</span>
+                <span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">var_types</span><span class="o">=</span><span class="n">var_types</span><span class="p">,</span> <span class="n">n_sub</span><span class="o">=</span><span class="n">n_sub</span><span class="p">,</span> <span class="n">n_res</span><span class="o">=</span><span class="n">n_res</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span>
+            <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;SPL&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">X</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">bs_error_abort</span><span class="p">(</span><span class="s2">&quot;with a spline, only works in one dimension&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">spline_reg</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">imode</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="n">bs_error_abort</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;does not accept mode=</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">preg</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">proj_Z</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">imode</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">preg</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="bs_python_utils.bsstats.proj_Z" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">proj_Z</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#bs_python_utils.bsstats.proj_Z" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>project <code>W</code> on <code>Z</code> up to degree <code>p</code> interactions</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>W</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>variable(s) <code>(nobs)</code> or <code>(nobs, nw)</code></p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>Z</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>instruments <code>(nobs) or</code>(nobs, nz)`;
+they should <strong>not</strong> include a constant term</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>p</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>maximum total degree for interactions of the columns of <code>Z</code></p></td>
+          <td>
+                <code>1</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>verbose</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>prints stuff if True</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>tuple[<span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span>, <span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span>, float]</code>
+          </td>
+          <td><p>the projections of the columns of <code>W</code> on <code>Z</code> etc, the coefficients, and the <code>R^2</code> of each column</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>bs_python_utils/bsstats.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">proj_Z</span><span class="p">(</span>
+    <span class="n">W</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">Z</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    project `W` on `Z` up to degree `p` interactions</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        W: variable(s) `(nobs)` or `(nobs, nw)`</span>
+<span class="sd">        Z: instruments `(nobs) or `(nobs, nz)`;</span>
+<span class="sd">            they should **not** include a constant term</span>
+<span class="sd">        p: maximum total degree for interactions of the columns of `Z`</span>
+<span class="sd">        verbose: prints stuff if True</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        the projections of the columns of `W` on `Z` etc, the coefficients, and the `R^2` of each column</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">nobs</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">W</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">nobs</span><span class="p">:</span>
+        <span class="n">bs_error_abort</span><span class="p">(</span><span class="s2">&quot;W and Z should have the same number of rows&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">W</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">bs_error_abort</span><span class="p">(</span><span class="s2">&quot;W should have 1 or 2 dimensions&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">Z</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">bs_error_abort</span><span class="p">(</span><span class="s2">&quot;Z should have 1 or 2 dimensions&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">Z</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">Zp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nobs</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">p</span><span class="p">))</span>
+        <span class="n">Zp</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">nobs</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">Zp</span><span class="p">[:,</span> <span class="n">q</span><span class="p">]</span> <span class="o">=</span> <span class="n">Z</span><span class="o">**</span><span class="n">q</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># Z is a matrix</span>
+        <span class="n">Zp</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">_make_Zp</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;_proj_Z with degree </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">, using </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> regressors&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">_final_proj</span><span class="p">(</span><span class="n">Zp</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="bs_python_utils.bsstats.reg_nonpar" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">reg_nonpar</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">var_types</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_sub</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_res</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code>
+
+<a href="#bs_python_utils.bsstats.reg_nonpar" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>nonparametric regression of y on the columns of X;
+bandwidth chosen on a subsample of size nsub if nsub &lt; nobs, and rescaled</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>y</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>a vector of size nobs</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>X</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>a (nobs) vector or a matrix of shape (nobs, m)</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>var_types</code></td>
+          <td>
+                <code>str | None</code>
+          </td>
+          <td><p>specify types of all <code>X</code> variables if not all of them are continuous;
+one character per variable
+* 'c' for continuous
+* 'u' discrete unordered
+* 'o' discrete ordered</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>n_sub</code></td>
+          <td>
+                <code>int | None</code>
+          </td>
+          <td><p>size of subsample for cross-validation;  by default it is <code>200^{(m+4)/5}</code></p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>n_res</code></td>
+          <td>
+                <code>int | None</code>
+          </td>
+          <td><p>how many subsamples we draw; 1 by default</p></td>
+          <td>
+                <code>1</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="statsmodels.nonparametric.kernel_regression.KernelReg">KernelReg</span></code>
+          </td>
+          <td><p>fitted on sample (nobs, with derivatives)</p></td>
+        </tr>
+        <tr>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>and bandwidths (m)</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>bs_python_utils/bsstats.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">reg_nonpar</span><span class="p">(</span>
+    <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">var_types</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">n_sub</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">n_res</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">KernelReg</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    nonparametric regression of y on the columns of X;</span>
+<span class="sd">    bandwidth chosen on a subsample of size nsub if nsub &lt; nobs, and rescaled</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        y: a vector of size nobs</span>
+<span class="sd">        X: a (nobs) vector or a matrix of shape (nobs, m)</span>
+<span class="sd">        var_types: specify types of all `X` variables if not all of them are continuous;</span>
+<span class="sd">            one character per variable</span>
+<span class="sd">            * &#39;c&#39; for continuous</span>
+<span class="sd">            * &#39;u&#39; discrete unordered</span>
+<span class="sd">            * &#39;o&#39; discrete ordered</span>
+<span class="sd">        n_sub: size of subsample for cross-validation;  by default it is `200^{(m+4)/5}`</span>
+<span class="sd">        n_res: how many subsamples we draw; 1 by default</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        fitted on sample (nobs, with derivatives)</span>
+<span class="sd">        and bandwidths (m)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">check_vector_or_matrix</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">n_obs</span> <span class="o">=</span> <span class="n">check_vector</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">n_obs</span><span class="p">:</span>
+        <span class="n">bs_error_abort</span><span class="p">(</span><span class="s2">&quot;X and y should have the same number of observations&quot;</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">X</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">var_types</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">types</span> <span class="o">=</span> <span class="s2">&quot;c&quot;</span> <span class="o">*</span> <span class="n">m</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">var_types</span><span class="p">)</span> <span class="o">!=</span> <span class="n">m</span><span class="p">:</span>
+            <span class="n">bs_error_abort</span><span class="p">(</span><span class="s2">&quot;var_types should have one entry for each column of X&quot;</span><span class="p">)</span>
+        <span class="n">types</span> <span class="o">=</span> <span class="n">var_types</span>
+
+    <span class="k">if</span> <span class="n">n_sub</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">n_sub</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mi">200</span> <span class="o">**</span> <span class="p">((</span><span class="n">m</span> <span class="o">+</span> <span class="mf">4.0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">5.0</span><span class="p">))</span>
+
+    <span class="n">k</span> <span class="o">=</span> <span class="n">KernelReg</span><span class="p">(</span>
+        <span class="n">y</span><span class="p">,</span>
+        <span class="n">X</span><span class="p">,</span>
+        <span class="n">var_type</span><span class="o">=</span><span class="n">types</span><span class="p">,</span>
+        <span class="n">defaults</span><span class="o">=</span><span class="n">EstimatorSettings</span><span class="p">(</span>
+            <span class="n">efficient</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">n_sub</span><span class="o">=</span><span class="n">n_sub</span><span class="p">,</span> <span class="n">randomize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">n_res</span><span class="o">=</span><span class="n">n_res</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">k</span><span class="o">.</span><span class="n">fit</span><span class="p">(),</span> <span class="n">k</span><span class="o">.</span><span class="n">bw</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="bs_python_utils.bsstats.reg_nonpar_fit" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">reg_nonpar_fit</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">var_types</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_sub</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_res</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#bs_python_utils.bsstats.reg_nonpar_fit" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>nonparametric regression of y on the columns of X; bandwidth chosen on a subsample of size nsub if nsub &lt; nobs, and rescaled</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>y</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>a vector of size nobs</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>X</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>a (nobs) vector or a matrix of shape (nobs, m)</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>var_types</code></td>
+          <td>
+                <code>str | None</code>
+          </td>
+          <td><p>specify types of all <code>X</code> variables if not all of them are continuous;
+one character per variable
+* 'c' for continuous
+* 'u' discrete unordered
+* 'o' discrete ordered</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>n_sub</code></td>
+          <td>
+                <code>int | None</code>
+          </td>
+          <td><p>size of subsample for cross-validation; by default it is <code>200^{(m+4)/5}</code></p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>n_res</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>how many subsamples we draw; 1 by default</p></td>
+          <td>
+                <code>1</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>verbose</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>prints stuff if True</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>fitted values on sample (nobs)</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>bs_python_utils/bsstats.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">reg_nonpar_fit</span><span class="p">(</span>
+    <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">var_types</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">n_sub</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">n_res</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    nonparametric regression of y on the columns of X; bandwidth chosen on a subsample of size nsub if nsub &lt; nobs, and rescaled</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        y: a vector of size nobs</span>
+<span class="sd">        X: a (nobs) vector or a matrix of shape (nobs, m)</span>
+<span class="sd">        var_types: specify types of all `X` variables if not all of them are continuous;</span>
+<span class="sd">            one character per variable</span>
+<span class="sd">            * &#39;c&#39; for continuous</span>
+<span class="sd">            * &#39;u&#39; discrete unordered</span>
+<span class="sd">            * &#39;o&#39; discrete ordered</span>
+<span class="sd">        n_sub: size of subsample for cross-validation; by default it is `200^{(m+4)/5}`</span>
+<span class="sd">        n_res: how many subsamples we draw; 1 by default</span>
+<span class="sd">        verbose: prints stuff if True</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        fitted values on sample (nobs)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">kfbw</span> <span class="o">=</span> <span class="n">reg_nonpar</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">var_types</span><span class="p">,</span> <span class="n">n_sub</span><span class="p">,</span> <span class="n">n_res</span><span class="p">)</span>
+    <span class="n">fitted_vals</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">kfbw</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">fitted_vals</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="bs_python_utils.bsstats.tsls" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">tsls</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span></code>
+
+<a href="#bs_python_utils.bsstats.tsls" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>TSLS of <code>y</code> on <code>X</code> with instruments <code>Z</code></p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>y</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>independent variable <code>(nobs)</code></p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>X</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>covariates <code>(nobs, nx)</code></p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>Z</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>instruments <code>(nobs, nz)</code></p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><a class="autorefs autorefs-internal" title="bs_python_utils.bsstats.TslsResults" href="#bs_python_utils.bsstats.TslsResults">TslsResults</a></code>
+          </td>
+          <td><p>a <code>tsls_results</code> object</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>bs_python_utils/bsstats.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">tsls</span><span class="p">(</span><span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">Z</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TslsResults</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    TSLS of `y` on `X` with instruments `Z`</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        y: independent variable `(nobs)`</span>
+<span class="sd">        X: covariates `(nobs, nx)`</span>
+<span class="sd">        Z: instruments `(nobs, nz)`</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        a `tsls_results` object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># first stage</span>
+    <span class="n">X_IV_proj</span><span class="p">,</span> <span class="n">b_proj_IV</span><span class="p">,</span> <span class="n">r2_first_iv</span> <span class="o">=</span> <span class="n">proj_Z</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
+    <span class="c1"># second stage</span>
+    <span class="n">y_proj</span><span class="p">,</span> <span class="n">y_coeffs</span><span class="p">,</span> <span class="n">r2_y</span> <span class="o">=</span> <span class="n">proj_Z</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">iv_estimates</span><span class="p">,</span> <span class="n">r2_second</span> <span class="o">=</span> <span class="n">proj_Z</span><span class="p">(</span><span class="n">y_proj</span><span class="p">,</span> <span class="n">X_IV_proj</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">TslsResults</span><span class="p">(</span>
+        <span class="n">iv_estimates</span><span class="p">,</span>
+        <span class="n">r2_first_iv</span><span class="p">,</span>
+        <span class="n">r2_y</span><span class="p">,</span>
+        <span class="n">r2_second</span><span class="p">,</span>
+        <span class="n">y_proj</span><span class="p">,</span>
+        <span class="n">y_coeffs</span><span class="p">,</span>
+        <span class="n">X_IV_proj</span><span class="p">,</span>
+        <span class="n">b_proj_IV</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../pandas_utils/" class="md-footer__link md-footer__link--prev" aria-label="Previous: `pandas_utils` module" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              `pandas_utils` module
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../sklearn_utils/" class="md-footer__link md-footer__link--next" aria-label="Next: `sklearn_utils` module" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              `sklearn_utils` module
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Maintained by <a href="https://bsalanie.com">Bernard Salanie</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/bsalanie/bs-python-utils" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/bs-python-utils" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "search.highlight", "navigation.expand", "navigation.tabs"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+    
+  </body>
+</html>
