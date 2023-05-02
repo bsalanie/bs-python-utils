@@ -615,6 +615,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#bs_python_utils.bsnputils.legendre_polynomials" class="md-nav__link">
+    legendre_polynomials()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bs_python_utils.bsnputils.make_lexico_grid" class="md-nav__link">
     make_lexico_grid()
   </a>
@@ -694,6 +701,20 @@
         <li class="md-nav__item">
   <a href="#bs_python_utils.bsnputils.outer_bivar" class="md-nav__link">
     outer_bivar()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsnputils.print_quantiles" class="md-nav__link">
+    print_quantiles()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsnputils.quantile_transform" class="md-nav__link">
+    quantile_transform()
   </a>
   
 </li>
@@ -1059,6 +1080,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#bs_python_utils.bsnputils.legendre_polynomials" class="md-nav__link">
+    legendre_polynomials()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bs_python_utils.bsnputils.make_lexico_grid" class="md-nav__link">
     make_lexico_grid()
   </a>
@@ -1138,6 +1166,20 @@
         <li class="md-nav__item">
   <a href="#bs_python_utils.bsnputils.outer_bivar" class="md-nav__link">
     outer_bivar()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsnputils.print_quantiles" class="md-nav__link">
+    print_quantiles()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsnputils.quantile_transform" class="md-nav__link">
+    quantile_transform()
   </a>
   
 </li>
@@ -3136,6 +3178,175 @@ in a way that is consistent with <code>ecdf</code>.</p>
 
 
 
+<h2 id="bs_python_utils.bsnputils.legendre_polynomials" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">legendre_polynomials</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">max_deg</span><span class="p">,</span> <span class="n">a</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">no_constant</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#bs_python_utils.bsnputils.legendre_polynomials" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>evaluates the Legendre polynomials over x in the interval [a, b]</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>x</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>the points where the polynomials are to be evaluated</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>max_deg</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>the maximum degree</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>a</code></td>
+          <td>
+                <code>float</code>
+          </td>
+          <td><p>the start of the interval, classically -1</p></td>
+          <td>
+                <code>-1.0</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>b</code></td>
+          <td>
+                <code>float</code>
+          </td>
+          <td><p>the end of the interval, classically 1</p></td>
+          <td>
+                <code>1.0</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>no_constant</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>if True, delete the constant polynomial</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>an array of (max_deg+1) arrays of the shape of x</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>bs_python_utils/bsnputils.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">960</span>
+<span class="normal">961</span>
+<span class="normal">962</span>
+<span class="normal">963</span>
+<span class="normal">964</span>
+<span class="normal">965</span>
+<span class="normal">966</span>
+<span class="normal">967</span>
+<span class="normal">968</span>
+<span class="normal">969</span>
+<span class="normal">970</span>
+<span class="normal">971</span>
+<span class="normal">972</span>
+<span class="normal">973</span>
+<span class="normal">974</span>
+<span class="normal">975</span>
+<span class="normal">976</span>
+<span class="normal">977</span>
+<span class="normal">978</span>
+<span class="normal">979</span>
+<span class="normal">980</span>
+<span class="normal">981</span>
+<span class="normal">982</span>
+<span class="normal">983</span>
+<span class="normal">984</span>
+<span class="normal">985</span>
+<span class="normal">986</span>
+<span class="normal">987</span>
+<span class="normal">988</span>
+<span class="normal">989</span>
+<span class="normal">990</span>
+<span class="normal">991</span>
+<span class="normal">992</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">legendre_polynomials</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">max_deg</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">a</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">b</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">no_constant</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;evaluates the Legendre polynomials over x in the interval [a, b]</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x: the points where the polynomials are to be evaluated</span>
+<span class="sd">        max_deg: the maximum degree</span>
+<span class="sd">        a: the start of the interval, classically -1</span>
+<span class="sd">        b: the end of the interval, classically 1</span>
+<span class="sd">        no_constant: if True, delete the constant polynomial</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        an array of (max_deg+1) arrays of the shape of x</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sx</span> <span class="o">=</span> <span class="n">check_vector</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="s2">&quot;legendre_polynomials: points below start of interval&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="s2">&quot;legendre_polynomials: points above end of interval&quot;</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">sx</span><span class="p">,</span> <span class="n">max_deg</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">x_transf</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.0</span>
+    <span class="n">p</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">p</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_transf</span>
+    <span class="k">for</span> <span class="n">deg</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_deg</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">deg</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="p">[:,</span> <span class="n">deg</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x_transf</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">deg</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[:,</span> <span class="n">deg</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="n">p</span><span class="p">[:,</span> <span class="n">deg</span><span class="p">]</span> <span class="o">=</span> <span class="n">p2</span> <span class="o">/</span> <span class="n">deg</span>
+    <span class="n">polys_p</span> <span class="o">=</span> <span class="n">p</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="n">no_constant</span> <span class="k">else</span> <span class="n">p</span>
+    <span class="k">return</span> <span class="n">polys_p</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
 <h2 id="bs_python_utils.bsnputils.make_lexico_grid" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">make_lexico_grid</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span></code>
 
@@ -4786,6 +4997,240 @@ perhaps with derivatives</p>
     <span class="n">p2</span> <span class="o">=</span> <span class="n">pol2</span><span class="o">.</span><span class="n">coef</span>
     <span class="n">prod_coef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">BivariatePolynomial</span><span class="p">(</span><span class="n">prod_coef</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="bs_python_utils.bsnputils.print_quantiles" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">print_quantiles</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">quantiles</span><span class="p">)</span></code>
+
+<a href="#bs_python_utils.bsnputils.print_quantiles" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>print these quantiles of the array(s)</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>v</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span> | <span title="typing.Iterable">Iterable</span>[<span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span>]</code>
+          </td>
+          <td><p>a vector or an iterable of vectors</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>quantiles</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>quantiles in [0,1]</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>the corresponding quantiles as a vector or a matrix</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>bs_python_utils/bsnputils.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1011</span>
+<span class="normal">1012</span>
+<span class="normal">1013</span>
+<span class="normal">1014</span>
+<span class="normal">1015</span>
+<span class="normal">1016</span>
+<span class="normal">1017</span>
+<span class="normal">1018</span>
+<span class="normal">1019</span>
+<span class="normal">1020</span>
+<span class="normal">1021</span>
+<span class="normal">1022</span>
+<span class="normal">1023</span>
+<span class="normal">1024</span>
+<span class="normal">1025</span>
+<span class="normal">1026</span>
+<span class="normal">1027</span>
+<span class="normal">1028</span>
+<span class="normal">1029</span>
+<span class="normal">1030</span>
+<span class="normal">1031</span>
+<span class="normal">1032</span>
+<span class="normal">1033</span>
+<span class="normal">1034</span>
+<span class="normal">1035</span>
+<span class="normal">1036</span>
+<span class="normal">1037</span>
+<span class="normal">1038</span>
+<span class="normal">1039</span>
+<span class="normal">1040</span>
+<span class="normal">1041</span>
+<span class="normal">1042</span>
+<span class="normal">1043</span>
+<span class="normal">1044</span>
+<span class="normal">1045</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">print_quantiles</span><span class="p">(</span>
+    <span class="n">v</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">quantiles</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;print these quantiles of the array(s)</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        v:  a vector or an iterable of vectors</span>
+<span class="sd">        quantiles: quantiles in [0,1]</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">         the corresponding quantiles as a vector or a matrix</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">nq</span> <span class="o">=</span> <span class="n">check_vector</span><span class="p">(</span><span class="n">quantiles</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+        <span class="n">qvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">quantiles</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">qv</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">quantiles</span><span class="p">,</span> <span class="n">qvals</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Quantile </span><span class="si">{</span><span class="n">q</span><span class="si">:</span><span class="s2"> .3f</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">qv</span><span class="si">:</span><span class="s2"> &gt;10.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">):</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">v_i</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
+            <span class="n">_</span> <span class="o">=</span> <span class="n">check_vector</span><span class="p">(</span><span class="n">v_i</span><span class="p">)</span>
+        <span class="n">nv</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">qvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nq</span><span class="p">,</span> <span class="n">nv</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nv</span><span class="p">):</span>
+            <span class="n">qvals</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">quantiles</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">iq</span><span class="p">,</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">quantiles</span><span class="p">):</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Quantile </span><span class="si">{</span><span class="n">q</span><span class="si">:</span><span class="s2"> .3f</span><span class="si">}</span><span class="s2">: &quot;</span>
+            <span class="n">qv</span> <span class="o">=</span> <span class="n">qvals</span><span class="p">[</span><span class="n">iq</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nv</span><span class="p">):</span>
+                <span class="n">s</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">qv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2"> &gt;10.3f</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">bs_error_abort</span><span class="p">(</span><span class="s2">&quot;v must be  a vector or a list of vectors&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">qvals</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="bs_python_utils.bsnputils.quantile_transform" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">quantile_transform</span><span class="p">(</span><span class="n">v</span><span class="p">)</span></code>
+
+<a href="#bs_python_utils.bsnputils.quantile_transform" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>transform a vector of counts into the corresponding quantiles</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>v</code></td>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>a vector of counts</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+          </td>
+          <td><p>the corresponding quantiles</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>bs_python_utils/bsnputils.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 995</span>
+<span class="normal"> 996</span>
+<span class="normal"> 997</span>
+<span class="normal"> 998</span>
+<span class="normal"> 999</span>
+<span class="normal">1000</span>
+<span class="normal">1001</span>
+<span class="normal">1002</span>
+<span class="normal">1003</span>
+<span class="normal">1004</span>
+<span class="normal">1005</span>
+<span class="normal">1006</span>
+<span class="normal">1007</span>
+<span class="normal">1008</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">quantile_transform</span><span class="p">(</span><span class="n">v</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;transform a vector of counts into the corresponding quantiles</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        v:  a vector of counts</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">         the corresponding quantiles</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">check_vector</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">v</span> <span class="o">&lt;=</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">q</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
