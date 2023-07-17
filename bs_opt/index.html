@@ -1090,9 +1090,9 @@ combines values, bounds and initial values for a parameter vector</p>
 
   <div class="doc doc-contents ">
   
-      <p>minimizes <code>(f+h)</code> by Accelerated Gradient Descent
- where <code>f</code> is smooth and convex  and <code>h</code> is convex.</p>
-<p>By default <code>h</code> is zero.</p>
+      <p>minimizes <code>(f+h)</code> by Accelerated Gradient Descent where <code>f</code> is smooth and convex  and <code>h</code> is convex.</p>
+<p>By default <code>h</code> is zero.
+The convergence criterion is that the largest component of the absolute value of the gradient must be smaller than <code>tol</code>.</p>
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1150,7 +1150,7 @@ combines values, bounds and initial values for a parameter vector</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>if <code>True</code>, print diagnosis</p></td>
+          <td><p>if <code>True</code>, print remaining gradient error every 10 iterations</p></td>
           <td>
                 <code>False</code>
           </td>
@@ -1160,7 +1160,7 @@ combines values, bounds and initial values for a parameter vector</p>
           <td>
                 <code>float</code>
           </td>
-          <td><p>convergence criterion on absolute grad_f</p></td>
+          <td><p>convergence criterion on grad_f</p></td>
           <td>
                 <code>1e-09</code>
           </td>
@@ -1211,7 +1211,7 @@ combines values, bounds and initial values for a parameter vector</p>
           <td>
                 <code>tuple[<span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span>, int]</code>
           </td>
-          <td><p>the candidate solution, and 1 if converged/0 if not</p></td>
+          <td><p>the candidate solution, and a convergence code (0 if successful, 1 if not)</p></td>
         </tr>
     </tbody>
   </table>
@@ -1313,7 +1313,8 @@ combines values, bounds and initial values for a parameter vector</p>
 <span class="normal">299</span>
 <span class="normal">300</span>
 <span class="normal">301</span>
-<span class="normal">302</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@timeit</span>
+<span class="normal">302</span>
+<span class="normal">303</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@timeit</span>
 <span class="k">def</span> <span class="nf">acc_grad_descent</span><span class="p">(</span>
     <span class="n">grad_f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
     <span class="n">x_init</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
@@ -1327,10 +1328,11 @@ combines values, bounds and initial values for a parameter vector</p>
     <span class="n">maxiter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    minimizes `(f+h)` by Accelerated Gradient Descent</span>
-<span class="sd">     where `f` is smooth and convex  and `h` is convex.</span>
+<span class="sd">    minimizes `(f+h)` by Accelerated Gradient Descent where `f` is smooth and convex  and `h` is convex.</span>
 
 <span class="sd">    By default `h` is zero.</span>
+<span class="sd">    The convergence criterion is that the largest component of the absolute value of the gradient must be smaller than `tol`.</span>
+
 
 <span class="sd">    Args:</span>
 <span class="sd">        grad_f: grad_f of `f`; should return an `(n)` array from an `(n)` array \</span>
@@ -1338,14 +1340,14 @@ combines values, bounds and initial values for a parameter vector</p>
 <span class="sd">        x_init: initial guess, shape `(n)`</span>
 <span class="sd">        prox_h: proximal projector of `h`, if any</span>
 <span class="sd">        other_params: an iterable with additional parameters</span>
-<span class="sd">        verbose: if `True`, print diagnosis</span>
-<span class="sd">        tol: convergence criterion on absolute grad_f</span>
+<span class="sd">        verbose: if `True`, print remaining gradient error every 10 iterations</span>
+<span class="sd">        tol: convergence criterion on grad_f</span>
 <span class="sd">        alpha: ceiling on step multiplier</span>
 <span class="sd">        beta: floor on step multiplier</span>
 <span class="sd">        maxiter: max number of iterations</span>
 
 <span class="sd">    Returns: </span>
-<span class="sd">        the candidate solution, and 1 if converged/0 if not</span>
+<span class="sd">        the candidate solution, and a convergence code (0 if successful, 1 if not)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># no proximal projection if no h</span>
@@ -1391,7 +1393,7 @@ combines values, bounds and initial values for a parameter vector</p>
 
         <span class="n">n_iter</span> <span class="o">+=</span> <span class="mi">1</span>
 
-        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">verbose</span> <span class="ow">and</span> <span class="n">n_iter</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; AGD with grad_err = </span><span class="si">{</span><span class="n">grad_err</span><span class="si">}</span><span class="s2"> after </span><span class="si">{</span><span class="n">n_iter</span><span class="si">}</span><span class="s2"> iterations&quot;</span><span class="p">)</span>
 
     <span class="n">x_conv</span> <span class="o">=</span> <span class="n">y</span>
@@ -1401,14 +1403,14 @@ combines values, bounds and initial values for a parameter vector</p>
     <span class="k">if</span> <span class="n">verbose</span> <span class="ow">or</span> <span class="n">print_result</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">ret_code</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">print_stars</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot; AGD converged with grad_err = </span><span class="si">{</span><span class="n">grad_err</span><span class="si">}</span><span class="s2"> after </span><span class="si">{</span><span class="nb">iter</span><span class="si">}</span><span class="s2"> iterations&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot; AGD converged with grad_err = </span><span class="si">{</span><span class="n">grad_err</span><span class="si">}</span><span class="s2"> after </span><span class="si">{</span><span class="n">n_iter</span><span class="si">}</span><span class="s2"> iterations&quot;</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">print_stars</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot; Problem in AGD: grad_err = </span><span class="si">{</span><span class="n">grad_err</span><span class="si">}</span><span class="s2"> after </span><span class="si">{</span><span class="nb">iter</span><span class="si">}</span><span class="s2"> iterations&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot; Problem in AGD: grad_err = </span><span class="si">{</span><span class="n">grad_err</span><span class="si">}</span><span class="s2"> after </span><span class="si">{</span><span class="n">n_iter</span><span class="si">}</span><span class="s2"> iterations&quot;</span>
             <span class="p">)</span>
 
-    <span class="k">return</span> <span class="p">(</span><span class="n">x_conv</span><span class="p">,</span> <span class="n">ret_code</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x_conv</span><span class="p">,</span> <span class="n">ret_code</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -1829,8 +1831,7 @@ to take in the opposite direction of the gradient using the Barzilai-Borwein rul
 
       <details class="quote">
         <summary>Source code in <code>bs_python_utils/bs_opt.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">443</span>
-<span class="normal">444</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">444</span>
 <span class="normal">445</span>
 <span class="normal">446</span>
 <span class="normal">447</span>
@@ -1848,7 +1849,8 @@ to take in the opposite direction of the gradient using the Barzilai-Borwein rul
 <span class="normal">459</span>
 <span class="normal">460</span>
 <span class="normal">461</span>
-<span class="normal">462</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">bfgs_update</span><span class="p">(</span>
+<span class="normal">462</span>
+<span class="normal">463</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">bfgs_update</span><span class="p">(</span>
     <span class="n">hess_inv</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">gradient_diff</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">x_diff</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;runs a DFP update for the inverse Hessian</span>
@@ -2145,8 +2147,7 @@ to take in the opposite direction of the gradient using the Barzilai-Borwein rul
 
       <details class="quote">
         <summary>Source code in <code>bs_python_utils/bs_opt.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">421</span>
-<span class="normal">422</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">422</span>
 <span class="normal">423</span>
 <span class="normal">424</span>
 <span class="normal">425</span>
@@ -2164,7 +2165,8 @@ to take in the opposite direction of the gradient using the Barzilai-Borwein rul
 <span class="normal">437</span>
 <span class="normal">438</span>
 <span class="normal">439</span>
-<span class="normal">440</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">dfp_update</span><span class="p">(</span>
+<span class="normal">440</span>
+<span class="normal">441</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">dfp_update</span><span class="p">(</span>
     <span class="n">hess_inv</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">gradient_diff</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">x_diff</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;runs a DFP update for the inverse Hessian</span>
@@ -2318,8 +2320,7 @@ to take in the opposite direction of the gradient using the Barzilai-Borwein rul
 
       <details class="quote">
         <summary>Source code in <code>bs_python_utils/bs_opt.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">341</span>
-<span class="normal">342</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">342</span>
 <span class="normal">343</span>
 <span class="normal">344</span>
 <span class="normal">345</span>
@@ -2395,7 +2396,8 @@ to take in the opposite direction of the gradient using the Barzilai-Borwein rul
 <span class="normal">415</span>
 <span class="normal">416</span>
 <span class="normal">417</span>
-<span class="normal">418</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">minimize_some_fixed</span><span class="p">(</span>
+<span class="normal">418</span>
+<span class="normal">419</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">minimize_some_fixed</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
     <span class="n">grad_obj</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
     <span class="n">x_init</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
