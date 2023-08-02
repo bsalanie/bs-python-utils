@@ -19,7 +19,7 @@
     
     
       
-        <title>`bsutils` module - bs-python-utils</title>
+        <title>error reporting and other utilities - bs-python-utils</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              `bsutils` module
+              error reporting and other utilities
             
           </span>
         </div>
@@ -370,12 +370,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          `bsutils` module
+          error reporting and other utilities
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        `bsutils` module
+        error reporting and other utilities
       </a>
       
         
@@ -514,7 +514,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_logging/" class="md-nav__link">
-        `bs_logging` module
+        logging
       </a>
     </li>
   
@@ -528,7 +528,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_mathstr/" class="md-nav__link">
-        `bs_mathstr` module
+        math strings
       </a>
     </li>
   
@@ -542,7 +542,7 @@
   
     <li class="md-nav__item">
       <a href="../Timer/" class="md-nav__link">
-        `Timer` module
+        timing routines
       </a>
     </li>
   
@@ -556,7 +556,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_mem/" class="md-nav__link">
-        `bs_mem` module
+        memory usage
       </a>
     </li>
   
@@ -603,7 +603,7 @@
   
     <li class="md-nav__item">
       <a href="../bsnputils/" class="md-nav__link">
-        `bsnputils` module
+        Numpy
       </a>
     </li>
   
@@ -617,7 +617,7 @@
   
     <li class="md-nav__item">
       <a href="../bssputils/" class="md-nav__link">
-        `bssputils` module
+        Scipy
       </a>
     </li>
   
@@ -631,7 +631,7 @@
   
     <li class="md-nav__item">
       <a href="../chebyshev/" class="md-nav__link">
-        `chebyshev` module
+        numerical interpolation and integration
       </a>
     </li>
   
@@ -645,7 +645,7 @@
   
     <li class="md-nav__item">
       <a href="../pandas_utils/" class="md-nav__link">
-        `pandas_utils` module
+        Pandas
       </a>
     </li>
   
@@ -659,7 +659,7 @@
   
     <li class="md-nav__item">
       <a href="../bsstats/" class="md-nav__link">
-        `bsstats` module
+        statistics
       </a>
     </li>
   
@@ -673,7 +673,7 @@
   
     <li class="md-nav__item">
       <a href="../sklearn_utils/" class="md-nav__link">
-        `sklearn_utils` module
+        Sklearn
       </a>
     </li>
   
@@ -687,7 +687,7 @@
   
     <li class="md-nav__item">
       <a href="../distance_covariances/" class="md-nav__link">
-        `distance_covariances` module
+        nonlinear dependence
       </a>
     </li>
   
@@ -701,7 +701,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_opt/" class="md-nav__link">
-        `bs_opt` module
+        optimization
       </a>
     </li>
   
@@ -715,7 +715,21 @@
   
     <li class="md-nav__item">
       <a href="../bs_sparse_gaussian/" class="md-nav__link">
-        `bs_sparse_gaussian` module
+        sparse integration for functions of Gaussians
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bivariate_quantiles/" class="md-nav__link">
+        bivariate quantiles and ranks
       </a>
     </li>
   
@@ -762,7 +776,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_plots/" class="md-nav__link">
-        `bs_plots` module
+        general interface
       </a>
     </li>
   
@@ -776,7 +790,7 @@
   
     <li class="md-nav__item">
       <a href="../bsmplutils/" class="md-nav__link">
-        `bsmplutils` module
+        Matplotlib
       </a>
     </li>
   
@@ -790,7 +804,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_seaborn/" class="md-nav__link">
-        `bs_seaborn` module
+        Seaborn
       </a>
     </li>
   
@@ -804,7 +818,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_altair/" class="md-nav__link">
-        `bs_altair` module
+        Altair
       </a>
     </li>
   
@@ -975,7 +989,7 @@
   </a>
 
 
-<h1 id="bsutils-module"><code>bsutils</code> module<a class="headerlink" href="#bsutils-module" title="Permanent link">&para;</a></h1>
+<h1 id="bsutils-module">bsutils module<a class="headerlink" href="#bsutils-module" title="Permanent link">&para;</a></h1>
 
 
 <div class="doc doc-object doc-module">
@@ -989,6 +1003,7 @@
   
 
   <div class="doc doc-children">
+
 
 
 
@@ -1012,6 +1027,8 @@
   
       <p>report error and abort</p>
 
+
+
   <p><strong>Parameters:</strong></p>
   <table>
     <thead>
@@ -1028,13 +1045,19 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>a message</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>a message</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;error, aborting&#39;</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1049,14 +1072,18 @@
           <td>
                 <code>None</code>
           </td>
-          <td><p>prints the message and exits with code 1</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>prints the message and exits with code 1</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">49</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span>
 <span class="normal">52</span>
@@ -1080,10 +1107,11 @@
     <span class="n">print_stars</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bs_name_func</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1098,6 +1126,8 @@
   <div class="doc doc-contents ">
   
       <p>get the name of the current function, or further back in stack</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1115,13 +1145,19 @@
           <td>
                 <code>int</code>
           </td>
-          <td><p>2 is current function, 3 the function that called it etc</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>2 is current function, 3 the function that called it etc</p>
+            </div>
+          </td>
           <td>
                 <code>2</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1136,14 +1172,18 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>the name of the function</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the name of the function</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">34</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">34</span>
 <span class="normal">35</span>
 <span class="normal">36</span>
 <span class="normal">37</span>
@@ -1169,10 +1209,11 @@
     <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">func_name</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="n">back</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">func_name</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1187,6 +1228,8 @@
   <div class="doc doc-contents ">
   
       <p>projection of point (x,y) on line ax+by+c=0</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1204,7 +1247,11 @@
           <td>
                 <code>float</code>
           </td>
-          <td><p>y: coordinates</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>y: coordinates</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1214,13 +1261,19 @@
           <td>
                 <code>float</code>
           </td>
-          <td><p>b: c: line parameters (as in ax+by+c=0)</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>b: c: line parameters (as in ax+by+c=0)</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1235,20 +1288,28 @@
 <td><code>x_proj</code></td>          <td>
                 <code>float</code>
           </td>
-          <td><p>y_proj: coordinates of projection point</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>y_proj: coordinates of projection point</p>
+            </div>
+          </td>
         </tr>
         <tr>
 <td><code>dist</code></td>          <td>
                 <code>float</code>
           </td>
-          <td><p>distance of point from line</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>distance of point from line</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">358</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">358</span>
 <span class="normal">359</span>
 <span class="normal">360</span>
 <span class="normal">361</span>
@@ -1290,10 +1351,11 @@
     <span class="n">dist</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">/</span> <span class="n">denom</span>
     <span class="k">return</span> <span class="n">x_proj</span><span class="p">,</span> <span class="n">y_proj</span><span class="p">,</span> <span class="n">dist</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1308,6 +1370,8 @@
   <div class="doc doc-contents ">
   
       <p>a switch statement that allows for partial matches if strict is False</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1325,7 +1389,11 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>what we look for in the keys</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>what we look for in the keys</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1335,7 +1403,11 @@
           <td>
                 <code>dict</code>
           </td>
-          <td><p>a dictionary with string keys</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>a dictionary with string keys</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1345,7 +1417,11 @@
           <td>
                 <code>bool</code>
           </td>
-          <td><p>if <code>False</code>, we accept a partial match</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>False</code>, we accept a partial match</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -1355,13 +1431,19 @@
           <td>
                 <code><span title="typing.Any">Any</span></code>
           </td>
-          <td><p>what we return if no match is found</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>what we return if no match is found</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;no match&#39;</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1376,12 +1458,16 @@
           <td>
                 <code><span title="typing.Any">Any</span></code>
           </td>
-          <td><p>the value for the match, or <code>default</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the value for the match, or <code>default</code></p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-<details class="example">
+<details class="example" open>
   <summary>Example</summary>
   <p>calc_dict = {
 "plus": lambda x, y: x + y,
@@ -1404,9 +1490,9 @@ minus(6, 4)
 </blockquote>
 </blockquote>
 </details>
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 78</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 78</span>
 <span class="normal"> 79</span>
 <span class="normal"> 80</span>
 <span class="normal"> 81</span>
@@ -1490,10 +1576,11 @@ minus(6, 4)
                 <span class="k">return</span> <span class="n">dico</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">default</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1508,6 +1595,8 @@ minus(6, 4)
   <div class="doc doc-contents ">
   
       <p>number of combinations of k among n <code>{n \choose k}</code></p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1525,7 +1614,11 @@ minus(6, 4)
           <td>
                 <code>int</code>
           </td>
-          <td></td>
+          <td>
+            <div class="doc-md-description">
+              
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1535,13 +1628,19 @@ minus(6, 4)
           <td>
                 <code>int</code>
           </td>
-          <td><p>should be smaller than n</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>should be smaller than n</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1556,14 +1655,18 @@ minus(6, 4)
           <td>
                 <code>int</code>
           </td>
-          <td><p><code>{n \choose k}</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>{n \choose k}</code></p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">216</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">216</span>
 <span class="normal">217</span>
 <span class="normal">218</span>
 <span class="normal">219</span>
@@ -1599,10 +1702,11 @@ minus(6, 4)
         <span class="n">bs_error_abort</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;k=</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> should not be larger than n=</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">//</span> <span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">k</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1618,6 +1722,8 @@ minus(6, 4)
   
       <p><code>C^2</code>-extends the exponential above <code>bigx</code> and below <code>lowx</code>
 perhaps with derivatives</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1635,7 +1741,11 @@ perhaps with derivatives</p>
           <td>
                 <code>float</code>
           </td>
-          <td><p>argument</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>argument</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1645,7 +1755,11 @@ perhaps with derivatives</p>
           <td>
                 <code>float</code>
           </td>
-          <td><p>upper bound</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>upper bound</p>
+            </div>
+          </td>
           <td>
                 <code>50.0</code>
           </td>
@@ -1655,7 +1769,11 @@ perhaps with derivatives</p>
           <td>
                 <code>float</code>
           </td>
-          <td><p>lower bound</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>lower bound</p>
+            </div>
+          </td>
           <td>
                 <code>-50.0</code>
           </td>
@@ -1665,13 +1783,19 @@ perhaps with derivatives</p>
           <td>
                 <code>int</code>
           </td>
-          <td><p>if 1, also return first derivative; if 2, the first two derivatives</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if 1, also return first derivative; if 2, the first two derivatives</p>
+            </div>
+          </td>
           <td>
                 <code>0</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1686,20 +1810,28 @@ perhaps with derivatives</p>
           <td>
                 <code>float | <span title="bs_python_utils.bsutils.TwoFloats">TwoFloats</span> | <span title="bs_python_utils.bsutils.ThreeFloats">ThreeFloats</span></code>
           </td>
-          <td><p>the exponential <code>C^2</code>-extended above <code>bigx</code> and below <code>lowx</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the exponential <code>C^2</code>-extended above <code>bigx</code> and below <code>lowx</code></p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td>
                 <code>float | <span title="bs_python_utils.bsutils.TwoFloats">TwoFloats</span> | <span title="bs_python_utils.bsutils.ThreeFloats">ThreeFloats</span></code>
           </td>
-          <td><p>perhaps with derivatives</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>perhaps with derivatives</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">323</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">323</span>
 <span class="normal">324</span>
 <span class="normal">325</span>
 <span class="normal">326</span>
@@ -1765,10 +1897,11 @@ perhaps with derivatives</p>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_bsexp_extend</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">deriv</span><span class="p">,</span> <span class="n">bigx</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1784,6 +1917,8 @@ perhaps with derivatives</p>
   
       <p>extends the logarithm below <code>eps</code> by taking a second-order approximation
 perhaps with derivatives</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1801,7 +1936,11 @@ perhaps with derivatives</p>
           <td>
                 <code>float</code>
           </td>
-          <td><p>argument</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>argument</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1811,7 +1950,11 @@ perhaps with derivatives</p>
           <td>
                 <code>float</code>
           </td>
-          <td><p>lower bound</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>lower bound</p>
+            </div>
+          </td>
           <td>
                 <code>1e-30</code>
           </td>
@@ -1821,13 +1964,19 @@ perhaps with derivatives</p>
           <td>
                 <code>int</code>
           </td>
-          <td><p>if 1, also return first derivative; if 2, the first two derivatives</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if 1, also return first derivative; if 2, the first two derivatives</p>
+            </div>
+          </td>
           <td>
                 <code>0</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1842,14 +1991,18 @@ perhaps with derivatives</p>
           <td>
                 <code>float | <span title="bs_python_utils.bsutils.TwoFloats">TwoFloats</span> | <span title="bs_python_utils.bsutils.ThreeFloats">ThreeFloats</span></code>
           </td>
-          <td><p><code>\ln(x)</code> <code>C^2</code>-extended below <code>eps</code>, perhaps with derivatives</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>\ln(x)</code> <code>C^2</code>-extended below <code>eps</code>, perhaps with derivatives</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">236</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">236</span>
 <span class="normal">237</span>
 <span class="normal">238</span>
 <span class="normal">239</span>
@@ -1921,10 +2074,11 @@ perhaps with derivatives</p>
         <span class="n">d2log_smaller</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">eps</span> <span class="o">/</span> <span class="n">eps</span>
         <span class="k">return</span> <span class="n">log_smaller</span><span class="p">,</span> <span class="n">dlog_smaller</span><span class="p">,</span> <span class="n">d2log_smaller</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1940,6 +2094,8 @@ perhaps with derivatives</p>
   
       <p>extends <code>x \ln(x)</code> below <code>eps</code> by making it go to zero in a <code>C^2</code> extension
 perhaps with derivatives</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1957,7 +2113,11 @@ perhaps with derivatives</p>
           <td>
                 <code>float</code>
           </td>
-          <td><p>argument</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>argument</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1967,7 +2127,11 @@ perhaps with derivatives</p>
           <td>
                 <code>float</code>
           </td>
-          <td><p>lower bound</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>lower bound</p>
+            </div>
+          </td>
           <td>
                 <code>1e-30</code>
           </td>
@@ -1977,13 +2141,19 @@ perhaps with derivatives</p>
           <td>
                 <code>int</code>
           </td>
-          <td><p>if 1, also return first derivative; if 2, the first two derivatives</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if 1, also return first derivative; if 2, the first two derivatives</p>
+            </div>
+          </td>
           <td>
                 <code>0</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1998,14 +2168,18 @@ perhaps with derivatives</p>
           <td>
                 <code>float | <span title="bs_python_utils.bsutils.TwoFloats">TwoFloats</span> | <span title="bs_python_utils.bsutils.ThreeFloats">ThreeFloats</span></code>
           </td>
-          <td><p><code>x \ln(x)</code>  <code>C^2</code>-extended below <code>eps</code>, perhaps with derivatives</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>x \ln(x)</code>  <code>C^2</code>-extended below <code>eps</code>, perhaps with derivatives</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">274</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">274</span>
 <span class="normal">275</span>
 <span class="normal">276</span>
 <span class="normal">277</span>
@@ -2071,10 +2245,11 @@ perhaps with derivatives</p>
             <span class="k">return</span> <span class="n">log_smaller</span><span class="p">,</span> <span class="n">logeps</span> <span class="o">+</span> <span class="n">dx</span>
         <span class="k">return</span> <span class="n">log_smaller</span><span class="p">,</span> <span class="n">logeps</span> <span class="o">+</span> <span class="n">dx</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">eps</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2089,6 +2264,8 @@ perhaps with derivatives</p>
   <div class="doc doc-contents ">
   
       <p>prints to a file a title within stars</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2106,7 +2283,11 @@ perhaps with derivatives</p>
           <td>
                 <code><span title="io.TextIOBase">TextIOBase</span></code>
           </td>
-          <td><p>file handle</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>file handle</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2116,7 +2297,11 @@ perhaps with derivatives</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>title</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>title</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2126,13 +2311,19 @@ perhaps with derivatives</p>
           <td>
                 <code>int</code>
           </td>
-          <td><p>length of line</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>length of line</p>
+            </div>
+          </td>
           <td>
                 <code>70</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2147,14 +2338,18 @@ perhaps with derivatives</p>
           <td>
                 <code>None</code>
           </td>
-          <td><p>prints a starred line to the file, or two around the title</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>prints a starred line to the file, or two around the title</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">172</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">172</span>
 <span class="normal">173</span>
 <span class="normal">174</span>
 <span class="normal">175</span>
@@ -2198,10 +2393,11 @@ perhaps with derivatives</p>
         <span class="n">file_handle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">file_handle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2216,6 +2412,8 @@ perhaps with derivatives</p>
   <div class="doc doc-contents ">
   
       <p>pluralizes word if n &gt; 1</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2233,7 +2431,11 @@ perhaps with derivatives</p>
           <td>
                 <code>int</code>
           </td>
-          <td><p>how many times</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>how many times</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2243,13 +2445,19 @@ perhaps with derivatives</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>to be pluralized, maybe</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>to be pluralized, maybe</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2264,14 +2472,18 @@ perhaps with derivatives</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p><code>1 word</code> or <code>n words</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>1 word</code> or <code>n words</code></p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">63</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">63</span>
 <span class="normal">64</span>
 <span class="normal">65</span>
 <span class="normal">66</span>
@@ -2297,10 +2509,11 @@ perhaps with derivatives</p>
     <span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">word</span><span class="si">}{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2316,6 +2529,8 @@ perhaps with derivatives</p>
   
       <p>Returns the index of and the first item in the <code>iterable</code> that
 satisfies the <code>condition</code>.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2333,7 +2548,11 @@ satisfies the <code>condition</code>.</p>
           <td>
                 <code><span title="typing.Iterable">Iterable</span></code>
           </td>
-          <td><p>where to look</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>where to look</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2343,13 +2562,19 @@ satisfies the <code>condition</code>.</p>
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>must return a boolean</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>must return a boolean</p>
+            </div>
+          </td>
           <td>
                 <code>lambda x: True</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2364,24 +2589,36 @@ satisfies the <code>condition</code>.</p>
           <td>
                 <code><span title="typing.Any">Any</span></code>
           </td>
-          <td><p>If the condition is not given, returns 0 and the first item of</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>If the condition is not given, returns 0 and the first item of</p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td>
                 <code><span title="typing.Any">Any</span></code>
           </td>
-          <td><p>the iterable.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the iterable.</p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td>
                 <code><span title="typing.Any">Any</span></code>
           </td>
-          <td><p>Raises <code>StopIteration</code> if no item satisfyng the condition is found.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Raises <code>StopIteration</code> if no item satisfyng the condition is found.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-<details class="example">
+<details class="example" open>
   <summary>Example</summary>
   <blockquote>
 <blockquote>
@@ -2398,9 +2635,9 @@ StopIteration</p>
 </blockquote>
 </blockquote>
 </details>
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">122</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">122</span>
 <span class="normal">123</span>
 <span class="normal">124</span>
 <span class="normal">125</span>
@@ -2456,10 +2693,11 @@ StopIteration</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">next</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span> <span class="k">if</span> <span class="n">condition</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2474,6 +2712,8 @@ StopIteration</p>
   <div class="doc doc-contents ">
   
       <p>create the directory if it does not exist</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2491,13 +2731,19 @@ StopIteration</p>
           <td>
                 <code><span title="pathlib.Path">Path</span> | str</code>
           </td>
-          <td><p>a path</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>a path</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2512,14 +2758,18 @@ StopIteration</p>
           <td>
                 <code><span title="pathlib.Path">Path</span></code>
           </td>
-          <td><p>the directory Path</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the directory Path</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">196</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">196</span>
 <span class="normal">197</span>
 <span class="normal">198</span>
 <span class="normal">199</span>
@@ -2555,10 +2805,11 @@ StopIteration</p>
         <span class="n">q</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">q</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2573,6 +2824,8 @@ StopIteration</p>
   <div class="doc doc-contents ">
   
       <p>prints a title within stars</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2590,7 +2843,11 @@ StopIteration</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>title</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>title</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2600,13 +2857,19 @@ StopIteration</p>
           <td>
                 <code>int</code>
           </td>
-          <td><p>number of stars on line</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>number of stars on line</p>
+            </div>
+          </td>
           <td>
                 <code>70</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2621,14 +2884,18 @@ StopIteration</p>
           <td>
                 <code>None</code>
           </td>
-          <td><p>prints a starred line, or two around the title</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>prints a starred line, or two around the title</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">152</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">152</span>
 <span class="normal">153</span>
 <span class="normal">154</span>
 <span class="normal">155</span>
@@ -2664,10 +2931,11 @@ StopIteration</p>
         <span class="nb">print</span><span class="p">(</span><span class="n">line_stars</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2682,6 +2950,8 @@ StopIteration</p>
   <div class="doc doc-contents ">
   
       <p>Decorator that reports the arguments of the function</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2699,7 +2969,11 @@ StopIteration</p>
           <td>
                 <code><span title="typing.Callable">Callable</span></code>
           </td>
-          <td><p>the decorated function</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the decorated function</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2707,9 +2981,9 @@ StopIteration</p>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">16</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/bsutils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
@@ -2741,7 +3015,7 @@ StopIteration</p>
 
     <span class="k">return</span> <span class="n">wrapper</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -2789,13 +3063,13 @@ StopIteration</p>
       
       
         
-        <a href="../bs_logging/" class="md-footer__link md-footer__link--next" aria-label="Next: `bs_logging` module" rel="next">
+        <a href="../bs_logging/" class="md-footer__link md-footer__link--next" aria-label="Next: logging" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              `bs_logging` module
+              logging
             </div>
           </div>
           <div class="md-footer__button md-icon">

@@ -19,7 +19,7 @@
     
     
       
-        <title>`distance_covariances` module - bs-python-utils</title>
+        <title>nonlinear dependence - bs-python-utils</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              `distance_covariances` module
+              nonlinear dependence
             
           </span>
         </div>
@@ -359,7 +359,7 @@
   
     <li class="md-nav__item">
       <a href="../bsutils/" class="md-nav__link">
-        `bsutils` module
+        error reporting and other utilities
       </a>
     </li>
   
@@ -373,7 +373,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_logging/" class="md-nav__link">
-        `bs_logging` module
+        logging
       </a>
     </li>
   
@@ -387,7 +387,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_mathstr/" class="md-nav__link">
-        `bs_mathstr` module
+        math strings
       </a>
     </li>
   
@@ -401,7 +401,7 @@
   
     <li class="md-nav__item">
       <a href="../Timer/" class="md-nav__link">
-        `Timer` module
+        timing routines
       </a>
     </li>
   
@@ -415,7 +415,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_mem/" class="md-nav__link">
-        `bs_mem` module
+        memory usage
       </a>
     </li>
   
@@ -464,7 +464,7 @@
   
     <li class="md-nav__item">
       <a href="../bsnputils/" class="md-nav__link">
-        `bsnputils` module
+        Numpy
       </a>
     </li>
   
@@ -478,7 +478,7 @@
   
     <li class="md-nav__item">
       <a href="../bssputils/" class="md-nav__link">
-        `bssputils` module
+        Scipy
       </a>
     </li>
   
@@ -492,7 +492,7 @@
   
     <li class="md-nav__item">
       <a href="../chebyshev/" class="md-nav__link">
-        `chebyshev` module
+        numerical interpolation and integration
       </a>
     </li>
   
@@ -506,7 +506,7 @@
   
     <li class="md-nav__item">
       <a href="../pandas_utils/" class="md-nav__link">
-        `pandas_utils` module
+        Pandas
       </a>
     </li>
   
@@ -520,7 +520,7 @@
   
     <li class="md-nav__item">
       <a href="../bsstats/" class="md-nav__link">
-        `bsstats` module
+        statistics
       </a>
     </li>
   
@@ -534,7 +534,7 @@
   
     <li class="md-nav__item">
       <a href="../sklearn_utils/" class="md-nav__link">
-        `sklearn_utils` module
+        Sklearn
       </a>
     </li>
   
@@ -557,12 +557,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          `distance_covariances` module
+          nonlinear dependence
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        `distance_covariances` module
+        nonlinear dependence
       </a>
       
         
@@ -631,7 +631,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_opt/" class="md-nav__link">
-        `bs_opt` module
+        optimization
       </a>
     </li>
   
@@ -645,7 +645,21 @@
   
     <li class="md-nav__item">
       <a href="../bs_sparse_gaussian/" class="md-nav__link">
-        `bs_sparse_gaussian` module
+        sparse integration for functions of Gaussians
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bivariate_quantiles/" class="md-nav__link">
+        bivariate quantiles and ranks
       </a>
     </li>
   
@@ -692,7 +706,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_plots/" class="md-nav__link">
-        `bs_plots` module
+        general interface
       </a>
     </li>
   
@@ -706,7 +720,7 @@
   
     <li class="md-nav__item">
       <a href="../bsmplutils/" class="md-nav__link">
-        `bsmplutils` module
+        Matplotlib
       </a>
     </li>
   
@@ -720,7 +734,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_seaborn/" class="md-nav__link">
-        `bs_seaborn` module
+        Seaborn
       </a>
     </li>
   
@@ -734,7 +748,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_altair/" class="md-nav__link">
-        `bs_altair` module
+        Altair
       </a>
     </li>
   
@@ -835,7 +849,7 @@
   </a>
 
 
-<h1 id="distance_covariances-module"><code>distance_covariances</code> module<a class="headerlink" href="#distance_covariances-module" title="Permanent link">&para;</a></h1>
+<h1 id="distance_covariances-module">distance_covariances module<a class="headerlink" href="#distance_covariances-module" title="Permanent link">&para;</a></h1>
 
 
 <div class="doc doc-object doc-module">
@@ -859,6 +873,7 @@ evaluation and tests of independence and conditional independence</p>
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -872,6 +887,8 @@ evaluation and tests of independence and conditional independence</p>
   <div class="doc doc-contents ">
   
       <p>evaluate the distance covariance and correlation of <code>X</code> and <code>Y</code></p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -889,7 +906,11 @@ evaluation and tests of independence and conditional independence</p>
           <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p><code>n</code> observations of a random variable or vector</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>n</code> observations of a random variable or vector</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -899,7 +920,11 @@ evaluation and tests of independence and conditional independence</p>
           <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p><code>n</code> observations of a random variable or vector</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>n</code> observations of a random variable or vector</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -909,13 +934,19 @@ evaluation and tests of independence and conditional independence</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>if <code>True</code>, we use the Szekely and Rizzo 2014 formula</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>True</code>, we use the Szekely and Rizzo 2014 formula</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -930,14 +961,18 @@ evaluation and tests of independence and conditional independence</p>
           <td>
                 <code><span title="bs_python_utils.distance_covariances.DcovResults">DcovResults</span></code>
           </td>
-          <td><p><code>dCov^2(X,Y)</code> and <code>dCor^2(X,Y)</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>dCov^2(X,Y)</code> and <code>dCor^2(X,Y)</code></p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/distance_covariances.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 94</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/distance_covariances.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 94</span>
 <span class="normal"> 95</span>
 <span class="normal"> 96</span>
 <span class="normal"> 97</span>
@@ -995,10 +1030,11 @@ evaluation and tests of independence and conditional independence</p>
         <span class="n">dcov_stat</span><span class="o">=</span><span class="n">n</span> <span class="o">*</span> <span class="n">dcov2</span><span class="p">,</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1013,6 +1049,8 @@ evaluation and tests of independence and conditional independence</p>
   <div class="doc doc-contents ">
   
       <p>evaluate the partial distance covariance and correlation of <code>X</code> and <code>Y</code> given <code>Z</code></p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1030,7 +1068,11 @@ evaluation and tests of independence and conditional independence</p>
           <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p><code>n</code> observations of a random variable or vector</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>n</code> observations of a random variable or vector</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1040,7 +1082,11 @@ evaluation and tests of independence and conditional independence</p>
           <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p><code>n</code> observations of a random variable or vector</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>n</code> observations of a random variable or vector</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1050,13 +1096,19 @@ evaluation and tests of independence and conditional independence</p>
           <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p><code>n</code> observations of a random variable or vector</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>n</code> observations of a random variable or vector</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1071,14 +1123,18 @@ evaluation and tests of independence and conditional independence</p>
           <td>
                 <code><span title="bs_python_utils.distance_covariances.PdcovResults">PdcovResults</span></code>
           </td>
-          <td><p>a <code>PdcovResults</code> instance</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>a <code>PdcovResults</code> instance</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/distance_covariances.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">175</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/distance_covariances.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">175</span>
 <span class="normal">176</span>
 <span class="normal">177</span>
 <span class="normal">178</span>
@@ -1140,10 +1196,11 @@ evaluation and tests of independence and conditional independence</p>
         <span class="n">pdcov</span><span class="o">=</span><span class="n">pdcov</span><span class="p">,</span> <span class="n">pdcor</span><span class="o">=</span><span class="n">pdcor</span><span class="p">,</span> <span class="n">pdcov_stat</span><span class="o">=</span><span class="n">n</span> <span class="o">*</span> <span class="n">pdcov</span><span class="p">,</span> <span class="n">X_dd</span><span class="o">=</span><span class="n">X_dd</span><span class="p">,</span> <span class="n">Y_dd</span><span class="o">=</span><span class="n">Y_dd</span><span class="p">,</span> <span class="n">Z_dd</span><span class="o">=</span><span class="n">Z_dd</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1158,6 +1215,8 @@ evaluation and tests of independence and conditional independence</p>
   <div class="doc doc-contents ">
   
       <p>test of no dependence between <code>X</code> and <code>Y</code> given <code>Z</code></p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1175,7 +1234,11 @@ evaluation and tests of independence and conditional independence</p>
           <td>
                 <code><span title="bs_python_utils.distance_covariances.DcovResults">DcovResults</span></code>
           </td>
-          <td><p>results from <code>dcov_dcor</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>results from <code>dcov_dcor</code></p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1185,13 +1248,19 @@ evaluation and tests of independence and conditional independence</p>
           <td>
                 <code>int</code>
           </td>
-          <td><p>the number of draws we use</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the number of draws we use</p>
+            </div>
+          </td>
           <td>
                 <code>199</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1206,14 +1275,18 @@ evaluation and tests of independence and conditional independence</p>
           <td>
                 <code>float</code>
           </td>
-          <td><p>the bootstrapped  p-value of the test</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the bootstrapped  p-value of the test</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/distance_covariances.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">155</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/distance_covariances.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">155</span>
 <span class="normal">156</span>
 <span class="normal">157</span>
 <span class="normal">158</span>
@@ -1249,10 +1322,11 @@ evaluation and tests of independence and conditional independence</p>
     <span class="n">sum_small</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dcov_stat</span> <span class="o">&lt;</span> <span class="n">dcov_stats_boot</span><span class="p">))</span>
     <span class="k">return</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">sum_small</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">ndraws</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1267,6 +1341,8 @@ evaluation and tests of independence and conditional independence</p>
   <div class="doc doc-contents ">
   
       <p>test of no dependence between <code>X</code> and <code>Y</code> given <code>Z</code></p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1284,7 +1360,11 @@ evaluation and tests of independence and conditional independence</p>
           <td>
                 <code><span title="bs_python_utils.distance_covariances.PdcovResults">PdcovResults</span></code>
           </td>
-          <td><p>the results of <code>pdcov_pdcor</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the results of <code>pdcov_pdcor</code></p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1294,13 +1374,19 @@ evaluation and tests of independence and conditional independence</p>
           <td>
                 <code>int</code>
           </td>
-          <td><p>the number of draws we use</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the number of draws we use</p>
+            </div>
+          </td>
           <td>
                 <code>199</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1315,14 +1401,18 @@ evaluation and tests of independence and conditional independence</p>
           <td>
                 <code>float</code>
           </td>
-          <td><p>the bootstrapped  p-value of the test</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the bootstrapped  p-value of the test</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/distance_covariances.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">241</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/distance_covariances.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">241</span>
 <span class="normal">242</span>
 <span class="normal">243</span>
 <span class="normal">244</span>
@@ -1358,7 +1448,7 @@ evaluation and tests of independence and conditional independence</p>
     <span class="n">sum_small</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pdcov_stat</span> <span class="o">&lt;</span> <span class="n">pdcov_stats_boot</span><span class="p">))</span>
     <span class="k">return</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">sum_small</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">ndraws</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -1390,7 +1480,7 @@ evaluation and tests of independence and conditional independence</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../sklearn_utils/" class="md-footer__link md-footer__link--prev" aria-label="Previous: `sklearn_utils` module" rel="prev">
+        <a href="../sklearn_utils/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Sklearn" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1399,20 +1489,20 @@ evaluation and tests of independence and conditional independence</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              `sklearn_utils` module
+              Sklearn
             </div>
           </div>
         </a>
       
       
         
-        <a href="../bs_opt/" class="md-footer__link md-footer__link--next" aria-label="Next: `bs_opt` module" rel="next">
+        <a href="../bs_opt/" class="md-footer__link md-footer__link--next" aria-label="Next: optimization" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              `bs_opt` module
+              optimization
             </div>
           </div>
           <div class="md-footer__button md-icon">

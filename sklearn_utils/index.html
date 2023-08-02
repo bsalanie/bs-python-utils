@@ -19,7 +19,7 @@
     
     
       
-        <title>`sklearn_utils` module - bs-python-utils</title>
+        <title>Sklearn - bs-python-utils</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              `sklearn_utils` module
+              Sklearn
             
           </span>
         </div>
@@ -359,7 +359,7 @@
   
     <li class="md-nav__item">
       <a href="../bsutils/" class="md-nav__link">
-        `bsutils` module
+        error reporting and other utilities
       </a>
     </li>
   
@@ -373,7 +373,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_logging/" class="md-nav__link">
-        `bs_logging` module
+        logging
       </a>
     </li>
   
@@ -387,7 +387,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_mathstr/" class="md-nav__link">
-        `bs_mathstr` module
+        math strings
       </a>
     </li>
   
@@ -401,7 +401,7 @@
   
     <li class="md-nav__item">
       <a href="../Timer/" class="md-nav__link">
-        `Timer` module
+        timing routines
       </a>
     </li>
   
@@ -415,7 +415,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_mem/" class="md-nav__link">
-        `bs_mem` module
+        memory usage
       </a>
     </li>
   
@@ -464,7 +464,7 @@
   
     <li class="md-nav__item">
       <a href="../bsnputils/" class="md-nav__link">
-        `bsnputils` module
+        Numpy
       </a>
     </li>
   
@@ -478,7 +478,7 @@
   
     <li class="md-nav__item">
       <a href="../bssputils/" class="md-nav__link">
-        `bssputils` module
+        Scipy
       </a>
     </li>
   
@@ -492,7 +492,7 @@
   
     <li class="md-nav__item">
       <a href="../chebyshev/" class="md-nav__link">
-        `chebyshev` module
+        numerical interpolation and integration
       </a>
     </li>
   
@@ -506,7 +506,7 @@
   
     <li class="md-nav__item">
       <a href="../pandas_utils/" class="md-nav__link">
-        `pandas_utils` module
+        Pandas
       </a>
     </li>
   
@@ -520,7 +520,7 @@
   
     <li class="md-nav__item">
       <a href="../bsstats/" class="md-nav__link">
-        `bsstats` module
+        statistics
       </a>
     </li>
   
@@ -543,12 +543,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          `sklearn_utils` module
+          Sklearn
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        `sklearn_utils` module
+        Sklearn
       </a>
       
         
@@ -603,7 +603,7 @@
   
     <li class="md-nav__item">
       <a href="../distance_covariances/" class="md-nav__link">
-        `distance_covariances` module
+        nonlinear dependence
       </a>
     </li>
   
@@ -617,7 +617,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_opt/" class="md-nav__link">
-        `bs_opt` module
+        optimization
       </a>
     </li>
   
@@ -631,7 +631,21 @@
   
     <li class="md-nav__item">
       <a href="../bs_sparse_gaussian/" class="md-nav__link">
-        `bs_sparse_gaussian` module
+        sparse integration for functions of Gaussians
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bivariate_quantiles/" class="md-nav__link">
+        bivariate quantiles and ranks
       </a>
     </li>
   
@@ -678,7 +692,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_plots/" class="md-nav__link">
-        `bs_plots` module
+        general interface
       </a>
     </li>
   
@@ -692,7 +706,7 @@
   
     <li class="md-nav__item">
       <a href="../bsmplutils/" class="md-nav__link">
-        `bsmplutils` module
+        Matplotlib
       </a>
     </li>
   
@@ -706,7 +720,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_seaborn/" class="md-nav__link">
-        `bs_seaborn` module
+        Seaborn
       </a>
     </li>
   
@@ -720,7 +734,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_altair/" class="md-nav__link">
-        `bs_altair` module
+        Altair
       </a>
     </li>
   
@@ -807,7 +821,7 @@
   </a>
 
 
-<h1 id="sklearn_utils-module"><code>sklearn_utils</code> module<a class="headerlink" href="#sklearn_utils-module" title="Permanent link">&para;</a></h1>
+<h1 id="sklearn_utils-module">sklearn_utils module<a class="headerlink" href="#sklearn_utils-module" title="Permanent link">&para;</a></h1>
 
 
 <div class="doc doc-object doc-module">
@@ -821,6 +835,7 @@
   
 
   <div class="doc doc-children">
+
 
 
 
@@ -844,6 +859,8 @@
   
       <p>plot Lasso coefficient paths</p>
 
+
+
   <p><strong>Parameters:</strong></p>
   <table>
     <thead>
@@ -860,7 +877,11 @@
           <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p>shape <code>(nobs)</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>shape <code>(nobs)</code></p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -870,7 +891,11 @@
           <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p>shape  <code>(nobs, nfeatures)</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>shape  <code>(nobs, nfeatures)</code></p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -880,13 +905,19 @@
           <td>
                 <code>float</code>
           </td>
-          <td><p>length of path</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>length of path</p>
+            </div>
+          </td>
           <td>
                 <code>0.001</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -901,14 +932,18 @@
           <td>
                 <code>None</code>
           </td>
-          <td><p>plots the paths</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>plots the paths</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/sklearn_utils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">43</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/sklearn_utils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
 <span class="normal">46</span>
@@ -972,10 +1007,11 @@
 
     <span class="k">return</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -990,6 +1026,8 @@
   <div class="doc doc-contents ">
   
       <p>Lasso nonparametric regression of <code>y</code> over polynomials of <code>X</code></p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1007,7 +1045,11 @@
           <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p>shape <code>(nobs)</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>shape <code>(nobs)</code></p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1017,7 +1059,11 @@
           <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p>shape  <code>(nobs, nfeatures)</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>shape  <code>(nobs, nfeatures)</code></p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1027,7 +1073,11 @@
           <td>
                 <code>float</code>
           </td>
-          <td><p>Lasso penalty parameter</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Lasso penalty parameter</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1037,13 +1087,19 @@
           <td>
                 <code>int</code>
           </td>
-          <td><p>highest total degree</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>highest total degree</p>
+            </div>
+          </td>
           <td>
                 <code>4</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1058,14 +1114,18 @@
           <td>
                 <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
           </td>
-          <td><p>the <code>(nobs)</code> array <code>E(y\vert X)</code> over the sample</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the <code>(nobs)</code> array <code>E(y\vert X)</code> over the sample</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/sklearn_utils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">14</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/sklearn_utils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
@@ -1119,7 +1179,7 @@
     <span class="n">expy_X</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_poly</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">expy_X</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -1151,7 +1211,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../bsstats/" class="md-footer__link md-footer__link--prev" aria-label="Previous: `bsstats` module" rel="prev">
+        <a href="../bsstats/" class="md-footer__link md-footer__link--prev" aria-label="Previous: statistics" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1160,20 +1220,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              `bsstats` module
+              statistics
             </div>
           </div>
         </a>
       
       
         
-        <a href="../distance_covariances/" class="md-footer__link md-footer__link--next" aria-label="Next: `distance_covariances` module" rel="next">
+        <a href="../distance_covariances/" class="md-footer__link md-footer__link--next" aria-label="Next: nonlinear dependence" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              `distance_covariances` module
+              nonlinear dependence
             </div>
           </div>
           <div class="md-footer__button md-icon">

@@ -19,7 +19,7 @@
     
     
       
-        <title>`Timer` module - bs-python-utils</title>
+        <title>timing routines - bs-python-utils</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              `Timer` module
+              timing routines
             
           </span>
         </div>
@@ -361,7 +361,7 @@
   
     <li class="md-nav__item">
       <a href="../bsutils/" class="md-nav__link">
-        `bsutils` module
+        error reporting and other utilities
       </a>
     </li>
   
@@ -375,7 +375,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_logging/" class="md-nav__link">
-        `bs_logging` module
+        logging
       </a>
     </li>
   
@@ -389,7 +389,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_mathstr/" class="md-nav__link">
-        `bs_mathstr` module
+        math strings
       </a>
     </li>
   
@@ -412,12 +412,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          `Timer` module
+          timing routines
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        `Timer` module
+        timing routines
       </a>
       
         
@@ -472,7 +472,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_mem/" class="md-nav__link">
-        `bs_mem` module
+        memory usage
       </a>
     </li>
   
@@ -519,7 +519,7 @@
   
     <li class="md-nav__item">
       <a href="../bsnputils/" class="md-nav__link">
-        `bsnputils` module
+        Numpy
       </a>
     </li>
   
@@ -533,7 +533,7 @@
   
     <li class="md-nav__item">
       <a href="../bssputils/" class="md-nav__link">
-        `bssputils` module
+        Scipy
       </a>
     </li>
   
@@ -547,7 +547,7 @@
   
     <li class="md-nav__item">
       <a href="../chebyshev/" class="md-nav__link">
-        `chebyshev` module
+        numerical interpolation and integration
       </a>
     </li>
   
@@ -561,7 +561,7 @@
   
     <li class="md-nav__item">
       <a href="../pandas_utils/" class="md-nav__link">
-        `pandas_utils` module
+        Pandas
       </a>
     </li>
   
@@ -575,7 +575,7 @@
   
     <li class="md-nav__item">
       <a href="../bsstats/" class="md-nav__link">
-        `bsstats` module
+        statistics
       </a>
     </li>
   
@@ -589,7 +589,7 @@
   
     <li class="md-nav__item">
       <a href="../sklearn_utils/" class="md-nav__link">
-        `sklearn_utils` module
+        Sklearn
       </a>
     </li>
   
@@ -603,7 +603,7 @@
   
     <li class="md-nav__item">
       <a href="../distance_covariances/" class="md-nav__link">
-        `distance_covariances` module
+        nonlinear dependence
       </a>
     </li>
   
@@ -617,7 +617,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_opt/" class="md-nav__link">
-        `bs_opt` module
+        optimization
       </a>
     </li>
   
@@ -631,7 +631,21 @@
   
     <li class="md-nav__item">
       <a href="../bs_sparse_gaussian/" class="md-nav__link">
-        `bs_sparse_gaussian` module
+        sparse integration for functions of Gaussians
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bivariate_quantiles/" class="md-nav__link">
+        bivariate quantiles and ranks
       </a>
     </li>
   
@@ -678,7 +692,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_plots/" class="md-nav__link">
-        `bs_plots` module
+        general interface
       </a>
     </li>
   
@@ -692,7 +706,7 @@
   
     <li class="md-nav__item">
       <a href="../bsmplutils/" class="md-nav__link">
-        `bsmplutils` module
+        Matplotlib
       </a>
     </li>
   
@@ -706,7 +720,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_seaborn/" class="md-nav__link">
-        `bs_seaborn` module
+        Seaborn
       </a>
     </li>
   
@@ -720,7 +734,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_altair/" class="md-nav__link">
-        `bs_altair` module
+        Altair
       </a>
     </li>
   
@@ -807,7 +821,7 @@
   </a>
 
 
-<h1 id="timer-module"><code>Timer</code> module<a class="headerlink" href="#timer-module" title="Permanent link">&para;</a></h1>
+<h1 id="timer-module">Timer module<a class="headerlink" href="#timer-module" title="Permanent link">&para;</a></h1>
 
 
 <div class="doc doc-object doc-module">
@@ -834,7 +848,7 @@
 
 
 <h2 id="bs_python_utils.Timer.Timer" class="doc doc-heading">
-        <code>Timer</code>
+          <code>Timer</code>
 
 
 <a href="#bs_python_utils.Timer.Timer" class="headerlink" title="Permanent link">&para;</a></h2>
@@ -857,10 +871,9 @@ It keeps track of the total elapsed time in the <code>elapsed</code> attribute::
    t.stop()
    print(f"{t.elapsed} seconds total")</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>bs_python_utils/Timer.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
+            <details class="quote">
+              <summary>Source code in <code>bs_python_utils/Timer.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
@@ -962,7 +975,7 @@ It keeps track of the total elapsed time in the <code>elapsed</code> attribute::
     <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -985,6 +998,7 @@ It keeps track of the total elapsed time in the <code>elapsed</code> attribute::
 </div>
 
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -999,9 +1013,9 @@ It keeps track of the total elapsed time in the <code>elapsed</code> attribute::
   
       <p>Decorator to time a function</p>
 
-      <details class="quote">
-        <summary>Source code in <code>bs_python_utils/Timer.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
+          <details class="quote">
+            <summary>Source code in <code>bs_python_utils/Timer.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
@@ -1024,12 +1038,12 @@ It keeps track of the total elapsed time in the <code>elapsed</code> attribute::
         <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> executed in </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> executed in </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span>
 
     <span class="k">return</span> <span class="n">wrapper</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -1061,7 +1075,7 @@ It keeps track of the total elapsed time in the <code>elapsed</code> attribute::
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../bs_mathstr/" class="md-footer__link md-footer__link--prev" aria-label="Previous: `bs_mathstr` module" rel="prev">
+        <a href="../bs_mathstr/" class="md-footer__link md-footer__link--prev" aria-label="Previous: math strings" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1070,20 +1084,20 @@ It keeps track of the total elapsed time in the <code>elapsed</code> attribute::
               <span class="md-footer__direction">
                 Previous
               </span>
-              `bs_mathstr` module
+              math strings
             </div>
           </div>
         </a>
       
       
         
-        <a href="../bs_mem/" class="md-footer__link md-footer__link--next" aria-label="Next: `bs_mem` module" rel="next">
+        <a href="../bs_mem/" class="md-footer__link md-footer__link--next" aria-label="Next: memory usage" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              `bs_mem` module
+              memory usage
             </div>
           </div>
           <div class="md-footer__button md-icon">

@@ -19,7 +19,7 @@
     
     
       
-        <title>`bs_mathstr` module - bs-python-utils</title>
+        <title>math strings - bs-python-utils</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              `bs_mathstr` module
+              math strings
             
           </span>
         </div>
@@ -361,7 +361,7 @@
   
     <li class="md-nav__item">
       <a href="../bsutils/" class="md-nav__link">
-        `bsutils` module
+        error reporting and other utilities
       </a>
     </li>
   
@@ -375,7 +375,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_logging/" class="md-nav__link">
-        `bs_logging` module
+        logging
       </a>
     </li>
   
@@ -398,12 +398,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          `bs_mathstr` module
+          math strings
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        `bs_mathstr` module
+        math strings
       </a>
       
         
@@ -444,7 +444,7 @@
   
     <li class="md-nav__item">
       <a href="../Timer/" class="md-nav__link">
-        `Timer` module
+        timing routines
       </a>
     </li>
   
@@ -458,7 +458,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_mem/" class="md-nav__link">
-        `bs_mem` module
+        memory usage
       </a>
     </li>
   
@@ -505,7 +505,7 @@
   
     <li class="md-nav__item">
       <a href="../bsnputils/" class="md-nav__link">
-        `bsnputils` module
+        Numpy
       </a>
     </li>
   
@@ -519,7 +519,7 @@
   
     <li class="md-nav__item">
       <a href="../bssputils/" class="md-nav__link">
-        `bssputils` module
+        Scipy
       </a>
     </li>
   
@@ -533,7 +533,7 @@
   
     <li class="md-nav__item">
       <a href="../chebyshev/" class="md-nav__link">
-        `chebyshev` module
+        numerical interpolation and integration
       </a>
     </li>
   
@@ -547,7 +547,7 @@
   
     <li class="md-nav__item">
       <a href="../pandas_utils/" class="md-nav__link">
-        `pandas_utils` module
+        Pandas
       </a>
     </li>
   
@@ -561,7 +561,7 @@
   
     <li class="md-nav__item">
       <a href="../bsstats/" class="md-nav__link">
-        `bsstats` module
+        statistics
       </a>
     </li>
   
@@ -575,7 +575,7 @@
   
     <li class="md-nav__item">
       <a href="../sklearn_utils/" class="md-nav__link">
-        `sklearn_utils` module
+        Sklearn
       </a>
     </li>
   
@@ -589,7 +589,7 @@
   
     <li class="md-nav__item">
       <a href="../distance_covariances/" class="md-nav__link">
-        `distance_covariances` module
+        nonlinear dependence
       </a>
     </li>
   
@@ -603,7 +603,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_opt/" class="md-nav__link">
-        `bs_opt` module
+        optimization
       </a>
     </li>
   
@@ -617,7 +617,21 @@
   
     <li class="md-nav__item">
       <a href="../bs_sparse_gaussian/" class="md-nav__link">
-        `bs_sparse_gaussian` module
+        sparse integration for functions of Gaussians
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bivariate_quantiles/" class="md-nav__link">
+        bivariate quantiles and ranks
       </a>
     </li>
   
@@ -664,7 +678,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_plots/" class="md-nav__link">
-        `bs_plots` module
+        general interface
       </a>
     </li>
   
@@ -678,7 +692,7 @@
   
     <li class="md-nav__item">
       <a href="../bsmplutils/" class="md-nav__link">
-        `bsmplutils` module
+        Matplotlib
       </a>
     </li>
   
@@ -692,7 +706,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_seaborn/" class="md-nav__link">
-        `bs_seaborn` module
+        Seaborn
       </a>
     </li>
   
@@ -706,7 +720,7 @@
   
     <li class="md-nav__item">
       <a href="../bs_altair/" class="md-nav__link">
-        `bs_altair` module
+        Altair
       </a>
     </li>
   
@@ -779,7 +793,7 @@
   </a>
 
 
-<h1 id="bs_mathstr-module"><code>bs_mathstr</code> module<a class="headerlink" href="#bs_mathstr-module" title="Permanent link">&para;</a></h1>
+<h1 id="bs_mathstr-module">bs_mathstr module<a class="headerlink" href="#bs_mathstr-module" title="Permanent link">&para;</a></h1>
 
 
 <div class="doc doc-object doc-module">
@@ -789,6 +803,8 @@
   <div class="doc doc-contents first">
   
       <p>Some useful strings for math formulae.</p>
+
+
 
   <p><strong>Attributes:</strong></p>
   <table>
@@ -805,92 +821,144 @@
           <td>
                 <code>str</code>
           </td>
-          <td><p>the LaTeX string <code>\beta_0</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the LaTeX string <code>\beta_0</code></p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><code>str_beta1</code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>the LaTeX string <code>\beta_1</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the LaTeX string <code>\beta_1</code></p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><code>str_pi</code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>the LaTeX string <code>\pi</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the LaTeX string <code>\pi</code></p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><code>str_sigma</code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>the LaTeX string <code>\sigma</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the LaTeX string <code>\sigma</code></p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><code>str_sigma2</code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>the LaTeX string <code>\sigma^2</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the LaTeX string <code>\sigma^2</code></p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><code>uni_beta0</code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>the Unicode string <code>\beta_0</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the Unicode string <code>\beta_0</code></p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><code>uni_beta1</code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>the Unicode string <code>\beta_1</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the Unicode string <code>\beta_1</code></p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><code>uni_pi</code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>the Unicode string <code>\pi</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the Unicode string <code>\pi</code></p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><code>uni_sigma</code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>the Unicode string <code>\sigma</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the Unicode string <code>\sigma</code></p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><code>uni_sigma2</code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>the Unicode string <code>\sigma^2</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the Unicode string <code>\sigma^2</code></p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><code>uni_s2</code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>the Unicode string <code>s^2</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the Unicode string <code>s^2</code></p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><code>uni_R2</code></td>
           <td>
                 <code>str</code>
           </td>
-          <td><p>the Unicode string <code>R^2</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>the Unicode string <code>R^2</code></p>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><code>sub_sub_scripts</code></td>
           <td>
                 <code>dict</code>
           </td>
-          <td><p>a dictionary of Unicodes for subscripts and superscripts;
-e.g <code>a^b</code> would be <code>"a" + sub_sup_scripts['b'][0]</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>a dictionary of Unicodes for subscripts and superscripts;
+e.g <code>a^b</code> would be <code>"a" + sub_sup_scripts['b'][0]</code></p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -934,7 +1002,7 @@ e.g <code>a^b</code> would be <code>"a" + sub_sup_scripts['b'][0]</code></p></td
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../bs_logging/" class="md-footer__link md-footer__link--prev" aria-label="Previous: `bs_logging` module" rel="prev">
+        <a href="../bs_logging/" class="md-footer__link md-footer__link--prev" aria-label="Previous: logging" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -943,20 +1011,20 @@ e.g <code>a^b</code> would be <code>"a" + sub_sup_scripts['b'][0]</code></p></td
               <span class="md-footer__direction">
                 Previous
               </span>
-              `bs_logging` module
+              logging
             </div>
           </div>
         </a>
       
       
         
-        <a href="../Timer/" class="md-footer__link md-footer__link--next" aria-label="Next: `Timer` module" rel="next">
+        <a href="../Timer/" class="md-footer__link md-footer__link--next" aria-label="Next: timing routines" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              `Timer` module
+              timing routines
             </div>
           </div>
           <div class="md-footer__button md-icon">
