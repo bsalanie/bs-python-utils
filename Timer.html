@@ -12,21 +12,21 @@
         <meta name="author" content="Bernard Salanie">
       
       
-        <link rel="canonical" href="https://bsalanie.github.io/bs-python-utils/sklearn_utils/">
+        <link rel="canonical" href="https://bsalanie.github.io/bs-python-utils/Timer.html">
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-8.5.10">
     
     
       
-        <title>Sklearn - bs-python-utils</title>
+        <title>timing routines - bs-python-utils</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.975780f9.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.975780f9.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.2505c338.min.css">
         
       
       
@@ -43,9 +43,9 @@
       
     
     
-      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sklearn_utils-module" class="md-skip">
+        <a href="#timer-module" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="bs-python-utils" class="md-header__button md-logo" aria-label="bs-python-utils" data-md-component="logo">
+    <a href="index.html" title="bs-python-utils" class="md-header__button md-logo" aria-label="bs-python-utils" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Sklearn
+              timing routines
             
           </span>
         </div>
@@ -206,7 +206,7 @@
 
 
   <li class="md-tabs__item">
-    <a href=".." class="md-tabs__link">
+    <a href="index.html" class="md-tabs__link">
       Home
     </a>
   </li>
@@ -228,7 +228,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../bsutils/" class="md-tabs__link md-tabs__link--active">
+      <a href="bsutils.html" class="md-tabs__link md-tabs__link--active">
         API Reference
       </a>
     </li>
@@ -258,7 +258,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="bs-python-utils" class="md-nav__button md-logo" aria-label="bs-python-utils" data-md-component="logo">
+    <a href="index.html" title="bs-python-utils" class="md-nav__button md-logo" aria-label="bs-python-utils" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -289,7 +289,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="index.html" class="md-nav__link">
         Home
       </a>
     </li>
@@ -330,12 +330,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
       
       
       
@@ -358,7 +360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bsutils/" class="md-nav__link">
+      <a href="bsutils.html" class="md-nav__link">
         error reporting and other utilities
       </a>
     </li>
@@ -372,7 +374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bs_logging/" class="md-nav__link">
+      <a href="bs_logging.html" class="md-nav__link">
         logging
       </a>
     </li>
@@ -386,141 +388,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../bs_mathstr/" class="md-nav__link">
+      <a href="bs_mathstr.html" class="md-nav__link">
         math strings
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Timer/" class="md-nav__link">
-        timing routines
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../bs_mem/" class="md-nav__link">
-        memory usage
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_2">
-          Scientific
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Scientific" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_2">
-          <span class="md-nav__icon md-icon"></span>
-          Scientific
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../bsnputils/" class="md-nav__link">
-        Numpy
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../bssputils/" class="md-nav__link">
-        Scipy
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../chebyshev/" class="md-nav__link">
-        numerical interpolation and integration
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../pandas_utils/" class="md-nav__link">
-        Pandas
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../bsstats/" class="md-nav__link">
-        statistics
       </a>
     </li>
   
@@ -543,12 +412,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Sklearn
+          timing routines
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Sklearn
+      <a href="Timer.html" class="md-nav__link md-nav__link--active">
+        timing routines
       </a>
       
         
@@ -567,22 +436,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#bs_python_utils.sklearn_utils" class="md-nav__link">
-    bs_python_utils.sklearn_utils
+  <a href="#bs_python_utils.Timer" class="md-nav__link">
+    bs_python_utils.Timer
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bs_python_utils.sklearn_utils.plot_lasso_path" class="md-nav__link">
-    plot_lasso_path()
+  <a href="#bs_python_utils.Timer.Timer" class="md-nav__link">
+    Timer
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bs_python_utils.sklearn_utils.skl_npreg_lasso" class="md-nav__link">
-    skl_npreg_lasso()
+  <a href="#bs_python_utils.Timer.timeit" class="md-nav__link">
+    timeit()
   </a>
   
 </li>
@@ -602,7 +471,138 @@
   
   
     <li class="md-nav__item">
-      <a href="../distance_covariances/" class="md-nav__link">
+      <a href="bs_mem.html" class="md-nav__link">
+        memory usage
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Scientific
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Scientific" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Scientific
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="bsnputils.html" class="md-nav__link">
+        Numpy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="bssputils.html" class="md-nav__link">
+        Scipy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="chebyshev.html" class="md-nav__link">
+        Chebyshev interpolation and integration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pandas_utils.html" class="md-nav__link">
+        Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="bsstats.html" class="md-nav__link">
+        statistics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sklearn_utils.html" class="md-nav__link">
+        Sklearn
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="distance_covariances.html" class="md-nav__link">
         nonlinear dependence
       </a>
     </li>
@@ -616,7 +616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bs_opt/" class="md-nav__link">
+      <a href="bs_opt.html" class="md-nav__link">
         optimization
       </a>
     </li>
@@ -630,7 +630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bs_sparse_gaussian/" class="md-nav__link">
+      <a href="bs_sparse_gaussian.html" class="md-nav__link">
         sparse integration for functions of Gaussians
       </a>
     </li>
@@ -644,7 +644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bivariate_quantiles/" class="md-nav__link">
+      <a href="bivariate_quantiles.html" class="md-nav__link">
         bivariate quantiles and ranks
       </a>
     </li>
@@ -691,8 +691,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../bs_plots/" class="md-nav__link">
-        general interface
+      <a href="bs_plots.html" class="md-nav__link">
+        plotting interface
       </a>
     </li>
   
@@ -705,7 +705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bsmplutils/" class="md-nav__link">
+      <a href="bsmplutils.html" class="md-nav__link">
         Matplotlib
       </a>
     </li>
@@ -719,7 +719,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bs_seaborn/" class="md-nav__link">
+      <a href="bs_seaborn.html" class="md-nav__link">
         Seaborn
       </a>
     </li>
@@ -733,7 +733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bs_altair/" class="md-nav__link">
+      <a href="bs_altair.html" class="md-nav__link">
         Altair
       </a>
     </li>
@@ -781,22 +781,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#bs_python_utils.sklearn_utils" class="md-nav__link">
-    bs_python_utils.sklearn_utils
+  <a href="#bs_python_utils.Timer" class="md-nav__link">
+    bs_python_utils.Timer
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bs_python_utils.sklearn_utils.plot_lasso_path" class="md-nav__link">
-    plot_lasso_path()
+  <a href="#bs_python_utils.Timer.Timer" class="md-nav__link">
+    Timer
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bs_python_utils.sklearn_utils.skl_npreg_lasso" class="md-nav__link">
-    skl_npreg_lasso()
+  <a href="#bs_python_utils.Timer.timeit" class="md-nav__link">
+    timeit()
   </a>
   
 </li>
@@ -815,22 +815,26 @@
                 
                   
 
-  <a href="https://github.com/bsalanie/bs-python-utils/edit/main/docs/sklearn_utils.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/bsalanie/bs-python-utils/edit/main/docs/Timer.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="sklearn_utils-module">sklearn_utils module<a class="headerlink" href="#sklearn_utils-module" title="Permanent link">&para;</a></h1>
+<h1 id="timer-module">Timer module<a class="headerlink" href="#timer-module" title="Permanent link">&para;</a></h1>
 
 
 <div class="doc doc-object doc-module">
 
 
-<a id="bs_python_utils.sklearn_utils"></a>
+<a id="bs_python_utils.Timer"></a>
   <div class="doc doc-contents first">
   
-      <p>Cntains various <code>scikit-learn</code> utility programs.</p>
+      <p>Utilities to time code:</p>
+<ul>
+<li>a <code>Timer</code> class that can be used as a context manager</li>
+<li>a <code>timeit</code> decorator for functions.</li>
+</ul>
 
   
 
@@ -843,107 +847,61 @@
 
 
 
-
-
-<div class="doc doc-object doc-function">
+<div class="doc doc-object doc-class">
 
 
 
-<h2 id="bs_python_utils.sklearn_utils.plot_lasso_path" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">plot_lasso_path</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span></code>
+<h2 id="bs_python_utils.Timer.Timer" class="doc doc-heading">
+          <code>Timer</code>
 
-<a href="#bs_python_utils.sklearn_utils.plot_lasso_path" class="headerlink" title="Permanent link">&para;</a></h2>
+
+<a href="#bs_python_utils.Timer.Timer" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
   <div class="doc doc-contents ">
+
   
-      <p>plot Lasso coefficient paths</p>
+      <p>A timer that can be started, stopped, and reset as needed by the user.
+It keeps track of the total elapsed time in the <code>elapsed</code> attribute::</p>
 
 
 
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>y</code></td>
-          <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>shape <code>(nobs)</code></p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>X</code></td>
-          <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>shape  <code>(nobs, nfeatures)</code></p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>eps</code></td>
-          <td>
-                <code>float</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>length of path</p>
-            </div>
-          </td>
-          <td>
-                <code>0.001</code>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Timer</span><span class="p">()</span> <span class="k">as</span> <span class="n">t</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="o">....</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;... took </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">elapsed</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+</code></pre></div>
+      <p>use <code>Timer(time.process_time)</code> to get only CPU time.</p>
+<p>can also do:</p>
 
 
 
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-                <code>None</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>plots the paths</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>   <span class="c1"># will add to the same counter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">elapsed</span><span class="si">}</span><span class="s2"> seconds total&quot;</span><span class="p">)</span>
+</code></pre></div>
 
-          <details class="quote">
-            <summary>Source code in <code>bs_python_utils/sklearn_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">43</span>
+            <details class="quote">
+              <summary>Source code in <code>bs_python_utils/Timer.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
 <span class="normal">46</span>
@@ -974,158 +932,109 @@
 <span class="normal">71</span>
 <span class="normal">72</span>
 <span class="normal">73</span>
-<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">plot_lasso_path</span><span class="p">(</span><span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Timer</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    plot Lasso coefficient paths</span>
+<span class="sd">    A timer that can be started, stopped, and reset as needed by the user.</span>
+<span class="sd">    It keeps track of the total elapsed time in the `elapsed` attribute::</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        y:  shape `(nobs)`</span>
-<span class="sd">        X: shape  `(nobs, nfeatures)`</span>
-<span class="sd">        eps: length of path</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; with Timer() as t:</span>
+<span class="sd">        &gt;&gt;&gt;  ....</span>
+<span class="sd">        &gt;&gt;&gt; print(f&quot;... took {t.elapsed} seconds&quot;)</span>
 
-<span class="sd">    Returns:</span>
-<span class="sd">        plots the paths</span>
+<span class="sd">    use `Timer(time.process_time)` to get only CPU time.</span>
+
+<span class="sd">    can also do:</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; t = Timer()</span>
+<span class="sd">        &gt;&gt;&gt; t.start()</span>
+<span class="sd">        &gt;&gt;&gt; t.stop()</span>
+<span class="sd">        &gt;&gt;&gt; t.start()   # will add to the same counter</span>
+<span class="sd">        &gt;&gt;&gt; t.stop()</span>
+<span class="sd">        &gt;&gt;&gt; print(f&quot;{t.elapsed} seconds total&quot;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Compute paths</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Computing regularization path using the lasso...&quot;</span><span class="p">)</span>
-    <span class="n">alphas_lasso</span><span class="p">,</span> <span class="n">coefs_lasso</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">lasso_path</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eps</span><span class="p">)</span>
 
-    <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
-    <span class="c1"># Display results</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">colors</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">([</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">])</span>
-    <span class="n">neg_log_alphas_lasso</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">alphas_lasso</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">coef_l</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">coefs_lasso</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">neg_log_alphas_lasso</span><span class="p">,</span> <span class="n">coef_l</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elapsed</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_func</span> <span class="o">=</span> <span class="n">func</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_start</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;-Log(alpha)&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;coefficients&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Lasso Paths&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Already started&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">()</span>
 
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Not started&quot;</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elapsed</span> <span class="o">+=</span> <span class="n">end</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_start</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="k">return</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elapsed</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">running</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-          </details>
+            </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
   </div>
 
 </div>
+
 
 
 <div class="doc doc-object doc-function">
 
 
 
-<h2 id="bs_python_utils.sklearn_utils.skl_npreg_lasso" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">skl_npreg_lasso</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span></code>
+<h2 id="bs_python_utils.Timer.timeit" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">timeit</span><span class="p">(</span><span class="n">func</span><span class="p">)</span></code>
 
-<a href="#bs_python_utils.sklearn_utils.skl_npreg_lasso" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#bs_python_utils.Timer.timeit" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
   <div class="doc doc-contents ">
   
-      <p>Lasso nonparametric regression of <code>y</code> over polynomials of <code>X</code></p>
-
-
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>y</code></td>
-          <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>shape <code>(nobs)</code></p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>X</code></td>
-          <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>shape  <code>(nobs, nfeatures)</code></p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>alpha</code></td>
-          <td>
-                <code>float</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>Lasso penalty parameter</p>
-            </div>
-          </td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>degree</code></td>
-          <td>
-                <code>int</code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>highest total degree</p>
-            </div>
-          </td>
-          <td>
-                <code>4</code>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
-          </td>
-          <td>
-            <div class="doc-md-description">
-              <p>the <code>(nobs)</code> array <code>E(y\vert X)</code> over the sample</p>
-            </div>
-          </td>
-        </tr>
-    </tbody>
-  </table>
+      <p>Decorator to time a function</p>
 
           <details class="quote">
-            <summary>Source code in <code>bs_python_utils/sklearn_utils.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">14</span>
+            <summary>Source code in <code>bs_python_utils/Timer.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
+<span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
@@ -1137,47 +1046,20 @@
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">skl_npreg_lasso</span><span class="p">(</span>
-    <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">degree</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">timeit</span><span class="p">(</span><span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Lasso nonparametric regression of `y` over polynomials of `X`</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        y:  shape `(nobs)`</span>
-<span class="sd">        X: shape  `(nobs, nfeatures)`</span>
-<span class="sd">        alpha:  Lasso penalty parameter</span>
-<span class="sd">        degree: highest total degree</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        the `(nobs)` array `E(y\\vert X)` over the sample</span>
+<span class="sd">    Decorator to time a function</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1"># first scale the X variables</span>
-    <span class="n">stdsc</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
-    <span class="n">sfit</span> <span class="o">=</span> <span class="n">stdsc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-    <span class="n">X_scaled</span> <span class="o">=</span> <span class="n">sfit</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-    <span class="n">pf</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="p">)</span>
-    <span class="c1"># Create the features and fit</span>
-    <span class="n">X_poly</span> <span class="o">=</span> <span class="n">pf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
-    <span class="c1"># now run Lasso</span>
-    <span class="n">reg</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_poly</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-    <span class="n">expy_X</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_poly</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">expy_X</span><span class="p">)</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> executed in </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">return</span> <span class="n">wrapper</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -1211,7 +1093,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../bsstats/" class="md-footer__link md-footer__link--prev" aria-label="Previous: statistics" rel="prev">
+        <a href="bs_mathstr.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: math strings" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1220,20 +1102,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              statistics
+              math strings
             </div>
           </div>
         </a>
       
       
         
-        <a href="../distance_covariances/" class="md-footer__link md-footer__link--next" aria-label="Next: nonlinear dependence" rel="next">
+        <a href="bs_mem.html" class="md-footer__link md-footer__link--next" aria-label="Next: memory usage" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              nonlinear dependence
+              memory usage
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1290,12 +1172,12 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "search.highlight", "navigation.expand", "navigation.tabs"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["search.highlight", "navigation.instant", "navigation.expand", "navigation.tabs", "navigation.indexed"], "search": "assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      <script src="assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
-        <script src="../javascripts/mathjax.js"></script>
+        <script src="javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

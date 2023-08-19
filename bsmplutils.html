@@ -12,21 +12,21 @@
         <meta name="author" content="Bernard Salanie">
       
       
-        <link rel="canonical" href="https://bsalanie.github.io/bs-python-utils/Timer/">
+        <link rel="canonical" href="https://bsalanie.github.io/bs-python-utils/bsmplutils.html">
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-8.5.10">
     
     
       
-        <title>timing routines - bs-python-utils</title>
+        <title>Matplotlib - bs-python-utils</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.975780f9.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.975780f9.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.2505c338.min.css">
         
       
       
@@ -43,9 +43,9 @@
       
     
     
-      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#timer-module" class="md-skip">
+        <a href="#bsmplutils-module" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="bs-python-utils" class="md-header__button md-logo" aria-label="bs-python-utils" data-md-component="logo">
+    <a href="index.html" title="bs-python-utils" class="md-header__button md-logo" aria-label="bs-python-utils" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              timing routines
+              Matplotlib
             
           </span>
         </div>
@@ -206,7 +206,7 @@
 
 
   <li class="md-tabs__item">
-    <a href=".." class="md-tabs__link">
+    <a href="index.html" class="md-tabs__link">
       Home
     </a>
   </li>
@@ -228,7 +228,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../bsutils/" class="md-tabs__link md-tabs__link--active">
+      <a href="bsutils.html" class="md-tabs__link md-tabs__link--active">
         API Reference
       </a>
     </li>
@@ -258,7 +258,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="bs-python-utils" class="md-nav__button md-logo" aria-label="bs-python-utils" data-md-component="logo">
+    <a href="index.html" title="bs-python-utils" class="md-nav__button md-logo" aria-label="bs-python-utils" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -289,7 +289,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="index.html" class="md-nav__link">
         Home
       </a>
     </li>
@@ -330,14 +330,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
       
       
       
@@ -360,7 +358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bsutils/" class="md-nav__link">
+      <a href="bsutils.html" class="md-nav__link">
         error reporting and other utilities
       </a>
     </li>
@@ -374,7 +372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bs_logging/" class="md-nav__link">
+      <a href="bs_logging.html" class="md-nav__link">
         logging
       </a>
     </li>
@@ -388,7 +386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bs_mathstr/" class="md-nav__link">
+      <a href="bs_mathstr.html" class="md-nav__link">
         math strings
       </a>
     </li>
@@ -400,66 +398,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          timing routines
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="Timer.html" class="md-nav__link">
         timing routines
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#bs_python_utils.Timer" class="md-nav__link">
-    bs_python_utils.Timer
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bs_python_utils.Timer.Timer" class="md-nav__link">
-    Timer
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bs_python_utils.Timer.timeit" class="md-nav__link">
-    timeit()
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -471,7 +414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bs_mem/" class="md-nav__link">
+      <a href="bs_mem.html" class="md-nav__link">
         memory usage
       </a>
     </li>
@@ -518,7 +461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bsnputils/" class="md-nav__link">
+      <a href="bsnputils.html" class="md-nav__link">
         Numpy
       </a>
     </li>
@@ -532,7 +475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bssputils/" class="md-nav__link">
+      <a href="bssputils.html" class="md-nav__link">
         Scipy
       </a>
     </li>
@@ -546,8 +489,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../chebyshev/" class="md-nav__link">
-        numerical interpolation and integration
+      <a href="chebyshev.html" class="md-nav__link">
+        Chebyshev interpolation and integration
       </a>
     </li>
   
@@ -560,7 +503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pandas_utils/" class="md-nav__link">
+      <a href="pandas_utils.html" class="md-nav__link">
         Pandas
       </a>
     </li>
@@ -574,7 +517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bsstats/" class="md-nav__link">
+      <a href="bsstats.html" class="md-nav__link">
         statistics
       </a>
     </li>
@@ -588,7 +531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sklearn_utils/" class="md-nav__link">
+      <a href="sklearn_utils.html" class="md-nav__link">
         Sklearn
       </a>
     </li>
@@ -602,7 +545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../distance_covariances/" class="md-nav__link">
+      <a href="distance_covariances.html" class="md-nav__link">
         nonlinear dependence
       </a>
     </li>
@@ -616,7 +559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bs_opt/" class="md-nav__link">
+      <a href="bs_opt.html" class="md-nav__link">
         optimization
       </a>
     </li>
@@ -630,7 +573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bs_sparse_gaussian/" class="md-nav__link">
+      <a href="bs_sparse_gaussian.html" class="md-nav__link">
         sparse integration for functions of Gaussians
       </a>
     </li>
@@ -644,7 +587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bivariate_quantiles/" class="md-nav__link">
+      <a href="bivariate_quantiles.html" class="md-nav__link">
         bivariate quantiles and ranks
       </a>
     </li>
@@ -663,12 +606,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" checked>
       
       
       
@@ -691,8 +636,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../bs_plots/" class="md-nav__link">
-        general interface
+      <a href="bs_plots.html" class="md-nav__link">
+        plotting interface
       </a>
     </li>
   
@@ -703,11 +648,59 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../bsmplutils/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Matplotlib
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="bsmplutils.html" class="md-nav__link md-nav__link--active">
         Matplotlib
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsmplutils" class="md-nav__link">
+    bs_python_utils.bsmplutils
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bs_python_utils.bsmplutils.ax_text" class="md-nav__link">
+    ax_text()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -719,7 +712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bs_seaborn/" class="md-nav__link">
+      <a href="bs_seaborn.html" class="md-nav__link">
         Seaborn
       </a>
     </li>
@@ -733,7 +726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bs_altair/" class="md-nav__link">
+      <a href="bs_altair.html" class="md-nav__link">
         Altair
       </a>
     </li>
@@ -781,22 +774,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#bs_python_utils.Timer" class="md-nav__link">
-    bs_python_utils.Timer
+  <a href="#bs_python_utils.bsmplutils" class="md-nav__link">
+    bs_python_utils.bsmplutils
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bs_python_utils.Timer.Timer" class="md-nav__link">
-    Timer
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bs_python_utils.Timer.timeit" class="md-nav__link">
-    timeit()
+  <a href="#bs_python_utils.bsmplutils.ax_text" class="md-nav__link">
+    ax_text()
   </a>
   
 </li>
@@ -815,22 +801,25 @@
                 
                   
 
-  <a href="https://github.com/bsalanie/bs-python-utils/edit/main/docs/Timer.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/bsalanie/bs-python-utils/edit/main/docs/bsmplutils.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="timer-module">Timer module<a class="headerlink" href="#timer-module" title="Permanent link">&para;</a></h1>
+<h1 id="bsmplutils-module">bsmplutils module<a class="headerlink" href="#bsmplutils-module" title="Permanent link">&para;</a></h1>
 
 
 <div class="doc doc-object doc-module">
 
 
-<a id="bs_python_utils.Timer"></a>
+<a id="bs_python_utils.bsmplutils"></a>
   <div class="doc doc-contents first">
   
-      <p>utilities to time code</p>
+      <p>A Matplotlib utility program:</p>
+<ul>
+<li><code>ax_text</code>: annotate an <code>ax</code> with text.</li>
+</ul>
 
   
 
@@ -842,160 +831,6 @@
 
 
 
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="bs_python_utils.Timer.Timer" class="doc doc-heading">
-          <code>Timer</code>
-
-
-<a href="#bs_python_utils.Timer.Timer" class="headerlink" title="Permanent link">&para;</a></h2>
-
-
-  <div class="doc doc-contents ">
-
-  
-      <p>A timer that can be started, stopped, and reset as needed by the user.
-It keeps track of the total elapsed time in the <code>elapsed</code> attribute::</p>
-<p>with Timer() as t:
-     ....
-   print(f"... took {t.elapsed} seconds")</p>
-<p>use <code>Timer(time.process_time)</code> to get only CPU time.</p>
-<p>can also do::</p>
-<p>t = Timer()
-   t.start()
-   t.stop()
-   t.start()   # will add to the same counter
-   t.stop()
-   print(f"{t.elapsed} seconds total")</p>
-
-            <details class="quote">
-              <summary>Source code in <code>bs_python_utils/Timer.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Timer</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A timer that can be started, stopped, and reset as needed by the user.</span>
-<span class="sd">    It keeps track of the total elapsed time in the `elapsed` attribute::</span>
-
-<span class="sd">       with Timer() as t:</span>
-<span class="sd">         ....</span>
-<span class="sd">       print(f&quot;... took {t.elapsed} seconds&quot;)</span>
-
-<span class="sd">    use `Timer(time.process_time)` to get only CPU time.</span>
-
-<span class="sd">    can also do::</span>
-
-<span class="sd">       t = Timer()</span>
-<span class="sd">       t.start()</span>
-<span class="sd">       t.stop()</span>
-<span class="sd">       t.start()   # will add to the same counter</span>
-<span class="sd">       t.stop()</span>
-<span class="sd">       print(f&quot;{t.elapsed} seconds total&quot;)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">elapsed</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_func</span> <span class="o">=</span> <span class="n">func</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_start</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Already started&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Not started&quot;</span><span class="p">)</span>
-        <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">elapsed</span> <span class="o">+=</span> <span class="n">end</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_start</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">elapsed</span> <span class="o">=</span> <span class="mf">0.0</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">running</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-
-    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">self</span>
-
-    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-
-  
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-  </div>
-
-</div>
 
 
 
@@ -1003,20 +838,115 @@ It keeps track of the total elapsed time in the <code>elapsed</code> attribute::
 
 
 
-<h2 id="bs_python_utils.Timer.timeit" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">timeit</span><span class="p">(</span><span class="n">func</span><span class="p">)</span></code>
+<h2 id="bs_python_utils.bsmplutils.ax_text" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">ax_text</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">str_txt</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></code>
 
-<a href="#bs_python_utils.Timer.timeit" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#bs_python_utils.bsmplutils.ax_text" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
   <div class="doc doc-contents ">
   
-      <p>Decorator to time a function</p>
+      <p>Annotate an <code>ax</code> with text in Matplotlib.</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>ax</code></td>
+          <td>
+                <code><span title="matplotlib">axes</span>.<span title="matplotlib.Axes">Axes</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>the axis we want to annotate</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>str_txt</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>a string of text</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>x</code></td>
+          <td>
+                <code>float</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>position in fraction of horizontal axis</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>y</code></td>
+          <td>
+                <code>float</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>position in fraction of vertical axis</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="matplotlib">axes</span>.<span title="matplotlib.Axes">Axes</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>the nnotated <code>ax</code>.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
 
           <details class="quote">
-            <summary>Source code in <code>bs_python_utils/Timer.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
-<span class="normal">11</span>
+            <summary>Source code in <code>bs_python_utils/bsmplutils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
@@ -1028,20 +958,45 @@ It keeps track of the total elapsed time in the <code>elapsed</code> attribute::
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">timeit</span><span class="p">(</span><span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ax_text</span><span class="p">(</span><span class="n">ax</span><span class="p">:</span> <span class="n">axes</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span> <span class="n">str_txt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">axes</span><span class="o">.</span><span class="n">Axes</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Decorator to time a function</span>
+<span class="sd">    Annotate an `ax` with text in Matplotlib.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ax: the axis we want to annotate</span>
+<span class="sd">        str_txt: a string of text</span>
+<span class="sd">        x: position in fraction of horizontal axis</span>
+<span class="sd">        y: position in fraction of vertical axis</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        the nnotated `ax`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> executed in </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">result</span>
-
-    <span class="k">return</span> <span class="n">wrapper</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">bs_error_abort</span><span class="p">(</span><span class="s2">&quot;x should be a number between 0.0 and 1.0&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">bs_error_abort</span><span class="p">(</span><span class="s2">&quot;y should be a number between 0.0 and 1.0&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+        <span class="n">x</span><span class="p">,</span>
+        <span class="n">y</span><span class="p">,</span>
+        <span class="n">str_txt</span><span class="p">,</span>
+        <span class="n">horizontalalignment</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+        <span class="n">verticalalignment</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+        <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -1075,7 +1030,7 @@ It keeps track of the total elapsed time in the <code>elapsed</code> attribute::
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../bs_mathstr/" class="md-footer__link md-footer__link--prev" aria-label="Previous: math strings" rel="prev">
+        <a href="bs_plots.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: plotting interface" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1084,20 +1039,20 @@ It keeps track of the total elapsed time in the <code>elapsed</code> attribute::
               <span class="md-footer__direction">
                 Previous
               </span>
-              math strings
+              plotting interface
             </div>
           </div>
         </a>
       
       
         
-        <a href="../bs_mem/" class="md-footer__link md-footer__link--next" aria-label="Next: memory usage" rel="next">
+        <a href="bs_seaborn.html" class="md-footer__link md-footer__link--next" aria-label="Next: Seaborn" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              memory usage
+              Seaborn
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1154,12 +1109,12 @@ It keeps track of the total elapsed time in the <code>elapsed</code> attribute::
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "search.highlight", "navigation.expand", "navigation.tabs"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["search.highlight", "navigation.instant", "navigation.expand", "navigation.tabs", "navigation.indexed"], "search": "assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      <script src="assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
-        <script src="../javascripts/mathjax.js"></script>
+        <script src="javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
