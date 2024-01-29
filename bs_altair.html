@@ -14,8 +14,15 @@
       
         <link rel="canonical" href="https://bsalanie.github.io/bs-python-utils/bs_altair.html">
       
+      
+        <link rel="prev" href="bs_seaborn.html">
+      
+      
+        <link rel="next" href="streamlit_utils.html">
+      
+      
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
     
     
       
@@ -23,15 +30,17 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.975780f9.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.50c56a3b.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.2505c338.min.css">
-        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
       
       
 
+
     
+    
+      
     
     
       
@@ -65,9 +74,6 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange">
   
     
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
-    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -95,6 +101,7 @@
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
+      
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
@@ -114,33 +121,39 @@
       </div>
     </div>
     
-      <form class="md-header__option" data-md-component="palette">
-        
-          
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
-          
-            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
-            </label>
-          
-        
-          
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
-            </label>
-          
-        
-      </form>
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
       <label class="md-header__button md-icon" for="__search">
+        
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
@@ -149,12 +162,15 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
+        
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -166,7 +182,7 @@
           <div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -178,7 +194,7 @@
         <a href="https://github.com/bsalanie/bs-python-utils" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
     bsalanie/bs-python-utils
@@ -197,19 +213,24 @@
           
             
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
+  <div class="md-grid">
     <ul class="md-tabs__list">
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Home
 
-
-  <li class="md-tabs__item">
-    <a href="index.html" class="md-tabs__link">
-      Home
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
@@ -217,23 +238,29 @@
   
     
   
-
-
   
+    
+    
+      
   
   
     
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="bsutils.html" class="md-tabs__link">
+          
+  
+  API Reference
 
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="bsutils.html" class="md-tabs__link md-tabs__link--active">
-        API Reference
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
+    
   
 
       
@@ -253,6 +280,7 @@
                   <div class="md-sidebar__inner">
                     
 
+
   
 
 
@@ -271,7 +299,7 @@
       <a href="https://github.com/bsalanie/bs-python-utils" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
     bsalanie/bs-python-utils
@@ -283,14 +311,19 @@
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href="index.html" class="md-nav__link">
-        Home
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
       </a>
     </li>
   
@@ -298,402 +331,592 @@
     
       
       
-      
-
   
   
     
   
   
+  
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+    
+    
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2">
-          API Reference
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
-          API Reference
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
           
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
+  
+    
+    
+    
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_1">
-          General utilities
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="General utilities" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_1">
-          <span class="md-nav__icon md-icon"></span>
-          General utilities
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    General utilities
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            General utilities
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="bsutils.html" class="md-nav__link">
-        error reporting and other utilities
+        
+  
+  <span class="md-ellipsis">
+    error reporting and other utilities
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="bs_logging.html" class="md-nav__link">
-        logging
+        
+  
+  <span class="md-ellipsis">
+    logging
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="bs_mathstr.html" class="md-nav__link">
-        math strings
+        
+  
+  <span class="md-ellipsis">
+    math strings
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="Timer.html" class="md-nav__link">
-        timing routines
+        
+  
+  <span class="md-ellipsis">
+    timing routines
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="bs_mem.html" class="md-nav__link">
-        memory usage
+        
+  
+  <span class="md-ellipsis">
+    memory usage
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     
+    
+    
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_2">
-          Scientific
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Scientific" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_2">
-          <span class="md-nav__icon md-icon"></span>
-          Scientific
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Scientific
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Scientific
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="bsnputils.html" class="md-nav__link">
-        Numpy
+        
+  
+  <span class="md-ellipsis">
+    Numpy
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="bssputils.html" class="md-nav__link">
-        Scipy
+        
+  
+  <span class="md-ellipsis">
+    Scipy
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="chebyshev.html" class="md-nav__link">
-        Chebyshev interpolation and integration
+        
+  
+  <span class="md-ellipsis">
+    Chebyshev interpolation and integration
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="pandas_utils.html" class="md-nav__link">
-        Pandas
+        
+  
+  <span class="md-ellipsis">
+    Pandas
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="bsstats.html" class="md-nav__link">
-        statistics
+        
+  
+  <span class="md-ellipsis">
+    statistics
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="sklearn_utils.html" class="md-nav__link">
-        Sklearn
+        
+  
+  <span class="md-ellipsis">
+    Sklearn
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="distance_covariances.html" class="md-nav__link">
-        nonlinear dependence
+        
+  
+  <span class="md-ellipsis">
+    nonlinear dependence
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="bs_opt.html" class="md-nav__link">
-        optimization
+        
+  
+  <span class="md-ellipsis">
+    optimization
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="bs_sparse_gaussian.html" class="md-nav__link">
-        sparse integration for functions of Gaussians
+        
+  
+  <span class="md-ellipsis">
+    sparse integration for functions of Gaussians
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="bivariate_quantiles.html" class="md-nav__link">
-        bivariate quantiles and ranks
+        
+  
+  <span class="md-ellipsis">
+    bivariate quantiles and ranks
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
     
   
   
+  
+    
+    
+    
+    
     
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_3">
-          Plotting
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Plotting" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_3">
-          <span class="md-nav__icon md-icon"></span>
-          Plotting
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
           
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Plotting
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Plotting
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="bs_plots.html" class="md-nav__link">
-        plotting interface
+        
+  
+  <span class="md-ellipsis">
+    plotting interface
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="bsmplutils.html" class="md-nav__link">
-        Matplotlib
+        
+  
+  <span class="md-ellipsis">
+    Matplotlib
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="bs_seaborn.html" class="md-nav__link">
-        Seaborn
+        
+  
+  <span class="md-ellipsis">
+    Seaborn
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
     
   
   
+  
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
         
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Altair
+          
+  
+  <span class="md-ellipsis">
+    Altair
+  </span>
+  
+
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="bs_altair.html" class="md-nav__link md-nav__link--active">
-        Altair
+        
+  
+  <span class="md-ellipsis">
+    Altair
+  </span>
+  
+
       </a>
       
         
@@ -713,147 +936,189 @@
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair" class="md-nav__link">
-    bs_python_utils.bs_altair
+    <span class="md-ellipsis">
+      bs_altair
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_boxes" class="md-nav__link">
-    alt_boxes()
+    <span class="md-ellipsis">
+      alt_boxes
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_density" class="md-nav__link">
-    alt_density()
+    <span class="md-ellipsis">
+      alt_density
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_faceted_densities" class="md-nav__link">
-    alt_faceted_densities()
+    <span class="md-ellipsis">
+      alt_faceted_densities
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_histogram_by" class="md-nav__link">
-    alt_histogram_by()
+    <span class="md-ellipsis">
+      alt_histogram_by
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_histogram_continuous" class="md-nav__link">
-    alt_histogram_continuous()
+    <span class="md-ellipsis">
+      alt_histogram_continuous
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_lineplot" class="md-nav__link">
-    alt_lineplot()
+    <span class="md-ellipsis">
+      alt_lineplot
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_linked_scatterplots" class="md-nav__link">
-    alt_linked_scatterplots()
+    <span class="md-ellipsis">
+      alt_linked_scatterplots
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_matrix_heatmap" class="md-nav__link">
-    alt_matrix_heatmap()
+    <span class="md-ellipsis">
+      alt_matrix_heatmap
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_plot_fun" class="md-nav__link">
-    alt_plot_fun()
+    <span class="md-ellipsis">
+      alt_plot_fun
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_scatterplot" class="md-nav__link">
-    alt_scatterplot()
+    <span class="md-ellipsis">
+      alt_scatterplot
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_scatterplot_with_histo" class="md-nav__link">
-    alt_scatterplot_with_histo()
+    <span class="md-ellipsis">
+      alt_scatterplot_with_histo
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_stacked_area" class="md-nav__link">
-    alt_stacked_area()
+    <span class="md-ellipsis">
+      alt_stacked_area
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_stacked_area_facets" class="md-nav__link">
-    alt_stacked_area_facets()
+    <span class="md-ellipsis">
+      alt_stacked_area_facets
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_superposed_faceted_densities" class="md-nav__link">
-    alt_superposed_faceted_densities()
+    <span class="md-ellipsis">
+      alt_superposed_faceted_densities
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_superposed_faceted_lineplot" class="md-nav__link">
-    alt_superposed_faceted_lineplot()
+    <span class="md-ellipsis">
+      alt_superposed_faceted_lineplot
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_superposed_lineplot" class="md-nav__link">
-    alt_superposed_lineplot()
+    <span class="md-ellipsis">
+      alt_superposed_lineplot
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_tick_plots" class="md-nav__link">
-    alt_tick_plots()
+    <span class="md-ellipsis">
+      alt_tick_plots
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.plot_parameterized_estimates" class="md-nav__link">
-    plot_parameterized_estimates()
+    <span class="md-ellipsis">
+      plot_parameterized_estimates
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.plot_true_sim2_facets" class="md-nav__link">
-    plot_true_sim2_facets()
+    <span class="md-ellipsis">
+      plot_true_sim2_facets
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.plot_true_sim_facets" class="md-nav__link">
-    plot_true_sim_facets()
+    <span class="md-ellipsis">
+      plot_true_sim_facets
+    </span>
   </a>
   
 </li>
@@ -865,64 +1130,87 @@
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     
+    
+    
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_4">
-          Streamlit
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Streamlit" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_4">
-          <span class="md-nav__icon md-icon"></span>
-          Streamlit
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Streamlit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Streamlit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="streamlit_utils.html" class="md-nav__link">
-        Utilities
+        
+  
+  <span class="md-ellipsis">
+    Utilities
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -955,147 +1243,189 @@
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair" class="md-nav__link">
-    bs_python_utils.bs_altair
+    <span class="md-ellipsis">
+      bs_altair
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_boxes" class="md-nav__link">
-    alt_boxes()
+    <span class="md-ellipsis">
+      alt_boxes
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_density" class="md-nav__link">
-    alt_density()
+    <span class="md-ellipsis">
+      alt_density
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_faceted_densities" class="md-nav__link">
-    alt_faceted_densities()
+    <span class="md-ellipsis">
+      alt_faceted_densities
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_histogram_by" class="md-nav__link">
-    alt_histogram_by()
+    <span class="md-ellipsis">
+      alt_histogram_by
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_histogram_continuous" class="md-nav__link">
-    alt_histogram_continuous()
+    <span class="md-ellipsis">
+      alt_histogram_continuous
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_lineplot" class="md-nav__link">
-    alt_lineplot()
+    <span class="md-ellipsis">
+      alt_lineplot
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_linked_scatterplots" class="md-nav__link">
-    alt_linked_scatterplots()
+    <span class="md-ellipsis">
+      alt_linked_scatterplots
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_matrix_heatmap" class="md-nav__link">
-    alt_matrix_heatmap()
+    <span class="md-ellipsis">
+      alt_matrix_heatmap
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_plot_fun" class="md-nav__link">
-    alt_plot_fun()
+    <span class="md-ellipsis">
+      alt_plot_fun
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_scatterplot" class="md-nav__link">
-    alt_scatterplot()
+    <span class="md-ellipsis">
+      alt_scatterplot
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_scatterplot_with_histo" class="md-nav__link">
-    alt_scatterplot_with_histo()
+    <span class="md-ellipsis">
+      alt_scatterplot_with_histo
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_stacked_area" class="md-nav__link">
-    alt_stacked_area()
+    <span class="md-ellipsis">
+      alt_stacked_area
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_stacked_area_facets" class="md-nav__link">
-    alt_stacked_area_facets()
+    <span class="md-ellipsis">
+      alt_stacked_area_facets
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_superposed_faceted_densities" class="md-nav__link">
-    alt_superposed_faceted_densities()
+    <span class="md-ellipsis">
+      alt_superposed_faceted_densities
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_superposed_faceted_lineplot" class="md-nav__link">
-    alt_superposed_faceted_lineplot()
+    <span class="md-ellipsis">
+      alt_superposed_faceted_lineplot
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_superposed_lineplot" class="md-nav__link">
-    alt_superposed_lineplot()
+    <span class="md-ellipsis">
+      alt_superposed_lineplot
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.alt_tick_plots" class="md-nav__link">
-    alt_tick_plots()
+    <span class="md-ellipsis">
+      alt_tick_plots
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.plot_parameterized_estimates" class="md-nav__link">
-    plot_parameterized_estimates()
+    <span class="md-ellipsis">
+      plot_parameterized_estimates
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.plot_true_sim2_facets" class="md-nav__link">
-    plot_true_sim2_facets()
+    <span class="md-ellipsis">
+      plot_true_sim2_facets
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#bs_python_utils.bs_altair.plot_true_sim_facets" class="md-nav__link">
-    plot_true_sim_facets()
+    <span class="md-ellipsis">
+      plot_true_sim_facets
+    </span>
   </a>
   
 </li>
@@ -1114,16 +1444,15 @@
                 
                   
 
-  <a href="https://github.com/bsalanie/bs-python-utils/edit/main/docs/bs_altair.md" title="Edit this page" class="md-content__button md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
-  </a>
+  
+  
 
 
 <h1 id="bs_altair-module">bs_altair module<a class="headerlink" href="#bs_altair-module" title="Permanent link">&para;</a></h1>
 
 
 <div class="doc doc-object doc-module">
+
 
 
 <a id="bs_python_utils.bs_altair"></a>
@@ -1162,7 +1491,7 @@
 
 
 <h2 id="bs_python_utils.bs_altair.alt_boxes" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">alt_boxes</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">continuous_var</span><span class="p">,</span> <span class="n">discrete_var</span><span class="p">,</span> <span class="n">group_var</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">alt_boxes</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">continuous_var</span><span class="p">,</span> <span class="n">discrete_var</span><span class="p">,</span> <span class="n">group_var</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.alt_boxes" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -1187,7 +1516,7 @@
         <tr>
           <td><code>df</code></td>
           <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
+                <code><span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -1298,7 +1627,7 @@
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -1311,8 +1640,7 @@
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">130</span>
-<span class="normal">131</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">131</span>
 <span class="normal">132</span>
 <span class="normal">133</span>
 <span class="normal">134</span>
@@ -1349,7 +1677,8 @@
 <span class="normal">165</span>
 <span class="normal">166</span>
 <span class="normal">167</span>
-<span class="normal">168</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_boxes</span><span class="p">(</span>
+<span class="normal">168</span>
+<span class="normal">169</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_boxes</span><span class="p">(</span>
     <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">continuous_var</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">discrete_var</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -1387,7 +1716,7 @@
     <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
         <span class="n">boxes</span> <span class="o">=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">boxes</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">boxes</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -1400,7 +1729,7 @@
 
 
 <h2 id="bs_python_utils.bs_altair.alt_density" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">alt_density</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">alt_density</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.alt_density" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -1425,7 +1754,7 @@
         <tr>
           <td><code>df</code></td>
           <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
+                <code><span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -1480,7 +1809,7 @@
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -1493,8 +1822,7 @@
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">310</span>
-<span class="normal">311</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">311</span>
 <span class="normal">312</span>
 <span class="normal">313</span>
 <span class="normal">314</span>
@@ -1518,7 +1846,8 @@
 <span class="normal">332</span>
 <span class="normal">333</span>
 <span class="normal">334</span>
-<span class="normal">335</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_density</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">str_x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">:</span>
+<span class="normal">335</span>
+<span class="normal">336</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_density</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">str_x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots the density of `df[str_x]`.</span>
 
 <span class="sd">    Args:</span>
@@ -1543,7 +1872,7 @@
     <span class="p">)</span>
 
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ch</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -1556,7 +1885,7 @@
 
 
 <h2 id="bs_python_utils.bs_altair.alt_faceted_densities" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">alt_faceted_densities</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">legend_title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">alt_faceted_densities</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">legend_title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.alt_faceted_densities" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -1581,7 +1910,7 @@
         <tr>
           <td><code>df</code></td>
           <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
+                <code><span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -1678,7 +2007,7 @@
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -1691,8 +2020,7 @@
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">470</span>
-<span class="normal">471</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">471</span>
 <span class="normal">472</span>
 <span class="normal">473</span>
 <span class="normal">474</span>
@@ -1731,7 +2059,8 @@
 <span class="normal">507</span>
 <span class="normal">508</span>
 <span class="normal">509</span>
-<span class="normal">510</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_faceted_densities</span><span class="p">(</span>
+<span class="normal">510</span>
+<span class="normal">511</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_faceted_densities</span><span class="p">(</span>
     <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">str_x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">str_f</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -1771,7 +2100,7 @@
     <span class="p">)</span>
 
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ch</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -1784,7 +2113,7 @@
 
 
 <h2 id="bs_python_utils.bs_altair.alt_histogram_by" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">alt_histogram_by</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">str_agg</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">alt_histogram_by</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">str_agg</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.alt_histogram_by" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -1809,7 +2138,7 @@
         <tr>
           <td><code>df</code></td>
           <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
+                <code><span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -1892,7 +2221,7 @@
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -1905,12 +2234,7 @@
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">597</span>
-<span class="normal">598</span>
-<span class="normal">599</span>
-<span class="normal">600</span>
-<span class="normal">601</span>
-<span class="normal">602</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">602</span>
 <span class="normal">603</span>
 <span class="normal">604</span>
 <span class="normal">605</span>
@@ -1932,7 +2256,12 @@
 <span class="normal">621</span>
 <span class="normal">622</span>
 <span class="normal">623</span>
-<span class="normal">624</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_histogram_by</span><span class="p">(</span>
+<span class="normal">624</span>
+<span class="normal">625</span>
+<span class="normal">626</span>
+<span class="normal">627</span>
+<span class="normal">628</span>
+<span class="normal">629</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_histogram_by</span><span class="p">(</span>
     <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">str_x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">str_y</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -1959,7 +2288,7 @@
         <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
     <span class="p">)</span>
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ch</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -1972,7 +2301,7 @@
 
 
 <h2 id="bs_python_utils.bs_altair.alt_histogram_continuous" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">alt_histogram_continuous</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">alt_histogram_continuous</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.alt_histogram_continuous" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -1997,7 +2326,7 @@
         <tr>
           <td><code>df</code></td>
           <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
+                <code><span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -2052,7 +2381,7 @@
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -2065,12 +2394,7 @@
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">627</span>
-<span class="normal">628</span>
-<span class="normal">629</span>
-<span class="normal">630</span>
-<span class="normal">631</span>
-<span class="normal">632</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">632</span>
 <span class="normal">633</span>
 <span class="normal">634</span>
 <span class="normal">635</span>
@@ -2081,7 +2405,12 @@
 <span class="normal">640</span>
 <span class="normal">641</span>
 <span class="normal">642</span>
-<span class="normal">643</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_histogram_continuous</span><span class="p">(</span>
+<span class="normal">643</span>
+<span class="normal">644</span>
+<span class="normal">645</span>
+<span class="normal">646</span>
+<span class="normal">647</span>
+<span class="normal">648</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_histogram_continuous</span><span class="p">(</span>
     <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">str_x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2097,7 +2426,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ch</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="n">str_x</span><span class="p">,</span> <span class="nb">bin</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;count()&quot;</span><span class="p">)</span>
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ch</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -2110,7 +2439,7 @@
 
 
 <h2 id="bs_python_utils.bs_altair.alt_lineplot" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">alt_lineplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">time_series</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aggreg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">alt_lineplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">time_series</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aggreg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.alt_lineplot" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -2135,7 +2464,7 @@
         <tr>
           <td><code>df</code></td>
           <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
+                <code><span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -2232,7 +2561,7 @@
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -2245,8 +2574,7 @@
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">171</span>
-<span class="normal">172</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">172</span>
 <span class="normal">173</span>
 <span class="normal">174</span>
 <span class="normal">175</span>
@@ -2275,7 +2603,8 @@
 <span class="normal">198</span>
 <span class="normal">199</span>
 <span class="normal">200</span>
-<span class="normal">201</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_lineplot</span><span class="p">(</span>
+<span class="normal">201</span>
+<span class="normal">202</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_lineplot</span><span class="p">(</span>
     <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">str_x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">str_y</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -2305,7 +2634,7 @@
     <span class="k">if</span> <span class="s2">&quot;title&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
         <span class="n">ch</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">])</span>
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ch</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -2318,7 +2647,7 @@
 
 
 <h2 id="bs_python_utils.bs_altair.alt_linked_scatterplots" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">alt_linked_scatterplots</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x1</span><span class="p">,</span> <span class="n">str_x2</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">alt_linked_scatterplots</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x1</span><span class="p">,</span> <span class="n">str_x2</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.alt_linked_scatterplots" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -2344,7 +2673,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
         <tr>
           <td><code>df</code></td>
           <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
+                <code><span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -2441,7 +2770,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -2454,8 +2783,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">383</span>
-<span class="normal">384</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">384</span>
 <span class="normal">385</span>
 <span class="normal">386</span>
 <span class="normal">387</span>
@@ -2491,7 +2819,8 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
 <span class="normal">417</span>
 <span class="normal">418</span>
 <span class="normal">419</span>
-<span class="normal">420</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_linked_scatterplots</span><span class="p">(</span>
+<span class="normal">420</span>
+<span class="normal">421</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_linked_scatterplots</span><span class="p">(</span>
     <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">str_x1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">str_x2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -2522,13 +2851,13 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
         <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
             <span class="n">y</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">str_y</span><span class="si">}</span><span class="s2">:Q&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">))</span>
         <span class="p">)</span>
-        <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">selection</span><span class="o">=</span><span class="n">interval</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">add_params</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
     <span class="p">)</span>
 
     <span class="n">ch</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">str_x1</span><span class="si">}</span><span class="s2">:Q&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">base</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">str_x2</span><span class="si">}</span><span class="s2">:Q&quot;</span><span class="p">)</span>
 
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ch</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -2541,7 +2870,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
 
 
 <h2 id="bs_python_utils.bs_altair.alt_matrix_heatmap" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">alt_matrix_heatmap</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">str_format</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">str_rows</span><span class="o">=</span><span class="s1">&#39;Row&#39;</span><span class="p">,</span> <span class="n">str_cols</span><span class="o">=</span><span class="s1">&#39;Column&#39;</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">alt_matrix_heatmap</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">str_format</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">str_rows</span><span class="o">=</span><span class="s1">&#39;Row&#39;</span><span class="p">,</span> <span class="n">str_cols</span><span class="o">=</span><span class="s1">&#39;Column&#39;</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.alt_matrix_heatmap" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -2566,7 +2895,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
         <tr>
           <td><code>mat</code></td>
           <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+                <code><span title="numpy.ndarray">ndarray</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -2677,7 +3006,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -2690,8 +3019,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">204</span>
-<span class="normal">205</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">205</span>
 <span class="normal">206</span>
 <span class="normal">207</span>
 <span class="normal">208</span>
@@ -2756,7 +3084,8 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
 <span class="normal">267</span>
 <span class="normal">268</span>
 <span class="normal">269</span>
-<span class="normal">270</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_matrix_heatmap</span><span class="p">(</span>
+<span class="normal">270</span>
+<span class="normal">271</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_matrix_heatmap</span><span class="p">(</span>
     <span class="n">mat</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">str_format</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">multiple</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
@@ -2822,7 +3151,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
         <span class="n">both</span> <span class="o">=</span> <span class="p">(</span><span class="n">mat_map</span> <span class="o">+</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
 
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">both</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">both</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">both</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -2835,7 +3164,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
 
 
 <h2 id="bs_python_utils.bs_altair.alt_plot_fun" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">alt_plot_fun</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">npoints</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">alt_plot_fun</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">npoints</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.alt_plot_fun" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -2860,7 +3189,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
         <tr>
           <td><code>f</code></td>
           <td>
-                <code><span title="typing.Callable">Callable</span></code>
+                <code><span title="collections.abc.Callable">Callable</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -2943,7 +3272,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -2956,8 +3285,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">273</span>
-<span class="normal">274</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">274</span>
 <span class="normal">275</span>
 <span class="normal">276</span>
 <span class="normal">277</span>
@@ -2990,7 +3318,8 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
 <span class="normal">304</span>
 <span class="normal">305</span>
 <span class="normal">306</span>
-<span class="normal">307</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_plot_fun</span><span class="p">(</span>
+<span class="normal">307</span>
+<span class="normal">308</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_plot_fun</span><span class="p">(</span>
     <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
     <span class="n">start</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">end</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
@@ -3024,7 +3353,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
     <span class="p">)</span>
 
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ch</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -3037,7 +3366,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
 
 
 <h2 id="bs_python_utils.bs_altair.alt_scatterplot" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">alt_scatterplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">time_series</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aggreg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">selection</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">alt_scatterplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">time_series</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aggreg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">selection</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.alt_scatterplot" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -3062,7 +3391,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
         <tr>
           <td><code>df</code></td>
           <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
+                <code><span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -3243,7 +3572,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -3256,8 +3585,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 41</span>
-<span class="normal"> 42</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 42</span>
 <span class="normal"> 43</span>
 <span class="normal"> 44</span>
 <span class="normal"> 45</span>
@@ -3342,7 +3670,8 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
 <span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
-<span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_scatterplot</span><span class="p">(</span>
+<span class="normal">127</span>
+<span class="normal">128</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_scatterplot</span><span class="p">(</span>
     <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">str_x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">str_y</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -3389,7 +3718,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
 
     <span class="k">if</span> <span class="n">ylabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ylabel</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">var_y</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="n">var_y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">ylabel</span><span class="p">))</span>
+            <span class="n">var_y_lab</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="n">var_y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">ylabel</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">bs_error_abort</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ylabel must be a string, not </span><span class="si">{</span><span class="n">ylabel</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
@@ -3407,13 +3736,13 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
                     <span class="o">.</span><span class="n">mark_circle</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">circles_size</span><span class="p">)</span>
                     <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
                         <span class="n">x</span><span class="o">=</span><span class="n">var_x</span><span class="p">,</span>
-                        <span class="n">y</span><span class="o">=</span><span class="n">var_y</span><span class="p">,</span>
+                        <span class="n">y</span><span class="o">=</span><span class="n">var_y</span> <span class="k">if</span> <span class="n">ylabel</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">var_y_lab</span><span class="p">,</span>
                         <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
                         <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span>
                             <span class="n">selection_criterion</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
                         <span class="p">),</span>
                     <span class="p">)</span>
-                    <span class="o">.</span><span class="n">add_selection</span><span class="p">(</span><span class="n">selection_criterion</span><span class="p">)</span>
+                    <span class="o">.</span><span class="n">add_params</span><span class="p">(</span><span class="n">selection_criterion</span><span class="p">)</span>
                 <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">ch</span> <span class="o">=</span> <span class="p">(</span>
@@ -3428,7 +3757,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
 
     <span class="n">ch</span> <span class="o">=</span> <span class="n">_add_title</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ch</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -3441,7 +3770,7 @@ both with color as per <code>df[str_f]</code>. Selecting an interval in one show
 
 
 <h2 id="bs_python_utils.bs_altair.alt_scatterplot_with_histo" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">alt_scatterplot_with_histo</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">alt_scatterplot_with_histo</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.alt_scatterplot_with_histo" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -3467,7 +3796,7 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
         <tr>
           <td><code>df</code></td>
           <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
+                <code><span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -3550,7 +3879,7 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -3563,8 +3892,7 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">423</span>
-<span class="normal">424</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">424</span>
 <span class="normal">425</span>
 <span class="normal">426</span>
 <span class="normal">427</span>
@@ -3607,7 +3935,8 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
 <span class="normal">464</span>
 <span class="normal">465</span>
 <span class="normal">466</span>
-<span class="normal">467</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_scatterplot_with_histo</span><span class="p">(</span>
+<span class="normal">467</span>
+<span class="normal">468</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_scatterplot_with_histo</span><span class="p">(</span>
     <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">str_x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">str_y</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">str_f</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -3634,7 +3963,7 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
             <span class="n">y</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">str_y</span><span class="si">}</span><span class="s2">:Q&quot;</span><span class="p">,</span>
             <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)),</span>
         <span class="p">)</span>
-        <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">selection</span><span class="o">=</span><span class="n">interval</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">add_params</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
     <span class="p">)</span>
 
     <span class="n">histogram</span> <span class="o">=</span> <span class="p">(</span>
@@ -3651,7 +3980,7 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
     <span class="n">ch</span> <span class="o">=</span> <span class="n">points</span> <span class="o">&amp;</span> <span class="n">histogram</span>
 
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ch</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -3664,7 +3993,7 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
 
 
 <h2 id="bs_python_utils.bs_altair.alt_stacked_area" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">alt_stacked_area</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">time_series</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">alt_stacked_area</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">time_series</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.alt_stacked_area" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -3689,7 +4018,7 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
         <tr>
           <td><code>df</code></td>
           <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
+                <code><span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -3800,7 +4129,7 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -3813,12 +4142,7 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">646</span>
-<span class="normal">647</span>
-<span class="normal">648</span>
-<span class="normal">649</span>
-<span class="normal">650</span>
-<span class="normal">651</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">651</span>
 <span class="normal">652</span>
 <span class="normal">653</span>
 <span class="normal">654</span>
@@ -3851,7 +4175,12 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
 <span class="normal">681</span>
 <span class="normal">682</span>
 <span class="normal">683</span>
-<span class="normal">684</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_stacked_area</span><span class="p">(</span>
+<span class="normal">684</span>
+<span class="normal">685</span>
+<span class="normal">686</span>
+<span class="normal">687</span>
+<span class="normal">688</span>
+<span class="normal">689</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_stacked_area</span><span class="p">(</span>
     <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">str_x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">str_y</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -3889,7 +4218,7 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
         <span class="n">ch</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
 
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ch</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -3902,7 +4231,7 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
 
 
 <h2 id="bs_python_utils.bs_altair.alt_stacked_area_facets" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">alt_stacked_area_facets</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">str_g</span><span class="p">,</span> <span class="n">time_series</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">alt_stacked_area_facets</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">str_g</span><span class="p">,</span> <span class="n">time_series</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.alt_stacked_area_facets" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -3927,7 +4256,7 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
         <tr>
           <td><code>df</code></td>
           <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
+                <code><span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -4052,7 +4381,7 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -4065,12 +4394,7 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">687</span>
-<span class="normal">688</span>
-<span class="normal">689</span>
-<span class="normal">690</span>
-<span class="normal">691</span>
-<span class="normal">692</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">692</span>
 <span class="normal">693</span>
 <span class="normal">694</span>
 <span class="normal">695</span>
@@ -4104,7 +4428,16 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
 <span class="normal">723</span>
 <span class="normal">724</span>
 <span class="normal">725</span>
-<span class="normal">726</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_stacked_area_facets</span><span class="p">(</span>
+<span class="normal">726</span>
+<span class="normal">727</span>
+<span class="normal">728</span>
+<span class="normal">729</span>
+<span class="normal">730</span>
+<span class="normal">731</span>
+<span class="normal">732</span>
+<span class="normal">733</span>
+<span class="normal">734</span>
+<span class="normal">735</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_stacked_area_facets</span><span class="p">(</span>
     <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">str_x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">str_y</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -4139,11 +4472,15 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
             <span class="n">x</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">str_x</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">type_x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
             <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">str_y</span><span class="si">}</span><span class="s2">:Q&quot;</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="s2">&quot;normalize&quot;</span><span class="p">),</span>
             <span class="n">color</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">str_f</span><span class="si">}</span><span class="s2">:N&quot;</span><span class="p">,</span>
-            <span class="n">facet</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">str_g</span><span class="si">}</span><span class="s2">:N&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">max_cols</span><span class="p">),</span>
+            <span class="n">facet</span><span class="o">=</span><span class="p">(</span>
+                <span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">str_g</span><span class="si">}</span><span class="s2">:N&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">max_cols</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">max_cols</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="k">else</span> <span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">str_g</span><span class="si">}</span><span class="s2">:N&quot;</span><span class="p">)</span>
+            <span class="p">),</span>
         <span class="p">)</span>
     <span class="p">)</span>
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ch</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -4156,7 +4493,7 @@ allows to select an interval and histograns the counts of <code>df[str_f]</code>
 
 
 <h2 id="bs_python_utils.bs_altair.alt_superposed_faceted_densities" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">alt_superposed_faceted_densities</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">str_g</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">alt_superposed_faceted_densities</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">str_g</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.alt_superposed_faceted_densities" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -4183,7 +4520,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
         <tr>
           <td><code>df</code></td>
           <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
+                <code><span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -4280,7 +4617,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -4293,8 +4630,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">338</span>
-<span class="normal">339</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">339</span>
 <span class="normal">340</span>
 <span class="normal">341</span>
 <span class="normal">342</span>
@@ -4335,7 +4671,8 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
 <span class="normal">377</span>
 <span class="normal">378</span>
 <span class="normal">379</span>
-<span class="normal">380</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_superposed_faceted_densities</span><span class="p">(</span>
+<span class="normal">380</span>
+<span class="normal">381</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_superposed_faceted_densities</span><span class="p">(</span>
     <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">str_x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">str_f</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -4377,7 +4714,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
     <span class="p">)</span>
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">densities</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">densities</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">densities</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -4390,7 +4727,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
 
 
 <h2 id="bs_python_utils.bs_altair.alt_superposed_faceted_lineplot" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">alt_superposed_faceted_lineplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">str_g</span><span class="p">,</span> <span class="n">time_series</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">legend_title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">alt_superposed_faceted_lineplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">str_g</span><span class="p">,</span> <span class="n">time_series</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">legend_title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.alt_superposed_faceted_lineplot" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -4415,7 +4752,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
         <tr>
           <td><code>df</code></td>
           <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
+                <code><span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -4554,7 +4891,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -4567,8 +4904,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">552</span>
-<span class="normal">553</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">553</span>
 <span class="normal">554</span>
 <span class="normal">555</span>
 <span class="normal">556</span>
@@ -4609,7 +4945,12 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
 <span class="normal">591</span>
 <span class="normal">592</span>
 <span class="normal">593</span>
-<span class="normal">594</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_superposed_faceted_lineplot</span><span class="p">(</span>
+<span class="normal">594</span>
+<span class="normal">595</span>
+<span class="normal">596</span>
+<span class="normal">597</span>
+<span class="normal">598</span>
+<span class="normal">599</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_superposed_faceted_lineplot</span><span class="p">(</span>
     <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">str_x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">str_y</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -4647,11 +4988,15 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
             <span class="n">x</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">str_x</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">type_x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
             <span class="n">y</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">str_y</span><span class="si">}</span><span class="s2">:Q&quot;</span><span class="p">,</span>
             <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">str_f</span><span class="si">}</span><span class="s2">:N&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">our_title</span><span class="p">),</span>
-            <span class="n">facet</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">str_g</span><span class="si">}</span><span class="s2">:N&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">max_cols</span><span class="p">),</span>
+            <span class="n">facet</span><span class="o">=</span><span class="p">(</span>
+                <span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">str_g</span><span class="si">}</span><span class="s2">:N&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">max_cols</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">max_cols</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="k">else</span> <span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">str_g</span><span class="si">}</span><span class="s2">:N&quot;</span><span class="p">)</span>
+            <span class="p">),</span>
         <span class="p">)</span>
     <span class="p">)</span>
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ch</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -4664,7 +5009,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
 
 
 <h2 id="bs_python_utils.bs_altair.alt_superposed_lineplot" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">alt_superposed_lineplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">time_series</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">legend_title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">alt_superposed_lineplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">str_x</span><span class="p">,</span> <span class="n">str_y</span><span class="p">,</span> <span class="n">str_f</span><span class="p">,</span> <span class="n">time_series</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">legend_title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.alt_superposed_lineplot" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -4689,7 +5034,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
         <tr>
           <td><code>df</code></td>
           <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
+                <code><span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -4800,7 +5145,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -4813,8 +5158,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">513</span>
-<span class="normal">514</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">514</span>
 <span class="normal">515</span>
 <span class="normal">516</span>
 <span class="normal">517</span>
@@ -4849,7 +5193,8 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
 <span class="normal">546</span>
 <span class="normal">547</span>
 <span class="normal">548</span>
-<span class="normal">549</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_superposed_lineplot</span><span class="p">(</span>
+<span class="normal">549</span>
+<span class="normal">550</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_superposed_lineplot</span><span class="p">(</span>
     <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">str_x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">str_y</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -4885,7 +5230,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
         <span class="p">)</span>
     <span class="p">)</span>
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ch</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -4898,7 +5243,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
 
 
 <h2 id="bs_python_utils.bs_altair.alt_tick_plots" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">alt_tick_plots</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">list_vars</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">alt_tick_plots</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">list_vars</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.alt_tick_plots" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -4923,7 +5268,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
         <tr>
           <td><code>df</code></td>
           <td>
-                <code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>
+                <code><span title="pandas.DataFrame">DataFrame</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -4978,7 +5323,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -4991,24 +5336,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1066</span>
-<span class="normal">1067</span>
-<span class="normal">1068</span>
-<span class="normal">1069</span>
-<span class="normal">1070</span>
-<span class="normal">1071</span>
-<span class="normal">1072</span>
-<span class="normal">1073</span>
-<span class="normal">1074</span>
-<span class="normal">1075</span>
-<span class="normal">1076</span>
-<span class="normal">1077</span>
-<span class="normal">1078</span>
-<span class="normal">1079</span>
-<span class="normal">1080</span>
-<span class="normal">1081</span>
-<span class="normal">1082</span>
-<span class="normal">1083</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1083</span>
 <span class="normal">1084</span>
 <span class="normal">1085</span>
 <span class="normal">1086</span>
@@ -5019,7 +5347,24 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
 <span class="normal">1091</span>
 <span class="normal">1092</span>
 <span class="normal">1093</span>
-<span class="normal">1094</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_tick_plots</span><span class="p">(</span>
+<span class="normal">1094</span>
+<span class="normal">1095</span>
+<span class="normal">1096</span>
+<span class="normal">1097</span>
+<span class="normal">1098</span>
+<span class="normal">1099</span>
+<span class="normal">1100</span>
+<span class="normal">1101</span>
+<span class="normal">1102</span>
+<span class="normal">1103</span>
+<span class="normal">1104</span>
+<span class="normal">1105</span>
+<span class="normal">1106</span>
+<span class="normal">1107</span>
+<span class="normal">1108</span>
+<span class="normal">1109</span>
+<span class="normal">1110</span>
+<span class="normal">1111</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">alt_tick_plots</span><span class="p">(</span>
     <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">list_vars</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">save</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -5047,7 +5392,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
 
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">ch</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -5060,7 +5405,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
 
 
 <h2 id="bs_python_utils.bs_altair.plot_parameterized_estimates" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">plot_parameterized_estimates</span><span class="p">(</span><span class="n">parameter_name</span><span class="p">,</span> <span class="n">parameter_values</span><span class="p">,</span> <span class="n">coeff_names</span><span class="p">,</span> <span class="n">true_values</span><span class="p">,</span> <span class="n">estimate_names</span><span class="p">,</span> <span class="n">estimates</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">plot_parameterized_estimates</span><span class="p">(</span><span class="n">parameter_name</span><span class="p">,</span> <span class="n">parameter_values</span><span class="p">,</span> <span class="n">coeff_names</span><span class="p">,</span> <span class="n">true_values</span><span class="p">,</span> <span class="n">estimate_names</span><span class="p">,</span> <span class="n">estimates</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.plot_parameterized_estimates" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -5099,7 +5444,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
         <tr>
           <td><code>parameter_values</code></td>
           <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+                <code><span title="numpy.ndarray">ndarray</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -5127,7 +5472,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
         <tr>
           <td><code>true_values</code></td>
           <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+                <code><span title="numpy.ndarray">ndarray</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -5155,7 +5500,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
         <tr>
           <td><code>estimates</code></td>
           <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+                <code><span title="numpy.ndarray">ndarray</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -5210,7 +5555,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -5223,16 +5568,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">768</span>
-<span class="normal">769</span>
-<span class="normal">770</span>
-<span class="normal">771</span>
-<span class="normal">772</span>
-<span class="normal">773</span>
-<span class="normal">774</span>
-<span class="normal">775</span>
-<span class="normal">776</span>
-<span class="normal">777</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">777</span>
 <span class="normal">778</span>
 <span class="normal">779</span>
 <span class="normal">780</span>
@@ -5322,7 +5658,16 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
 <span class="normal">864</span>
 <span class="normal">865</span>
 <span class="normal">866</span>
-<span class="normal">867</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">plot_parameterized_estimates</span><span class="p">(</span>
+<span class="normal">867</span>
+<span class="normal">868</span>
+<span class="normal">869</span>
+<span class="normal">870</span>
+<span class="normal">871</span>
+<span class="normal">872</span>
+<span class="normal">873</span>
+<span class="normal">874</span>
+<span class="normal">875</span>
+<span class="normal">876</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">plot_parameterized_estimates</span><span class="p">(</span>
     <span class="n">parameter_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">parameter_values</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">coeff_names</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
@@ -5421,7 +5766,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
 
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">ch</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -5434,7 +5779,7 @@ that is: facets by <code>str_g</code>, with densities conditional on <code>str_f
 
 
 <h2 id="bs_python_utils.bs_altair.plot_true_sim2_facets" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">plot_true_sim2_facets</span><span class="p">(</span><span class="n">parameter_name</span><span class="p">,</span> <span class="n">parameter_values</span><span class="p">,</span> <span class="n">stat_names</span><span class="p">,</span> <span class="n">stat_true</span><span class="p">,</span> <span class="n">stat_sim1</span><span class="p">,</span> <span class="n">stat_sim2</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">stat_title</span><span class="o">=</span><span class="s1">&#39;Statistic&#39;</span><span class="p">,</span> <span class="n">subtitle</span><span class="o">=</span><span class="s1">&#39;True vs estimated&#39;</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">plot_true_sim2_facets</span><span class="p">(</span><span class="n">parameter_name</span><span class="p">,</span> <span class="n">parameter_values</span><span class="p">,</span> <span class="n">stat_names</span><span class="p">,</span> <span class="n">stat_true</span><span class="p">,</span> <span class="n">stat_sim1</span><span class="p">,</span> <span class="n">stat_sim2</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">stat_title</span><span class="o">=</span><span class="s1">&#39;Statistic&#39;</span><span class="p">,</span> <span class="n">subtitle</span><span class="o">=</span><span class="s1">&#39;True vs estimated&#39;</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.plot_true_sim2_facets" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -5474,7 +5819,7 @@ one facet per coefficient</p>
         <tr>
           <td><code>parameter_values</code></td>
           <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+                <code><span title="numpy.ndarray">ndarray</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -5502,7 +5847,7 @@ one facet per coefficient</p>
         <tr>
           <td><code>stat_true</code></td>
           <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+                <code><span title="numpy.ndarray">ndarray</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -5516,7 +5861,7 @@ one facet per coefficient</p>
         <tr>
           <td><code>stat_sim1</code></td>
           <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+                <code><span title="numpy.ndarray">ndarray</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -5530,7 +5875,7 @@ one facet per coefficient</p>
         <tr>
           <td><code>stat_sim2</code></td>
           <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+                <code><span title="numpy.ndarray">ndarray</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -5627,7 +5972,7 @@ one facet per coefficient</p>
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -5640,20 +5985,7 @@ one facet per coefficient</p>
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 966</span>
-<span class="normal"> 967</span>
-<span class="normal"> 968</span>
-<span class="normal"> 969</span>
-<span class="normal"> 970</span>
-<span class="normal"> 971</span>
-<span class="normal"> 972</span>
-<span class="normal"> 973</span>
-<span class="normal"> 974</span>
-<span class="normal"> 975</span>
-<span class="normal"> 976</span>
-<span class="normal"> 977</span>
-<span class="normal"> 978</span>
-<span class="normal"> 979</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 979</span>
 <span class="normal"> 980</span>
 <span class="normal"> 981</span>
 <span class="normal"> 982</span>
@@ -5737,7 +6069,24 @@ one facet per coefficient</p>
 <span class="normal">1060</span>
 <span class="normal">1061</span>
 <span class="normal">1062</span>
-<span class="normal">1063</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">plot_true_sim2_facets</span><span class="p">(</span>
+<span class="normal">1063</span>
+<span class="normal">1064</span>
+<span class="normal">1065</span>
+<span class="normal">1066</span>
+<span class="normal">1067</span>
+<span class="normal">1068</span>
+<span class="normal">1069</span>
+<span class="normal">1070</span>
+<span class="normal">1071</span>
+<span class="normal">1072</span>
+<span class="normal">1073</span>
+<span class="normal">1074</span>
+<span class="normal">1075</span>
+<span class="normal">1076</span>
+<span class="normal">1077</span>
+<span class="normal">1078</span>
+<span class="normal">1079</span>
+<span class="normal">1080</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">plot_true_sim2_facets</span><span class="p">(</span>
     <span class="n">parameter_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">parameter_values</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">stat_names</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
@@ -5827,14 +6176,18 @@ one facet per coefficient</p>
                 <span class="n">sort</span><span class="o">=</span><span class="n">sub_order</span><span class="p">,</span>
                 <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">sub_order</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">colors</span><span class="p">),</span>
             <span class="p">),</span>
-            <span class="n">facet</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">stat_title</span><span class="si">}</span><span class="s2">:N&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">stat_names</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">ncols</span><span class="p">),</span>
+            <span class="n">facet</span><span class="o">=</span><span class="p">(</span>
+                <span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">stat_title</span><span class="si">}</span><span class="s2">:N&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">stat_names</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">ncols</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">ncols</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="k">else</span> <span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">stat_title</span><span class="si">}</span><span class="s2">:N&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">stat_names</span><span class="p">)</span>
+            <span class="p">),</span>
         <span class="p">)</span>
         <span class="o">.</span><span class="n">resolve_scale</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;independent&quot;</span><span class="p">)</span>
     <span class="p">)</span>
 
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">ch</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -5847,7 +6200,7 @@ one facet per coefficient</p>
 
 
 <h2 id="bs_python_utils.bs_altair.plot_true_sim_facets" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">plot_true_sim_facets</span><span class="p">(</span><span class="n">parameter_name</span><span class="p">,</span> <span class="n">parameter_values</span><span class="p">,</span> <span class="n">stat_names</span><span class="p">,</span> <span class="n">stat_true</span><span class="p">,</span> <span class="n">stat_sim</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">stat_title</span><span class="o">=</span><span class="s1">&#39;Statistic&#39;</span><span class="p">,</span> <span class="n">subtitle</span><span class="o">=</span><span class="s1">&#39;True vs estimated&#39;</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">plot_true_sim_facets</span><span class="p">(</span><span class="n">parameter_name</span><span class="p">,</span> <span class="n">parameter_values</span><span class="p">,</span> <span class="n">stat_names</span><span class="p">,</span> <span class="n">stat_true</span><span class="p">,</span> <span class="n">stat_sim</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">stat_title</span><span class="o">=</span><span class="s1">&#39;Statistic&#39;</span><span class="p">,</span> <span class="n">subtitle</span><span class="o">=</span><span class="s1">&#39;True vs estimated&#39;</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_altair.plot_true_sim_facets" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -5886,7 +6239,7 @@ one facet per coefficient</p>
         <tr>
           <td><code>parameter_values</code></td>
           <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+                <code><span title="numpy.ndarray">ndarray</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -5914,7 +6267,7 @@ one facet per coefficient</p>
         <tr>
           <td><code>stat_true</code></td>
           <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+                <code><span title="numpy.ndarray">ndarray</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -5928,7 +6281,7 @@ one facet per coefficient</p>
         <tr>
           <td><code>stat_sim</code></td>
           <td>
-                <code><span title="numpy">np</span>.<span title="numpy.ndarray">ndarray</span></code>
+                <code><span title="numpy.ndarray">ndarray</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -6025,7 +6378,7 @@ one facet per coefficient</p>
     <tbody>
         <tr>
           <td>
-                <code><span title="altair">alt</span>.<span title="altair.Chart">Chart</span></code>
+                <code><span title="altair.Chart">Chart</span></code>
           </td>
           <td>
             <div class="doc-md-description">
@@ -6038,16 +6391,7 @@ one facet per coefficient</p>
 
           <details class="quote">
             <summary>Source code in <code>bs_python_utils/bs_altair.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">870</span>
-<span class="normal">871</span>
-<span class="normal">872</span>
-<span class="normal">873</span>
-<span class="normal">874</span>
-<span class="normal">875</span>
-<span class="normal">876</span>
-<span class="normal">877</span>
-<span class="normal">878</span>
-<span class="normal">879</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">879</span>
 <span class="normal">880</span>
 <span class="normal">881</span>
 <span class="normal">882</span>
@@ -6131,7 +6475,20 @@ one facet per coefficient</p>
 <span class="normal">960</span>
 <span class="normal">961</span>
 <span class="normal">962</span>
-<span class="normal">963</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">plot_true_sim_facets</span><span class="p">(</span>
+<span class="normal">963</span>
+<span class="normal">964</span>
+<span class="normal">965</span>
+<span class="normal">966</span>
+<span class="normal">967</span>
+<span class="normal">968</span>
+<span class="normal">969</span>
+<span class="normal">970</span>
+<span class="normal">971</span>
+<span class="normal">972</span>
+<span class="normal">973</span>
+<span class="normal">974</span>
+<span class="normal">975</span>
+<span class="normal">976</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">plot_true_sim_facets</span><span class="p">(</span>
     <span class="n">parameter_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">parameter_values</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">stat_names</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
@@ -6217,14 +6574,18 @@ one facet per coefficient</p>
                 <span class="n">sort</span><span class="o">=</span><span class="n">sub_order</span><span class="p">,</span>
                 <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">sub_order</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">colors</span><span class="p">),</span>
             <span class="p">),</span>
-            <span class="n">facet</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">stat_title</span><span class="si">}</span><span class="s2">:N&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">stat_names</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">ncols</span><span class="p">),</span>
+            <span class="n">facet</span><span class="o">=</span><span class="p">(</span>
+                <span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">stat_title</span><span class="si">}</span><span class="s2">:N&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">stat_names</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">ncols</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">ncols</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="k">else</span> <span class="n">alt</span><span class="o">.</span><span class="n">Facet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">stat_title</span><span class="si">}</span><span class="s2">:N&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">stat_names</span><span class="p">)</span>
+            <span class="p">),</span>
         <span class="p">)</span>
         <span class="o">.</span><span class="n">resolve_scale</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;independent&quot;</span><span class="p">)</span>
     <span class="p">)</span>
 
     <span class="n">_maybe_save</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">save</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">ch</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -6243,52 +6604,24 @@ one facet per coefficient</p>
 
 
 
+
+
+
+
+
+
+
                 
               </article>
             </div>
           
           
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
       </main>
       
         <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
-      
-        
-        <a href="bs_seaborn.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Seaborn" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Seaborn
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="streamlit_utils.html" class="md-footer__link md-footer__link--next" aria-label="Next: Utilities" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Utilities
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -6310,20 +6643,24 @@ one facet per coefficient</p>
   
     
     
+    
+    
       
       
     
     <a href="https://github.com/bsalanie/bs-python-utils" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
     </a>
   
+    
+    
     
     
       
       
     
     <a href="https://pypi.org/project/bs-python-utils" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg>
     </a>
   
 </div>
@@ -6337,10 +6674,11 @@ one facet per coefficient</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["search.highlight", "navigation.instant", "navigation.expand", "navigation.tabs", "navigation.indexed"], "search": "assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["search.highlight", "navigation.instant", "navigation.expand", "navigation.tabs", "navigation.indexed"], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      <script src="assets/javascripts/bundle.e1c3ead8.min.js"></script>
       
         <script src="javascripts/mathjax.js"></script>
       
@@ -6348,7 +6686,6 @@ one facet per coefficient</p>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-    
     
   </body>
 </html>
