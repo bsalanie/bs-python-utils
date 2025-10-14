@@ -2,107 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/index.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/Timer.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/bivariate_quantiles.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/bs_altair.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/bs_logging.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/bs_mathstr.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/bs_mem.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/bs_opt.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/bs_plots.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/bs_seaborn.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/bs_sparse_gaussian.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/bsmplutils.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/bsnputils.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/bssputils.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/bsstats.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/bsutils.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/chebyshev.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/distance_covariances.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/pandas_utils.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/sklearn_utils.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://bsalanie.github.io/bs-python-utils/streamlit_utils.html</loc>
-         <lastmod>2024-06-18</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-10-14</lastmod>
     </url>
 </urlset>
