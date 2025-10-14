@@ -1,6 +1,7 @@
 from math import exp, isclose, sqrt
 
 import numpy as np
+import pytest
 
 from bs_python_utils.bsnputils import FloatOrArray, bsgrid
 from bs_python_utils.bsutils import bs_error_abort
@@ -42,7 +43,7 @@ def fun2d(xy: np.ndarray) -> np.ndarray | None:
         return xy[:, 0] * np.exp(-xy[:, 1])
     else:
         bs_error_abort(f"xy cannot have {xy.ndim} dimensions.")
-        return
+        return None
 
 
 def fun2d_2d(xy: np.ndarray, zt: np.ndarray) -> np.ndarray:
@@ -159,6 +160,18 @@ def test_cheb_interp_2d():
     assert np.allclose(c3, c)
     assert np.allclose(f_vals2, f_vals_th, atol=1e-3)
 
+    # scalar evaluation returns a float
+    point = np.array([0.25, 0.75])
+    val_scalar, _ = cheb_interp_2d(point, rectangle, fun=fun2d, degree=deg)
+    assert isinstance(val_scalar, float)
+    assert isclose(val_scalar, fun2d(point))
+
+    # integer dtype inputs should still be converted safely
+    xy_int = np.array([[0, 0], [1, 1]], dtype=int)
+    vals_from_int, _ = cheb_interp_2d(xy_int, rectangle, fun=fun2d, degree=deg)
+    expected = fun2d(xy_int.astype(float))
+    assert np.allclose(vals_from_int, expected)
+
 
 def test_interp_2d_from_nodes():
     deg, x0, x1, y0, y1 = 16, 0.0, 1.0, 0.0, 1.0
@@ -198,6 +211,15 @@ def test_cheb_integrate_from_nodes_2d():
     val_integral = cheb_integrate_from_nodes_2d(vals_at_nodes, weights)
     val_integral_th = 1.0 / 2.0 * (1.0 - exp(-1.0))
     assert isclose(val_integral, val_integral_th, abs_tol=1e-3)
+
+
+def test_cheb_get_coefficients_2d_invalid_shape():
+    deg = 4
+    interval = Interval(0.0, 1.0)
+    rectangle = Rectangle(interval, interval)
+    bad_vals = np.arange(deg * deg + 1, dtype=float)
+    with pytest.raises(SystemExit):
+        cheb_get_coefficients_2d(rectangle, deg, vals_at_nodes=bad_vals)
 
 
 def test_cheb_integrate_from_nodes_4d():

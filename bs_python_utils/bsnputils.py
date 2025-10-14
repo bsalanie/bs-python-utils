@@ -29,14 +29,13 @@ Note:
 * `make_lower_tri`: make a square matrix lower triangular, if possible
 """
 
-import sys
-from math import cos, exp, floor, log, pi, sqrt
+from math import cos, exp, log, pi, sqrt
 from typing import Any, Callable, Iterable, Union, cast
 
 import numpy as np
 from numpy.polynomial import Polynomial
 
-from bs_python_utils.bsutils import bs_error_abort, print_stars
+from bs_python_utils.bsutils import bs_error_abort
 
 # some useful types
 TwoArrays = tuple[np.ndarray, np.ndarray]
@@ -86,11 +85,11 @@ def check_matrix(x: Any, fun_name: str | None = None) -> tuple[int, int]:
     """
     fun_str = ["" if fun_name is None else fun_name + ":"]
     if not isinstance(x, np.ndarray):
-        bs_error_abort(f"{fun_str} Xx should be a Numpy array")
+        raise TypeError(f"{fun_str} Xx should be a Numpy array")
     x = cast(np.ndarray, x)
     ndims_x = x.ndim
     if ndims_x != 2:
-        bs_error_abort(f"{fun_str} x should have two dimensions, not {ndims_x}")
+        raise ValueError(f"{fun_str} x should have two dimensions, not {ndims_x}")
     return cast(tuple[int, int], x.shape)
 
 
@@ -107,11 +106,13 @@ def check_vector_or_matrix(x: Any, fun_name: str | None = None) -> int:
     """
     fun_str = ["" if fun_name is None else fun_name + ":"]
     if not isinstance(x, np.ndarray):
-        bs_error_abort(f"{fun_str} X should be a Numpy array")
+        raise TypeError(f"{fun_str} X should be a Numpy array")
     x = cast(np.ndarray, x)
     ndims_x = x.ndim
     if ndims_x != 1 and ndims_x != 2:
-        bs_error_abort(f"{fun_str} x should have at most two dimensions, not {ndims_x}")
+        raise ValueError(
+            f"{fun_str} x should have at most two dimensions, not {ndims_x}"
+        )
     return cast(int, ndims_x)
 
 
@@ -128,14 +129,13 @@ def check_square(A: Any, fun_name: str | None = None) -> int:
     """
     fun_str = ["" if fun_name is None else fun_name + ":"]
     if not isinstance(A, np.ndarray):
-        bs_error_abort(f"{fun_str} A should be a Numpy array")
+        raise TypeError(f"{fun_str} A should be a Numpy array")
     A = cast(np.ndarray, A)
-    if A.ndim == 2:
-        n, nv = A.shape
-        if nv != n:
-            bs_error_abort(f"{fun_str} The matrix A should be square, not {A.shape}")
-    else:
-        bs_error_abort(f"{fun_name} A should have  two dimensions, not {A.ndim}")
+    if A.ndim != 2:
+        raise ValueError(f"{fun_name} A should have two dimensions, not {A.ndim}")
+    n, nv = A.shape
+    if nv != n:
+        raise ValueError(f"{fun_str} The matrix A should be square, not {A.shape}")
     return cast(int, n)
 
 
@@ -152,12 +152,11 @@ def check_tensor(x: Any, n_dims: int, fun_name: str | None = None) -> tuple[int,
     """
     fun_str = ["" if fun_name is None else fun_name + ":"]
     if not isinstance(x, np.ndarray):
-        bs_error_abort(f"{fun_str} x should be a Numpy array")
+        raise TypeError(f"{fun_str} x should be a Numpy array")
     x = cast(np.ndarray, x)
     ndims_x = x.ndim
     if ndims_x != n_dims:
-        bs_error_abort(f"{fun_str} x should have {n_dims} dimensions, not {ndims_x}")
-        return (0,)  # for mypy
+        raise ValueError(f"{fun_str} x should have {n_dims} dimensions, not {ndims_x}")
     return cast(tuple[int, ...], x.shape)
 
 
@@ -219,14 +218,10 @@ def ecdf(x: np.ndarray) -> np.ndarray:
 
     """
     if x.ndim != 1:
-        print_stars(f"ecdf: x should have 1 dimension, not {x.ndim}")
-        sys.exit()
-    nx = x.size
-    order_x = np.argsort(x)
-    ecdf_val = np.zeros(nx)
-    for i_order, n_order in enumerate(order_x):
-        ecdf_val[n_order] = (i_order + 1.0) / nx
-    return ecdf_val
+        raise ValueError(f"ecdf: x should have 1 dimension, not {x.ndim}")
+
+    sx = np.sort(x)
+    return (np.searchsorted(sx, x) + 1) / x.size
 
 
 def inv_ecdf(v: np.ndarray, q: np.ndarray | float) -> np.ndarray | float:
@@ -248,18 +243,20 @@ def inv_ecdf(v: np.ndarray, q: np.ndarray | float) -> np.ndarray | float:
     sorted_v[1 : (nv + 1)] = np.sort(v)
     sorted_v[0] = 2.0 * sorted_v[1] - sorted_v[2]  # added to extend for q < 1/nv
     sorted_v[nv + 1] = sorted_v[nv]  # added to extend for q = 1
+    qprod = q * nv
+    inds_q = np.floor(qprod).astype(int)
+    q_left, q_right = sorted_v[inds_q], sorted_v[inds_q + 1]
+    # print(f"{q_left=}, {q_right=}")
+    rest_q = qprod - inds_q
+    # print(f"{rest_q=}")
+    vals_q = q_left + rest_q * (q_right - q_left)
     if isinstance(q, float):
-        q_floor = np.array([floor(nv * q)])
-        val_q = sorted_v[q_floor] + (nv * q - q_floor) * (
-            sorted_v[q_floor + 1] - sorted_v[q_floor]
-        )
-        return cast(float, val_q)
+        return cast(float, vals_q)
     elif isinstance(q, np.ndarray):
-        q_floor = np.floor(nv * q).astype(int)
-        vals_q = sorted_v[q_floor] + (nv * q - q_floor) * (
-            sorted_v[q_floor + 1] - sorted_v[q_floor]
-        )
         return cast(np.ndarray, vals_q)
+    else:
+        bs_error_abort(f"inv_ecdf: q has unexpected type {type(q)}")
+        return -np.inf  # for mypy
 
 
 def nprepeat_col(v: np.ndarray, n: int) -> np.ndarray:
@@ -320,7 +317,7 @@ def rice_stderr(
     n = check_vector(x)
     ny = check_vector(y)
     if ny != n:
-        bs_error_abort("x and y should have the same size")
+        raise ValueError("x and y should have the same size")
 
     if not is_sorted:
         # need to sort by increasing value of x
@@ -378,7 +375,7 @@ def nplog(
         $\\ln(a)$  $C^2$-extended below `eps`, perhaps with derivatives
     """
     if deriv not in [0, 1, 2]:
-        bs_error_abort(f"deriv can only be 0, 1, or 2; not {deriv}")
+        raise ValueError(f"deriv can only be 0, 1, or 2; not {deriv}")
     if np.min(arr) > eps:
         if deriv == 0:
             return cast(np.ndarray, np.log(arr))
@@ -438,7 +435,7 @@ def npexp(
         perhaps with derivatives
     """
     if deriv not in [0, 1, 2]:
-        bs_error_abort(f"deriv can only be 0, 1, or 2; not {deriv}")
+        raise ValueError(f"deriv can only be 0, 1, or 2; not {deriv}")
     min_arr, max_arr = np.min(arr), np.max(arr)
     if max_arr <= bigx and min_arr >= lowx:
         exparr = np.exp(arr)
@@ -535,7 +532,7 @@ def nppow(
     if isinstance(b, float):
         mina = np.min(a)
         if mina < 0.0:
-            bs_error_abort("All elements of a must be positive!")
+            raise ValueError("All elements of a must be positive!")
 
     if isinstance(b, (int, float)):
         a_pow_b = a**b
@@ -556,7 +553,7 @@ def nppow(
         return cast(SixArrays, (a_pow_b, *derivs1, *derivs2))
     else:
         if a.shape != b.shape:
-            bs_error_abort("b is not a number or an array of the same shape as a!")
+            raise ValueError("b is not a number or an array of the same shape as a!")
         return _nppow_arrays(a, b, deriv)
 
 
@@ -609,45 +606,24 @@ def nppad2_end_zeros(mat: np.ndarray, m: int, n: int) -> np.ndarray:
         padded array, where needed
     """
     nrows, ncols = check_matrix(mat)
-    max_rows = max(m, nrows)
-    max_cols = max(n, ncols)
-    if nrows < max_rows and ncols < max_cols:  # pad both dimensions
-        pmat = np.zeros((m, n))
-        pmat[:nrows, :ncols] = mat
-        return pmat
-    elif nrows < max_rows:  # pad rows
-        pmat = np.zeros((m, ncols))
-        pmat[:nrows, :] = mat
-        return pmat
-    elif ncols < max_cols:  # pad columns
-        pmat = np.zeros((nrows, n))
-        pmat[:, :ncols] = mat
-        return pmat
-    else:  # no need for padding
+    row_pad = max(0, m - nrows)
+    col_pad = max(0, n - ncols)
+
+    if row_pad > 0 or col_pad > 0:
+        return np.pad(mat, ((0, row_pad), (0, col_pad)), "constant")
+    else:
         return mat
 
 
 def bsgrid(v: np.ndarray, w: np.ndarray) -> np.ndarray:
-    """
-    make a two-dimensional matrix of all pairs of elements of the vectors `v` and `w`
+    """Return the lexicographic Cartesian product of two vectors.
 
     Args:
-        v: basis vector, size m
-        w: basis vector, size n
+        v: First vector (length ``m``).
+        w: Second vector (length ``n``).
 
     Returns:
-        an array of shape `(m n,2)`.
-
-    Examples:
-        >>> v = np.array([1,2,3])
-        >>> w = np.array([4,5])
-        >>> bsgrid(v, w)
-        array([[1, 4],
-        [1, 5],
-        [2, 4],
-        [2, 5],
-        [3, 4],
-        [3, 5]])
+        An array of shape ``(m * n, 2)`` containing all ordered pairs ``(v_i, w_j)``.
     """
     m = check_vector(v)
     n = check_vector(w)
@@ -683,10 +659,9 @@ def make_lexico_grid(arr: np.ndarray) -> np.ndarray:
             n2 = np.tile(arr[:, 2], nr2)
             return np.column_stack((n0, n1, n2))
         else:
-            bs_error_abort(
+            raise ValueError(
                 f"at this stage, the number of columns must be 3 or less, not {nc}..."
             )
-            return arr  # for mypy
 
 
 def bs_sqrt_pdmatrix(m: np.ndarray) -> np.ndarray:
@@ -829,7 +804,7 @@ def npxlogx(
         $a\\ln(a)$  $C^2$-extended  below `eps`, perhaps with derivatives
     """
     if deriv not in [0, 1, 2]:
-        bs_error_abort(f"deriv must be 0, 1, or 2; not {deriv}")
+        raise ValueError(f"deriv must be 0, 1, or 2; not {deriv}")
     if np.min(arr) > eps:
         return cast(np.ndarray, arr * np.log(arr))
     else:
@@ -902,7 +877,7 @@ def gauher(n: int) -> TwoArrays:
             if abs(z - z1) <= EPS:
                 break
         if _n_iter >= MAXIT:
-            bs_error_abort(f"too many iterations: {_n_iter}")
+            raise RuntimeError(f"too many iterations: {_n_iter}")
         x[i] = z
         x[n - 1 - i] = -z
         w[i] = 2.0 / (pp * pp)
@@ -977,9 +952,9 @@ def gaussian_expectation(
         weights /= sqrt(pi)
         n_nodes = n
     elif w is None:
-        bs_error_abort("x is None but w is not")
+        raise ValueError("x is None but w is not")
     elif w.size != x.size:
-        bs_error_abort("x has {x.size} elements and w has {w.size}")
+        raise ValueError("x has {x.size} elements and w has {w.size}")
     else:
         nodes = x * sqrt(2.0)
         weights = w / sqrt(pi)
@@ -1025,9 +1000,9 @@ def legendre_polynomials(
     """
     sx = check_vector(x)
     if a > np.min(x):
-        sys.exit("legendre_polynomials: points below start of interval")
+        raise ValueError("legendre_polynomials: points below start of interval")
     if b < np.max(x):
-        sys.exit("legendre_polynomials: points above end of interval")
+        raise ValueError("legendre_polynomials: points above end of interval")
     p = np.zeros((sx, max_deg + 1))
     x_transf = 2.0 * (x - a) / (b - a) - 1.0
     p[:, 0] = np.ones_like(x)
@@ -1087,7 +1062,7 @@ def print_quantiles(
                 s += f"  {qv[i]: >10.3f}"
             print(f"{s}")
     else:
-        bs_error_abort("v must be  a vector or a list of vectors")
+        raise TypeError("v must be  a vector or a list of vectors")
 
     return cast(np.ndarray, qvals)
 
@@ -1122,7 +1097,7 @@ def set_elements_abovebelow_diagonal(
     elif location == "on_below":
         row_indices, col_indices = np.tril_indices_from(new_matrix, k=0)
     else:
-        bs_error_abort(
+        raise ValueError(
             f"""
         location can only be 'above', 'below', 
         'on_above' or 'on_below', not {location}

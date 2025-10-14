@@ -1,10 +1,12 @@
-""" Some Seaborn plotting utilities:
+"""Some Seaborn plotting utilities:
 
 * `bs_sns_get_legend`: get the `Legend` object of a Seaborn plot
 * `bs_sns_bar_x_byf`: make a bar plot of `x` by `f`
 * `bs_sns_bar_x_byfg`: make a bar plot of `x` by `f` and `g`
 * `bs_sns_plot_density`: basic density plot
-* `bs_sns_density_estimates`: plots the densities of estimates of several coefficients with several methods, superposed by methods and faceted by coefficients.
+* `bs_sns_density_estimates`: plots the densities of estimates of several
+  coefficients with several methods, superposed by methods and faceted by
+  coefficients.
 """
 
 from collections.abc import Callable

@@ -87,7 +87,7 @@ def _make_Zp(Z: np.ndarray, p: int) -> tuple[np.ndarray, int]:
         lenq = len(listq)
         degrees = np.zeros((m, lenq))
         for i in range(m):
-            degrees[i, :] = np.ndarray([x.count(i) for x in listq])
+            degrees[i, :] = np.array([x.count(i) for x in listq])
         for j in range(lenq):
             Zp[:, k] = _powers_Z(Z, degrees[:, j])
             k += 1
@@ -299,7 +299,7 @@ def flexible_reg(
     else:
         try:
             imode = int(mode)
-        except TypeError:
+        except (TypeError, ValueError):
             bs_error_abort(f"does not accept mode={mode}")
         preg, _, _ = proj_Z(Y, X, p=imode, verbose=verbose)
         return preg
@@ -355,16 +355,20 @@ def estimate_pdf(
     MIN_SIZE_NONPAR: int = 200,
     weights: np.ndarray | None = None,
 ) -> np.ndarray:
-    """return an estimate of the conditional densities of `x` at points `values_x` (Silverman rule)
+    """Estimate the (possibly weighted) density of ``x`` at specified points.
+
+    Observations are treated as multivariate when ``x_obs`` has two dimensions. For sufficiently
+    large samples a Gaussian KDE with Silverman bandwidth is used; otherwise a normal
+    approximation (with weighted mean/covariance when ``weights`` are supplied) is returned.
 
     Args:
-        x_obs: an `n`-vector or an `(n, nvars)` matrix of the observed values of `x`
-        x_points: an `m`-vector or an `(m, nvars)` matrix of x values
-        MIN_SIZE_NONPAR: minimum size above which we use kernel density estimators
-        weights: an `n`-vector of weights for the observations, if present
+        x_obs: Observed data, either ``(n,)`` or ``(n, nvars)``.
+        x_points: Evaluation points, either ``(m,)`` or ``(m, nvars)``.
+        MIN_SIZE_NONPAR: Sample-size threshold controlling the nonparametric vs. Gaussian fallback.
+        weights: Optional observation weights (length ``n``).
 
     Returns:
-        the density estimates at `values_x`
+        Array of density estimates at ``x_points``.
     """
     ndims_x = check_vector_or_matrix(x_obs, "estimate_pdf")
     ndims_valx = check_vector_or_matrix(x_points, "estimate_pdf")
@@ -404,15 +408,23 @@ def estimate_pdf(
     else:
         # sample too small, we fit a normal
         if ndims_x == 1:  # univariate
-            mean_x = np.mean(x_obs)
-            var_x = np.var(x_obs)
+            if weights is None:
+                mean_x = np.mean(x_obs)
+                var_x = np.var(x_obs)
+            else:
+                mean_x = np.average(x_obs, weights=weights)
+                var_x = np.average((x_obs - mean_x) ** 2, weights=weights)
             f_x = bs_multivariate_normal_pdf(x_points, mean_x, var_x)
         else:  # multivariate
-            means_x = np.mean(x_obs, 0)
-            cov_mat = np.cov(x_obs.T)
+            if weights is None:
+                means_x = np.mean(x_obs, 0)
+                cov_mat = np.cov(x_obs.T)
+            else:
+                weights = weights / np.sum(weights)
+                means_x = np.average(x_obs, axis=0, weights=weights)
+                centered = x_obs - means_x
+                cov_mat = centered.T @ (centered * weights[:, None])
             f_x = bs_multivariate_normal_pdf(x_points, means_x, cov_mat)
-        if weights is not None:
-            f_x *= weights / np.mean(weights)
     return cast(np.ndarray, f_x)
 
 
@@ -424,35 +436,36 @@ def emcee_draw(
     n_burn_in: int | None = 100,
     seed: int | None = 8754,
 ) -> np.ndarray:
-    """uses MCMC to draw `n_samples` samples from the log pdf with given parameters
+    """Draw samples from a target log-density using ``emcee``.
 
     Args:
-        n_samples: the number of samples to draw
-        log_pdf: the log of the pdf, `log_pdf(x, *params)`;
-            retuns a float from the array for one sample
-        p0: the initial values for the walkers
-        params: a list of parameters
-        n_burn_in: the number of burn-in iterations for MCMC
-        seed: to randomly draw the samples from the walkers
+        n_samples: Number of samples to keep after burn-in.
+        log_pdf: Callable returning the log-density; invoked as ``log_pdf(theta, *params)``.
+        p0: Initial walker states of shape ``(n_walkers, n_dims)``.
+        params: Optional list of extra parameters forwarded to ``log_pdf``.
+        n_burn_in: Number of burn-in iterations prior to collecting samples.
+        seed: Seed for the final random subsampling step.
 
     Returns:
-        an `(n_samples, n_dims)` array of samples.
+        An ``(n_samples, n_dims)`` array of draws selected (without replacement when possible)
+        from the flattened ``emcee`` chain.
 
-    Warning:
-        The `log_pdf` function should return minus infinity
-        outside of the support of the pdf, and `p0` should be contained
-        in that support.
+    Note:
+        ``log_pdf`` should return ``-np.inf`` outside the support, and ``p0`` should lie within
+        that support to ensure the sampler mixes correctly.
     """
     n_walkers, n_dims = p0.shape
     # burn in
-    sampler = EnsembleSampler(n_walkers, n_dims, log_pdf, args=params)
+    sampler = EnsembleSampler(n_walkers, n_dims, log_pdf, args=tuple(params or ()))
     state = sampler.run_mcmc(p0, n_burn_in)
     sampler.reset()
     # generate the samples
     sampler.run_mcmc(state, n_samples)
     samples = sampler.get_chain(flat=True)
+    samples = samples.reshape(-1, n_dims)
     rng = np.random.default_rng(seed)
-    samples = rng.choice(samples, size=n_samples, replace=False)
+    replace = samples.shape[0] < n_samples
+    samples = rng.choice(samples, size=n_samples, replace=replace, axis=0)
     return cast(np.ndarray, samples)
 
 
@@ -471,7 +484,11 @@ def kde_resample(
         an `(n_samples, n_dims)` matrix of draws, and the bandwidth used.
     """
     n_obs, n_dims = check_matrix(data)
-    h_rot = np.std(data) * (n_obs ** (-1 / (n_dims + 4)))
+    spreads = np.std(data, axis=0, ddof=1)
+    h_scale = float(np.mean(spreads))
+    if not np.isfinite(h_scale) or h_scale <= 0.0:
+        h_scale = 1.0
+    h_rot = h_scale * (n_obs ** (-1 / (n_dims + 4)))
     params = {"bandwidth": h_rot * np.logspace(-1, 1, n_bw)}
     grid = GridSearchCV(KernelDensity(), params)
     grid.fit(data)

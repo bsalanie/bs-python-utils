@@ -6,12 +6,15 @@
 
 [![Build status](https://img.shields.io/github/actions/workflow/status/bsalanie/bs-python-utils/main.yml?branch=main)](https://github.com/bsalanie/bs-python-utils/actions/workflows/main.yml?query=branch%3Amain) <!-- [![codecov](https://codecov.io/gh/bsalanie/bs-python-utils/branch/main/graph/badge.svg)](https://codecov.io/gh/bsalanie/bs-python-utils) --> <!-- [![Commit activity](https://img.shields.io/github/commit-activity/m/bsalanie/bs-python-utils)](https://img.shields.io/github/commit-activity/m/bsalanie/bs-python-utils) --> [![License](https://img.shields.io/github/license/bsalanie/bs-python-utils)](https://img.shields.io/github/license/bsalanie/bs-python-utils)
 
-My Python utilities.
+**My Python utilities**.
 
 - **Github repository**: <https://github.com/bsalanie/bs-python-utils/>
 - **Documentation** <https://bsalanie.github.io/bs-python-utils/>
 
 ### Release notes
+
+#### 0.8 (October 14, 2025)
+Switched to `uv` for project management. Used Codex to clean up the code and generate more tests. Added the `examples` subdirectory.
 
 #### 0.7 (June 18, 2024)
 Added `make_lowertri` in `bsnputils`, and some utility code in `bs_plots`.

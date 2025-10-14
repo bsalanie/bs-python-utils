@@ -1,12 +1,17 @@
 """
-Sets up sparse integration over a Gaussian, given text files that contain rescaled Gauss-Hermite nodes and weights.
+Sets up sparse integration over a Gaussian, given text files that contain
+rescaled Gauss-Hermite nodes and weights.
 
-These files must be named `GHsparseGrid{ndims}prec{iprec}.txt`, where `ndims` is the number of dimensions of integration 
-and `iprec` is a precision level that must be 9, 13, or (most precise) 17. The file must have `(ndims+1)` columns, 
+These files must be named `GHsparseGrid{ndims}prec{iprec}.txt`, where
+`ndims` is the number of dimensions of integration
+and `iprec` is a precision level that must be 9, 13, or (most precise) 17.
+The file must have `(ndims+1)` columns,
 with the weights in the first column.
 
-The nodes and weights are rescaled so that `f(nodes) @ weights` approximates `Ef(X)` for `X` an `N(0,I)` variable.
+The nodes and weights are rescaled so that `f(nodes) @ weights` approximates
+`Ef(X)` for `X` an `N(0,I)` variable.
 """
+
 from pathlib import Path
 
 import numpy as np
@@ -19,7 +24,8 @@ def setup_sparse_gaussian(
     ndims: int, iprec: int, GHsparsedir: str | None = None
 ) -> TwoArrays:
     """
-    Get nodes and weights for sparse integration Ef(X) with X = N(0,1) in `ndims` dimensions.
+    Get nodes and weights for sparse integration Ef(X) with X = N(0,1) in
+    `ndims` dimensions.
 
     Examples:
         >>> nodes, weights = setup_sparse_gaussian(mdims, iprec)
@@ -32,7 +38,8 @@ def setup_sparse_gaussian(
 
     Returns:
         a pair of  arrays `nodes` and `weights`;
-        `nodes` has `ndims-1` columns and `weights` is a vector with the same number of rows.
+        `nodes` has `ndims-1` columns and `weights` is a vector with the same
+            number of rows.
     """
     GHdir = (
         Path.home() / "Dropbox" / "GHsparseGrids"

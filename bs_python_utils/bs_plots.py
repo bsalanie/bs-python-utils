@@ -1,4 +1,4 @@
-""" General plotting utilities.
+"""General plotting utilities.
 
 * `set_axis`: set the axis limits, with a margin
 * `drawArrow_2dim`: draw an arrow between two points in a 2D Matplotlib plot.

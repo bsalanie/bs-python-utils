@@ -2,7 +2,8 @@
 A Matplotlib utility program:
 
 * `ax_text`: annotate an `ax` with text.
-* `bs_mpl_plot_dcm_fit`: generates a boxplot of the predicted probas for a discrete choice model
+* `bs_mpl_plot_dcm_fit`: generates a boxplot of the predicted probas for a
+  discrete choice model
 """
 
 import matplotlib.axes as axes
@@ -85,7 +86,7 @@ def bs_mpl_plot_dcm_fit(
             # ax_k.xaxis.set_major_formatter(
             #     ticker.FixedFormatter([f"y = {k+1}" for k in range(n_vals_y)])
             # )
-            ax_k.set_xlabel(f"y = {k+1}")
+            ax_k.set_xlabel(f"y = {k + 1}")
             ax_k.grid(axis="y", alpha=0.5)
             k += 1
             if k == n_vals_y:

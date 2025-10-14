@@ -3,7 +3,7 @@
 * `bspd_print`: pretty-prints a data frame
 * `bspd_cross_products`: generates cross-products of variables
 * `bspd_statsdf`: makes a dataframe with columns from an array specified column names.
-* `bspd_prepareplot`: prepares a dataframe for plotting (very specific). 
+* `bspd_prepareplot`: prepares a dataframe for plotting (very specific).
 """
 
 from itertools import product
@@ -152,7 +152,7 @@ def bspd_statsdf(
         big_names = _list_str(col_names[0], suffix="_1")
         for i in range(1, n_T):
             big_T = np.column_stack((big_T, T[i]))
-            big_names.extend(_list_str(col_names[i], suffix=f"_{i+1}"))
+            big_names.extend(_list_str(col_names[i], suffix=f"_{i + 1}"))
 
         df = pd.DataFrame(big_T, columns=big_names, copy=True)
 

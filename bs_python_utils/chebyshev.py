@@ -1,11 +1,11 @@
-""" Chebyshev interpolation and integration in 1, 2, and 4 dimensions
+"""Chebyshev interpolation and integration in 1, 2, and 4 dimensions
 
 Note:
     if the math looks strange in the documentation, just reload the page.
 
 * `Interval`, `Rectangle`: basic classes to define the integration domain
 * `move_from1m1, move_to1m1`: rescale to and from the $[-1,1]$ interval
-* `cheb_get_nodes_1d`: get Chebyshev nodes and weights on an interval 
+* `cheb_get_nodes_1d`: get Chebyshev nodes and weights on an interval
 * `cheb_eval_fun_at_nodes_1d`: evaluates a function at is nodes on an interval
 * `cheb_get_coefficients_1d`: get the Chebyshev coefficients for a function
 * `cheb_interp_1d`: interpolate a function on an interval given its definition or its coefficients
@@ -20,6 +20,7 @@ Note:
 * `cheb_interp_2d_from_nodes`: interpolate a function on a rectangle given its values at the nodes
 * `cheb_integrate_from_nodes_4d`: integrate over a product of rectangles given values at the tensor products of the 2d nodes.
 """
+
 from dataclasses import dataclass
 from math import sqrt
 from typing import cast
@@ -90,21 +91,25 @@ def move_to1m1(x: FloatOrArray, interval: Interval) -> FloatOrArray:
     return cast(FloatOrArray, (2.0 * x - (x0 + x1)) / (x1 - x0))
 
 
-def cheb_get_nodes_1d(interval: Interval, degree: int) -> TwoArrays:
+def cheb_get_nodes_1d(interval: Interval, n_nodes: int) -> TwoArrays:
     """get the Chebyshev nodes and weights on the interval $[x0, x1]$
 
     Args:
         interval: the Interval $[x_0, x_1]$
-        degree: the degree of the highest Chebyshev polynomial
+        n_nodes: number of Chebyshev nodes used for quadrature
 
     Returns:
-        two `degree`-vectors of Chebyshev nodes and weights on the interval $[x_0, x_1]$
-        so that `g(nodes) @ weights` approximates the unweighted integral of $g(x)$ on $[x_0,x_1]$
+        two `n_nodes`-vectors of Chebyshev nodes and weights on the interval $[x_0, x_1]`
+        so that `g(nodes) @ weights` approximates the unweighted integral of $g(x)$ on $[x_0,x_1]`
     """
-    nodes1m1, weights1m1 = ncheb.chebgauss(degree)  # om=n [-1, 1]
+    if n_nodes < 1:
+        bs_error_abort("n_nodes must be a positive integer")
+    nodes1m1, weights1m1 = ncheb.chebgauss(n_nodes)  # on [-1, 1]
     x0, x1 = interval.bounds()
     nodes = move_from1m1(nodes1m1, interval)
-    weights = (x1 - x0) * weights1m1 * np.sqrt(1.0 - nodes1m1 * nodes1m1) / 2.0
+    # guard against numerical noise slightly outside [-1, 1]
+    sqrt_term = np.sqrt(np.clip(1.0 - nodes1m1 * nodes1m1, a_min=0.0, a_max=None))
+    weights = (x1 - x0) * weights1m1 * sqrt_term / 2.0
     return cast(np.ndarray, nodes), cast(np.ndarray, weights)
 
 
@@ -120,7 +125,7 @@ def cheb_eval_fun_at_nodes_1d(
         fun: the function to evaluate on an interval
         nodes: the Chebyshev nodes on that interval, if precomputed
         interval: the Interval
-        degree: the degree of the Chebyshev  expansion
+        degree: number of Chebyshev nodes used for evaluation
 
     Notes:
         `interval`, `degree` are required if `nodes` is not provided
@@ -174,7 +179,7 @@ def cheb_interp_1d(
         interval: the Interval
         c: the Chebyshev coefficients for `fun`, if already known; otherwise we compute them
         fun: the function to interpolate
-        degree: the degree of the Chebyshev expansion
+        degree: number of Chebyshev nodes per dimension (required if `c` is not provided)
 
     Notes:
         `fun` and `degree` are required if `c` is not provided
@@ -289,19 +294,19 @@ def cheb_integrate_from_nodes_1d(
     return cast(float, weights @ vals_at_nodes)
 
 
-def cheb_get_nodes_2d(rectangle: Rectangle, degree: int) -> TwoArrays:
+def cheb_get_nodes_2d(rectangle: Rectangle, n_nodes: int) -> TwoArrays:
     """get the Chebyshev nodes and weights on a rectangle
 
     Args:
         rectangle: the Rectangle
-        degree: the degree of the highest Chebyshev polynomial in each dimension
+        n_nodes: number of Chebyshev nodes per dimension
 
     Returns:
-        two $(\text{degree}^2, 2)$`-matrices of Chebyshev nodes and weights
+        two $(\text{n_nodes}^2, 2)$-matrices of Chebyshev nodes and weights
         on the rectangle $[x0, x1]\times [y0, y1]$
     """
-    nodes1d_x, weights1d_x = cheb_get_nodes_1d(rectangle.x_interval, degree)
-    nodes1d_y, weights1d_y = cheb_get_nodes_1d(rectangle.y_interval, degree)
+    nodes1d_x, weights1d_x = cheb_get_nodes_1d(rectangle.x_interval, n_nodes)
+    nodes1d_y, weights1d_y = cheb_get_nodes_1d(rectangle.y_interval, n_nodes)
     nodes2d = bsgrid(nodes1d_x, nodes1d_y)
     weights2d = bsgrid(weights1d_x, weights1d_y)
     return nodes2d, weights2d[:, 0] * weights2d[:, 1]
@@ -319,7 +324,7 @@ def cheb_eval_fun_at_nodes_2d(
         fun: the function to evaluate on the rectangle
         nodes: the Chebyshev nodes on that rectangle, if precomputed
         rectangle: the Rectangle
-        degree: the degree of the Chebyshev  expansion in each dimension
+        degree: number of Chebyshev nodes in each dimension
 
     Notes:
         `rectangle` and `degree` are required if `nodes` is not provided
@@ -350,12 +355,13 @@ def cheb_get_coefficients_2d(
 
     Args:
         rectangle: the Rectangle
-        degree: the degree of the Chebyshev expansion in each dimension
-        vals_at_nodes: the values on the grid, if precomputed
+        degree: the number of Chebyshev nodes per dimension
+        vals_at_nodes: the values on the grid, if precomputed (either length `degree**2`
+            vector or `(degree, degree)` array)
         fun: the function
 
     Notes:
-        if `vals_at-nodes` is not provided then `fun` must be.
+        if `vals_at_nodes` is not provided then `fun` must be.
 
     Returns:
         the Chebyshev coefficients of the OLS Chebyshev fit, an `(M,M)` matrix
@@ -368,18 +374,31 @@ def cheb_get_coefficients_2d(
         vals_at_nodes = cheb_eval_fun_at_nodes_2d(
             fun, rectangle=rectangle, degree=degree
         )
+    vals_arr = np.asarray(vals_at_nodes)
+    expected = degree * degree
+    if vals_arr.ndim == 1:
+        if vals_arr.size != expected:
+            bs_error_abort(
+                f"vals_at_nodes should contain {expected} elements, not {vals_arr.size}"
+            )
+        vals_grid = vals_arr.reshape(degree, degree)
+    elif vals_arr.ndim == 2:
+        if vals_arr.shape != (degree, degree):
+            bs_error_abort(
+                f"vals_at_nodes should have shape ({degree}, {degree}), not"
+                f" {vals_arr.shape}"
+            )
+        vals_grid = vals_arr
+    else:
+        bs_error_abort("vals_at_nodes should be a vector or a square matrix")
     # we need the nodes on $[-1, 1]$
     interval_1m1 = Interval(x0=-1.0, x1=1.0)
     nodes1m1, _ = cheb_get_nodes_1d(interval_1m1, degree)
     # first we fit fixing the node on the first dimension
     c = np.zeros((degree, degree))
     c_bar = np.zeros((degree, degree))
-    i_beg = 0
     for i in range(degree):
-        i_end = i_beg + degree
-        vals_for_i = vals_at_nodes[i_beg:i_end]
-        c_bar[i, :] = ncheb.chebfit(nodes1m1, vals_for_i, degree - 1)
-        i_beg = i_end
+        c_bar[i, :] = ncheb.chebfit(nodes1m1, vals_grid[i, :], degree - 1)
     # then we fit to the values of c_bar
     for k in range(degree):
         c[:, k] = ncheb.chebfit(nodes1m1, c_bar[:, k], degree - 1)
@@ -394,21 +413,24 @@ def cheb_interp_2d(
     degree: int | None = None,
     vals_at_nodes: np.ndarray | None = None,
 ) -> TwoArrays | tuple[float, np.ndarray]:
-    """interpolate a function on a rectangle using Chebyshev polynomials
+    """Interpolate a function on a rectangle using Chebyshev polynomials.
 
     Args:
-        xy_vals: the values at which to interpolate, an `(n,2)` matrix or a 2-vector
-        rectangle: the Rectangle
-        c: the Chebyshev coefficients for `fun`, if already known; otherwise we compute them
-        fun: the function to interpolate
-        degree: the degree of the Chebyshev expansion
-        vals_at_nodes: the values on the grid, if precomputed
+        xy_vals: Evaluation points, either an ``(n, 2)`` array or a length-2 vector.
+        rectangle: Domain rectangle.
+        c: Chebyshev coefficient matrix for the function, if already available.
+        fun: Callable used to compute coefficients when ``c`` is not provided.
+        degree: Number of Chebyshev nodes per dimension (required if ``c`` is omitted).
+        vals_at_nodes: Optional function values on the tensor grid when ``fun`` is not provided.
 
     Notes:
-        `degree` is required if `c` is not provided, as well as either `fun` or `vals_at_nodes`
+        ``degree`` is required if ``c`` is not supplied, alongside either ``fun`` or
+        ``vals_at_nodes``.
 
     Returns:
-        the `n`-vector of values of the interpolation at `xy_vals` and the Chebyshev coefficients `c`
+        A pair ``(values, coefficients)`` where ``values`` matches the shape of ``xy_vals`` (a
+        scalar is returned when ``xy_vals`` is one-dimensional) and ``coefficients`` is the
+        Chebyshev coefficient matrix used for the evaluation.
     """
     if c is None:
         if degree is None:
@@ -418,26 +440,17 @@ def cheb_interp_2d(
             rectangle, degree, vals_at_nodes=vals_at_nodes, fun=fun
         )
     # transform xy_vals to $[-1,1]\times [-1,1]$
-    xy_vals1 = np.zeros_like(xy_vals)
-    if xy_vals.ndim == 2:
-        xy_vals1[:, 0] = move_to1m1(xy_vals[:, 0], rectangle.x_interval)
-        xy_vals1[:, 1] = move_to1m1(xy_vals[:, 1], rectangle.y_interval)
-        n_vals = xy_vals.shape[0]
-        deg = c.shape[0]
-        c2 = np.zeros((deg, n_vals))
-        for k, c_k in enumerate(c):
-            c2[k, :] = ncheb.chebval(xy_vals1[:, 1], c_k)
-        f_vals = np.zeros(n_vals)
-        for i in range(n_vals):
-            f_vals[i] = ncheb.chebval(xy_vals1[i, 0], c2[:, i])
-    else:
-        xy_vals1[0] = move_to1m1(xy_vals[0], rectangle.x_interval)
-        xy_vals1[1] = move_to1m1(xy_vals[1], rectangle.y_interval)
-        deg = c.shape[0]
-        c2 = np.zeros(deg)
-        for k, c_k in enumerate(c):
-            c2[k] = ncheb.chebval(xy_vals1[1], c_k)
-        f_vals = ncheb.chebval(xy_vals1[0], c2)
+    scalar_input = np.ndim(xy_vals) == 1
+    xy_array = np.atleast_2d(np.asarray(xy_vals, dtype=float))
+    xy_vals1 = np.empty_like(xy_array, dtype=float)
+    xy_vals1[:, 0] = move_to1m1(xy_array[:, 0], rectangle.x_interval)
+    xy_vals1[:, 1] = move_to1m1(xy_array[:, 1], rectangle.y_interval)
+    deg = c.shape[0]
+    Tx = ncheb.chebvander(xy_vals1[:, 0], deg - 1)
+    Ty = ncheb.chebvander(xy_vals1[:, 1], deg - 1)
+    f_vals = np.einsum("ik,kl,il->i", Tx, c, Ty)
+    if scalar_input:
+        return float(f_vals[0]), c
     return f_vals, c
 
 

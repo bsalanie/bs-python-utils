@@ -1,8 +1,12 @@
 docs/source
+Graphs/
 
 .DS_Store
-*/.DS_Store
-*~
+**/.DS_Store
+**/*~
+
+# Pycharm
+.idea/
 
 # From https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore
 

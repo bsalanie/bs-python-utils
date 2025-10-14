@@ -1,14 +1,19 @@
-""" Interface to `scipy.optimize`:
+"""Interface to `scipy.optimize`:
 
 * `ScalarFunctionAndGradient`, `ProximalFunction` type aliases
 * an `OptimizeParams` class
 * `check_gradient_scalar_function` checks whether an analytical gradient is correct
-* `acc_grad_descent`: accelerated gradient descent for convex, possibly non-smooth functions
-* `minimize_some_fixed`: minimizes a function with some parameter values possibly fixed and some possibly within bounds, using L-BFGS-B
-* `minimize_free`: minimizes a function with some parameter values possibly within bounds
-* `dfp_update, bfgs_update`: compute updates to the inverese Hessian
-* `armijo_alpha, barzilai_borwein_alpha`: two ways of computing the step length
-* `print_optimization_results`, `print_constrained_optimization_results` format the results.
+* `acc_grad_descent`: accelerated gradient descent for convex, possibly
+  non-smooth functions
+* `minimize_some_fixed`: minimizes a function with some parameter values
+  possibly fixed and some possibly within bounds, using L-BFGS-B
+* `minimize_free`: minimizes a function with some parameter values possibly
+  within bounds
+* `dfp_update, bfgs_update`: compute updates to the inverse Hessian
+* `armijo_alpha, barzilai_borwein_alpha`: two ways of computing the step
+  length
+* `print_optimization_results`, `print_constrained_optimization_results`
+  format the results.
 """
 
 from dataclasses import dataclass
@@ -27,16 +32,19 @@ from bs_python_utils.Timer import timeit
 ScalarFunctionAndGradient = Callable[
     [np.ndarray, Iterable, Optional[bool]], Union[float, tuple[float, np.ndarray]]
 ]
-"""Type of `f(v, args, gr)` that returns a scalar value and also a gradient if `gr` is `True`."""
+"""Type of `f(v, args, gr)` that returns a scalar value and also a gradient if
+`gr` is `True`.
+"""
 
 
 ProximalFunction = Callable[[np.ndarray, float, Iterable], np.ndarray]
-"""Type of `h(x, t, pars)` that returns a scalar value."""
+"""Type of `h(x, t, pars)` that returns a vector value."""
 
 
 @dataclass
 class OptimizeParams:
-    """used for optimization; combines values, bounds and initial values for a parameter vector
+    """used for optimization; combines values, bounds and initial values for a
+    parameter vector
     """
 
     params_values: np.ndarray | None
@@ -60,9 +68,17 @@ def print_optimization_results(
     print(resus.message)
     if resus.success:
         print(f"Successful! in {resus.nit} iterations")
-        print(f" evaluated {resus.nfev} functions functions and {resus.njev} gradients")
-        print("\nMinimizer and grad_f:")
-        print(np.column_stack((resus.x, resus.jac)))
+        print(f" evaluated {resus.nfev} function calls and {resus.njev} gradients")
+        jac = getattr(resus, "jac", None)
+        if jac is not None:
+            print("\nMinimizer and grad_f:")
+            x_arr = np.atleast_1d(resus.x)
+            jac_arr = np.atleast_1d(jac)
+            if x_arr.shape == jac_arr.shape:
+                print(np.column_stack((x_arr, jac_arr)))
+            else:
+                print("x:", x_arr)
+                print("grad_f:", jac_arr)
         print(f"Minimized value is {resus.fun}")
     else:
         print_stars("Minimization failed!")
@@ -92,11 +108,13 @@ def print_constrained_optimization_results(
         print(f"Successful! in {resus.nit} iterations")
         print(f" evaluated {resus.nfev} functions and {resus.njev} gradients")
         print(f"Minimized value is {resus.fun}")
-        print(f"The Lagrangian norm is {resus.optimality}")
-        print(f"The largest constraint violation is {resus.constr_violation}")
-        if print_multipliers:
+        if hasattr(resus, "optimality"):
+            print(f"The Lagrangian norm is {resus.optimality}")
+        if hasattr(resus, "constr_violation"):
+            print(f"The largest constraint violation is {resus.constr_violation}")
+        if print_multipliers and hasattr(resus, "v"):
             print(f"The multipliers are {resus.v}")
-        if print_constr:
+        if print_constr and hasattr(resus, "constr"):
             print(f"The values of the constraints are {resus.constr}")
     else:
         print_stars("Constrained minimization failed!")
@@ -105,64 +123,88 @@ def print_constrained_optimization_results(
 
 def armijo_alpha(
     f: Callable,
+    grad_f: Callable,
     x: np.ndarray,
     d: np.ndarray,
     args: Iterable,
     alpha_init: float = 1.0,
     beta: float = 0.5,
     max_iter: int = 100,
-    tol: float = 0.0,
+    c1: float = 1e-4,
 ) -> float:
-    """Given a function `f` we are minimizing, computes the step size `alpha`
-    to take in the direction `d` using the Armijo rule.
+    """Compute an Armijo backtracking step for a descent direction.
 
     Args:
-        f: the function
-        x: the current point
-        d: the direction we are taking
-        args: other arguments passed to `f`
-        alpha_init: the initial step size
-        beta: the step size reduction factor
-        max_iter: the maximum number of iterations
-        tol: a tolerance
+        f: Objective function.
+        grad_f: Gradient of the objective.
+        x: Current iterate.
+        d: Candidate descent direction.
+        args: Extra arguments passed to ``f``/``grad_f``.
+        alpha_init: Initial step size to try.
+        beta: Multiplicative shrinkage factor; must lie in ``(0, 1)``.
+        max_iter: Maximum number of backtracking steps.
+        c1: Armijo sufficient-decrease constant.
 
     Returns:
-        the step size `alpha`.
+        Step size satisfying the Armijo condition; returns ``0.0`` when the
+            supplied direction
+        is numerically orthogonal to the gradient.
     """
     f0 = f(x, args)
+    g0 = grad_f(x, args)
+    directional_derivative = float(np.dot(g0, d))
+    eps = 1e-12
+    if directional_derivative >= 0.0:
+        if abs(directional_derivative) <= eps:
+            return 0.0
+        bs_error_abort("Direction is not a descent direction for Armijo step.")
+        return 0.0
+    if not 0.0 < beta < 1.0:
+        bs_error_abort("beta must lie in (0, 1) for Armijo step.")
+        return 0.0
+    if c1 <= 0.0 or c1 >= 1.0:
+        bs_error_abort("c1 must lie in (0, 1) for Armijo step.")
+        return 0.0
     alpha = alpha_init
     for _ in range(max_iter):
         x1 = x + alpha * d
         f1 = f(x1, args)
-        if f1 < f0 + tol:
+        if f1 <= f0 + c1 * alpha * directional_derivative:
             return alpha
         alpha *= beta
-    else:
-        bs_error_abort("Too many iterations")
-    return alpha
+    bs_error_abort("Too many iterations in Armijo line search.")
+    return 0.0
 
 
 def barzilai_borwein_alpha(
     grad_f: Callable, x: np.ndarray, args: Iterable
 ) -> tuple[float, np.ndarray]:
-    """Given a function `f` we are minimizing, computes the step size `alpha`
-    to take in the opposite direction of the gradient using the Barzilai-Borwein rule.
+    """Estimate a Barzilai–Borwein step size and return the gradient at ``x``.
 
     Args:
-        grad_f: the gradient of the function
-        x: the current point
-        args: other arguments passed to `f`
+        grad_f: Gradient function.
+        x: Current iterate.
+        args: Extra arguments passed to the gradient.
 
     Returns:
-        the step size `alpha` and the gradient `g` at the point `x`.
+        A tuple ``(alpha, gradient)`` where ``alpha`` is the safeguarded BB
+            step size.
     """
+    eps = 1e-12
     g = grad_f(x, args)
-    alpha = 1.0 / spla.norm(g)
+    norm_g = spla.norm(g)
+    if norm_g < eps:
+        return 1.0, g
+    alpha = 1.0 / max(norm_g, eps)
     x_hat = x - alpha * g
     g_hat = grad_f(x_hat, args)
-    norm_dg = spla.norm(g - g_hat)
-    norm_dg2 = norm_dg * norm_dg
-    alpha = np.abs(np.dot(x - x_hat, g - g_hat)) / norm_dg2
+    diff_g = g - g_hat
+    norm_dg = spla.norm(diff_g)
+    if norm_dg < eps:
+        return alpha, g
+    numerator = np.abs(np.dot(x - x_hat, diff_g))
+    denominator = max(norm_dg * norm_dg, eps)
+    alpha = max(numerator / denominator, eps)
     return alpha, g
 
 
@@ -226,26 +268,22 @@ def acc_grad_descent(
     beta: float = 0.5,
     maxiter: int = 10000,
 ) -> tuple[np.ndarray, int]:
-    """
-    Minimizes `(f+h)` by Accelerated Gradient Descent where `f` is smooth and convex  and `h` is convex.
-
-    By default `h` is zero.
-    The convergence criterion is that the largest component of the absolute value of the gradient must be smaller than `tol`.
-
+    """Accelerated gradient descent with optional proximal operator.
 
     Args:
-        grad_f: grad_f of `f`; should return an `(n)` array from an `(n)` array and the `other_ params` object
-        x_init: initial guess, shape `(n)`
-        prox_h: proximal projector of `h`, if any
-        other_params: an iterable with additional parameters
-        verbose: if `True`, print remaining gradient error every 10 iterations
-        tol: convergence criterion on grad_f
-        alpha: ceiling on step multiplier
-        beta: floor on step multiplier
-        maxiter: max number of iterations
+        grad_f: Gradient of the smooth component; called as ``grad_f(x, other_params)``.
+        x_init: Initial iterate.
+        other_params: Extra arguments forwarded to ``grad_f`` and ``prox_h``.
+        prox_h: Proximal operator for the nonsmooth term ``h``. Defaults to identity.
+        print_result: Print a convergence message on exit.
+        verbose: When ``True`` report gradient errors every 10 iterations.
+        tol: Infinity-norm tolerance on the gradient for declaring convergence.
+        alpha: Upper bound used when adapting the step size.
+        beta: Lower bound used when adapting the step size.
+        maxiter: Maximum number of iterations.
 
     Returns:
-        the candidate solution, and a convergence code (0 if successful, 1 if not).
+        A pair ``(x_star, status)`` where ``status`` is ``0`` on convergence and ``1`` otherwise.
     """
 
     # no proximal projection if no h
@@ -264,6 +302,8 @@ def acc_grad_descent(
 
     n_iter = 0
     theta = 1.0
+
+    eps = 1e-12
 
     while n_iter < maxiter:
         grad_err = npmaxabs(g)
@@ -285,9 +325,14 @@ def acc_grad_descent(
 
         gi = g
         g = grad_f(y, other_params)
-        ndy = spla.norm(y - yi)
-        t_hat = 0.5 * ndy * ndy / abs(np.dot(y - yi, gi - g))
-        t = min(alpha * t, max(beta * t, t_hat))
+        diff_y = y - yi
+        ndy = spla.norm(diff_y)
+        denom = np.dot(diff_y, gi - g)
+        if abs(denom) > eps:
+            t_hat = 0.5 * ndy * ndy / abs(denom)
+            t = min(alpha * t, max(beta * t, t_hat))
+        else:
+            t = min(alpha * t, max(beta * t, t))
 
         n_iter += 1
 
@@ -314,35 +359,26 @@ def acc_grad_descent(
 def _fix_some(
     obj: Callable, grad_obj: Callable, fixed_vars: list[int], fixed_vals: np.ndarray
 ) -> tuple[Callable, Callable]:
-    """
-    Takes in a function and its gradient, fixes the variables
-    whose indices are `fixed_vars` to the values in `fixed_vals`,
-    and returns the modified function and its gradient.
+    """Freeze selected variables in ``obj`` and ``grad_obj`` at fixed values."""
 
-    Args:
-        obj: the original function
-        grad_obj: its gradient function
-        fixed_vars: a list if the indices of variables whose values are fixed
-        fixed_vals: their fixed values
-
-    Returns:
-        the modified function and its modified gradient function.
-    """
+    order = np.argsort(fixed_vars)
+    fixed_vars_sorted = [fixed_vars[i] for i in order]
+    fixed_vals_sorted = fixed_vals[order]
 
     def fixed_obj(t, other_args):
         t_full = list(t)
-        for i, i_coef in enumerate(fixed_vars):
-            t_full.insert(i_coef, fixed_vals[i])
+        for i, i_coef in enumerate(fixed_vars_sorted):
+            t_full.insert(i_coef, fixed_vals_sorted[i])
         arr_full = np.array(t_full)
         return obj(arr_full, other_args)
 
     def fixed_grad_obj(t, other_args):
         t_full = list(t)
-        for i, i_coef in enumerate(fixed_vars):
-            t_full.insert(i_coef, fixed_vals[i])
+        for i, i_coef in enumerate(fixed_vars_sorted):
+            t_full.insert(i_coef, fixed_vals_sorted[i])
         arr_full = np.array(t_full)
         grad_full = grad_obj(arr_full, other_args)
-        return np.delete(grad_full, fixed_vars)
+        return np.delete(grad_full, fixed_vars_sorted)
 
     return fixed_obj, fixed_grad_obj
 
@@ -366,10 +402,12 @@ def minimize_some_fixed(
         grad_obj: its gradient function
         fixed_vars: a list if the indices of variables whose values are fixed
         fixed_vals: their fixed values
-        x_init: the initial values of all variables (those on fixed variables are not used)
+        x_init: the initial values of all variables (those on fixed variables
+            are not used)
         args: other parameters
         options: any options passed on to `scipy.optimize.minimize`
-        bounds: the bounds on all variables (those on fixed variables are not used)
+        bounds: the bounds on all variables (those on fixed variables are
+            not used)
         time_execution: if `True`, time the execution and print the result
 
     Returns:
@@ -396,6 +434,10 @@ def minimize_some_fixed(
                 f"fixed_vars has {len(fixed_vars)} indices but fixed_vals has"
                 f" {fixed_vals.size} elements."
             )
+        order = np.argsort(fixed_vars)
+        fixed_vars = [fixed_vars[i] for i in order]
+        fixed_vals = fixed_vals[order]
+
         fixed_obj, fixed_grad_obj = _fix_some(obj, grad_obj, fixed_vars, fixed_vals)
 
         # drop fixed variables and the corresponding bounds
@@ -422,10 +464,10 @@ def minimize_some_fixed(
         t_full = list(t)
         for i, i_coef in enumerate(fixed_vars):
             t_full.insert(i_coef, fixed_vals[i])
-        resopt.x = t_full
+        resopt.x = np.array(t_full)
 
         # and re-fill the values of the gradients
-        g = grad_obj(np.array(t_full), args)
+        g = grad_obj(resopt.x, args)
         resopt.jac = g
 
         if time_execution:
@@ -502,6 +544,9 @@ def dfp_update(
     xpg = xdt @ gradient_diff
     hdg = hess_inv @ gradient_diff
     dgp_hdg = gradient_diff.T @ hdg
+    eps = 1e-12
+    if abs(xpg) <= eps or abs(dgp_hdg) <= eps:
+        return cast(np.ndarray, hess_inv)
     hess_inv_new = hess_inv + xxp / xpg - (hdg @ hdg.T) / dgp_hdg
     return cast(np.ndarray, hess_inv_new)
 
@@ -523,6 +568,9 @@ def bfgs_update(
     xpg = xdt @ gradient_diff
     hdg = hess_inv @ gradient_diff
     dgp_hdg = gradient_diff.T @ hdg
+    eps = 1e-12
+    if abs(xpg) <= eps or abs(dgp_hdg) <= eps:
+        return cast(np.ndarray, hess_inv)
     u = x_diff / xpg - hdg / dgp_hdg
     hess_inv_new = dfp_update(hess_inv, gradient_diff, x_diff) + dgp_hdg * (u @ u.T)
     return cast(np.ndarray, hess_inv_new)

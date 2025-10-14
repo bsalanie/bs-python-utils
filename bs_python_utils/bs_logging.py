@@ -1,4 +1,4 @@
-""" Utilities for logging:
+"""Utilities for logging:
 
 * `init_logger` initializes and returns a customized logger
 * `log_execution` ia a decorator to log entry into and ext from a function.
@@ -21,7 +21,8 @@ def init_logger(
 
     Args:
         logger_name: name for the logger
-        log_level_for_console: minimum level of messages logged to the console logging
+        log_level_for_console: minimum level of messages logged to the
+            console logging
         log_level_for_file:
         save_dir:
 
@@ -35,10 +36,13 @@ def init_logger(
 
         This will create two logs:
 
-        * one  printed to console where we run the code (the `StreamHandler`),
-        * and one that will be saved to file `save_dir/logger_name.txt` (the `FileHandler`).
+        * one printed to console where we run the code (the
+          `StreamHandler`),
+        * and one that will be saved to file `save_dir/logger_name.txt`
+          (the `FileHandler`).
 
-        `'logger.propagate = False'`  makes sure that the logs sent to file will not be printed to console.
+        `'logger.propagate = False'` makes sure that the logs sent to file
+        will not be printed to console.
 
         We use the `Formatter` class to define the format of the logs.
         Here:
@@ -49,7 +53,8 @@ def init_logger(
         and the line number, `lineno`.
         * Lastly,  the message itself — `message`.
 
-        The default has only `INFO` logs and above (i.e., also `WARNING, ERROR` and `CRITICAL`)
+        The default has only `INFO` logs and above (i.e., also
+        `WARNING, ERROR` and `CRITICAL`)
         displayed in the console; the file will also include `DEBUG` logs.
     """
     logger = logging.getLogger()

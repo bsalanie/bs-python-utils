@@ -1,5 +1,8 @@
 """This takes in observations of a bivariate random variable `y`
-and computes vector quantiles and vector ranks à la [Chernozhukov-Galichon-Hallin-Henry (*Ann. Stats.* 2017)](https://projecteuclid.org/journals/annals-of-statistics/volume-45/issue-1/MongeKantorovich-depth-quantiles-ranks-and-signs/10.1214/16-AOS1450.full).
+and computes vector quantiles and vector ranks à la
+[Chernozhukov-Galichon-Hallin-Henry (*Ann. Stats.* 2017)](
+https://projecteuclid.org/journals/annals-of-statistics/volume-45/
+issue-1/MongeKantorovich-depth-quantiles-ranks-and-signs/10.1214/16-AOS1450.full).
 
 
 Note:
@@ -7,16 +10,19 @@ Note:
 
 The sequence of steps is as follows:
 
-* choose a  number of Chebyshev nodes for numerical integration and optimize the weights: `v = solve_for_v(y, n_nodes)`
+* choose a  number of Chebyshev nodes for numerical integration and optimize
+  the weights: `v = solve_for_v(y, n_nodes)`
 * to obtain the $(u_1,u_2)$ quantiles for $(u_1, u_2)\\in [0,1]$, run
 `qtiles_y = bivariate_quantiles_v(y, v, u1, u2)`
-* to compute the vector ranks for all points in the sample (the barycenters of the cells in the power diagram):
+* to compute the vector ranks for all points in the sample (the barycenters
+  of the cells in the power diagram):
 `ranks_y = bivariate_ranks_v(y, v, n_nodes)`
 
 Steps 1 and 2 can be combined: `qtiles_y = bivariate_quantiles(y, v, u1, u2, n_nodes)`
 
 Steps 1 and 3 can be combined: `ranks_y = bivariate_ranks(y, n_nodes)`
 """
+
 from typing import cast
 
 import numpy as np
@@ -28,62 +34,55 @@ from bs_python_utils.chebyshev import Interval, cheb_get_nodes_1d
 
 
 def _compute_ab(y_sorted: np.ndarray, v_sorted: np.ndarray) -> TwoArrays:
-    """evaluates the A and B matrices
-
-    Args:
-        y_sorted: the observations, an `(n,2)` matrix sorted by increasing `y[:, 1]`
-        v_sorted: the weights, an `n`-vector in the same sort order
-
-    Returns:
-        two `(n, n)` matrices
-
-    Warning:
-        the user must make sure that `y` and `v` have been sorted beforehand
-    """
-    n = v_sorted.size
+    """Build the `A` and `B` matrices used in the dual optimisation."""
     y1 = y_sorted[:, 0]
     dy1 = np.subtract.outer(y1, y1)
     y2 = y_sorted[:, 1]
     dy2 = np.subtract.outer(y2, y2)
-    np.fill_diagonal(dy2, np.ones(n))  # to avoid division by 0
+    np.fill_diagonal(dy2, 1.0)
     dv = np.subtract.outer(v_sorted, v_sorted)
-    a_mat = dy1.T / dy2
-    b_mat = dv.T / dy2
+    with np.errstate(divide="ignore", invalid="ignore"):
+        a_mat = np.divide(dy1.T, dy2, where=np.abs(dy2) > 1e-12)
+        b_mat = np.divide(dv.T, dy2, where=np.abs(dy2) > 1e-12)
+    a_mat = np.nan_to_num(a_mat, nan=0.0, posinf=0.0, neginf=0.0)
+    b_mat = np.nan_to_num(b_mat, nan=0.0, posinf=0.0, neginf=0.0)
     return a_mat, b_mat
 
 
 def _compute_u2_bounds(
     k: int, u1: np.ndarray, a_mat: np.ndarray, b_mat: np.ndarray
 ) -> TwoArrays:
-    """for given u1, calculates the bounds on u2 that make k the chosen observation
-
-    Args:
-        k: an integer between 0 and (n-1)
-        u1: a vector of size `m`
-        a_mat: the `A` matrix of size `(n,n)`
-        b_mat: the `B` matrix of size `(n,n)`
-
-    Returns:
-        two vectors of size `m`, the left and right bounds in [0,1]
-    """
+    """Return the admissible interval of ``u2`` that selects index ``k``."""
     n = a_mat.shape[0]
     m = u1.size
     if k == 0:
         left_bound = np.zeros(m)
         a_right = a_mat[0, 1:]
         b_right = b_mat[0, 1:]
-        right_bound = np.min(np.outer(u1, a_right) - b_right, 1)
+        if a_right.size:
+            right_bound = np.min(np.outer(u1, a_right) - b_right, 1)
+        else:
+            right_bound = np.ones(m)
     elif 1 <= k < n - 1:
         a_left = a_mat[k, :k]
         b_left = b_mat[k, :k]
-        left_bound = np.max(np.outer(u1, a_left) - b_left, 1)
+        if a_left.size:
+            left_bound = np.max(np.outer(u1, a_left) - b_left, 1)
+        else:
+            left_bound = np.zeros(m)
         a_right = a_mat[k, (k + 1) :]
         b_right = b_mat[k, (k + 1) :]
-        right_bound = np.min(np.outer(u1, a_right) - b_right, 1)
+        if a_right.size:
+            right_bound = np.min(np.outer(u1, a_right) - b_right, 1)
+        else:
+            right_bound = np.ones(m)
     elif k == n - 1:
         a_left = a_mat[-1, :-1]
         b_left = b_mat[-1, :-1]
-        left_bound = np.max(np.outer(u1, a_left) - b_left, 1)
+        if a_left.size:
+            left_bound = np.max(np.outer(u1, a_left) - b_left, 1)
+        else:
+            left_bound = np.zeros(m)
         right_bound = np.ones(m)
     else:
         bs_error_abort(f"{k=} is not compatible with {n=}")
@@ -94,34 +93,45 @@ def _compute_u2_bounds(
 
 
 def bivariate_quantiles_v(y: np.ndarray, u: np.ndarray, v: np.ndarray) -> np.ndarray:
-    """computes the vector quantiles of `y` at values `u`, given the converged `v`
+    """Evaluate vector quantiles for a given set of dual weights.
 
     Args:
-        y: the observations, an `(n,2)` matrix
-        u: the values where we want the quantiles, an `(m,2)` matrix in $[0,1]$
-        v: the converged values of the weights, an `n`-vector
+        y: Observations with shape ``(n, 2)``.
+        u: Evaluation points in ``[0, 1]^2`` (shape ``(m, 2)``).
+        v: Dual weights solving the optimal transport problem (length ``n``).
 
     Returns:
-        an `(m,2)` matrix with the quantiles of `y` at the values `u`
+        Array of quantile locations with shape ``(m, 2)``.
     """
-    net_val = u @ y.T - v
-    k_max = np.argmax(net_val, 1)
-    return cast(np.ndarray, y[k_max])
+    u = np.atleast_2d(u)
+    if u.shape[1] != 2:
+        bs_error_abort("u must have two columns")
+    m = u.shape[0]
+    q = np.empty((m, 2))
+    block = max(1, min(m, 5_000))
+    for start in range(0, m, block):
+        stop = min(start + block, m)
+        chunk = u[start:stop]
+        net_val = chunk @ y.T - v
+        k_max = np.argmax(net_val, axis=1)
+        q[start:stop] = y[k_max]
+    return cast(np.ndarray, q)
 
 
 def bivariate_ranks_v(
     y: np.ndarray, v: np.ndarray, n_nodes: int = 32, presorted: bool = False
 ) -> np.ndarray:
-    """computes the vector ranks of `y`, given the converged `v`
+    """Compute the barycentric ranks of each observation given optimal weights.
 
     Args:
-        y: the observations, an `(n,2)` matrix
-        v: the converged values of the weights, an `n`-vector
-        n_nodes: the number of nodes for Chebyshev integration
-        presorted: if `True`, then `y` and `v` are sorted by increasing `y[:, 1]`.
+        y: Observations with shape ``(n, 2)``.
+        v: Dual weights returned by ``solve_for_v_``.
+        n_nodes: Number of Chebyshev nodes used in the quadrature.
+        presorted: Set to ``True`` when ``y``/``v`` are pre-sorted by the
+            second coordinate.
 
     Returns:
-        an `(n,2)` matrix with the average ranks of `y`
+        Array of average ranks (shape ``(n, 2)``) with ``nan`` for zero-mass cells.
     """
     n, d = y.shape
 
@@ -151,6 +161,9 @@ def bivariate_ranks_v(
             right_bounds * right_bounds - left_bounds * left_bounds, 0.0
         )
         prob_k = pos_diffs @ u1_weights
+        if prob_k <= 1e-12:
+            average_ranks[sort_order[k], :] = np.array([np.nan, np.nan])
+            continue
         average_ranks[sort_order[k], 0] = ((u1_nodes * pos_diffs) @ u1_weights) / prob_k
         average_ranks[sort_order[k], 1] = ((pos_diffs_sq @ u1_weights) / 2.0) / prob_k
 
@@ -213,6 +226,17 @@ def _grad(v_sorted: np.ndarray, args: list):
 
 
 def solve_for_v_(y: np.ndarray, n_nodes: int = 32, verbose: bool = False) -> np.ndarray:
+    """Solve the dual optimisation to obtain the optimal weights ``v``.
+
+    Args:
+        y: Observations with shape ``(n, 2)``.
+        n_nodes: Number of Chebyshev nodes for the quadrature.
+        verbose: Print optimisation diagnostics when ``True``.
+
+    Returns:
+        Array of length ``n`` containing the optimal weights (including the
+            residual term).
+    """
     n, d = y.shape
 
     if d != 2:
@@ -250,17 +274,16 @@ def solve_for_v_(y: np.ndarray, n_nodes: int = 32, verbose: bool = False) -> np.
 def bivariate_quantiles(
     y: np.ndarray, u: np.ndarray, n_nodes: int = 32, verbose: bool = False
 ) -> np.ndarray:
-    """computes the bivariate quantiles of `y` at the quantiles `u`
+    """Solve for the dual weights then evaluate bivariate quantiles.
 
     Args:
-        y: the observations, an `(n, 2)` matrix
-        u: the quantiles at which to compute the bivariate quantiles,
-            an `(m, 2)` matrix
-        n_nodes: the number of nodes to use for the quadrature
-        verbose: if `True`, print some information
+        y: Observations, shape ``(n, 2)``.
+        u: Query points in ``[0, 1]^2`` (shape ``(m, 2)``).
+        n_nodes: Number of Chebyshev nodes for the quadrature.
+        verbose: Print optimisation diagnostics when ``True``.
 
     Returns:
-        an `(m, 2)` matrix of bivariate quantiles
+        Bivariate quantiles at ``u``.
     """
     v = solve_for_v_(y, n_nodes, verbose)
     return bivariate_quantiles_v(y, u, v)
@@ -269,15 +292,15 @@ def bivariate_quantiles(
 def bivariate_ranks(
     y: np.ndarray, n_nodes: int = 32, verbose: bool = False
 ) -> np.ndarray:
-    """computes the bivariate ranks of `y`
+    """Compute ranks by first solving for the optimal weights ``v``.
 
     Args:
-        y: the observations, an `(n, 2)` matrix
-        n_nodes: the number of nodes to use for the quadrature
-        verbose: if `True`, print some information
+        y: Observations, shape ``(n, 2)``.
+        n_nodes: Number of Chebyshev nodes for the quadrature.
+        verbose: Print optimisation diagnostics when ``True``.
 
     Returns:
-        the `(n, 2)` matrix of bivariate average ranks
+        Average ranks with shape ``(n, 2)``.
     """
     v = solve_for_v_(y, n_nodes, verbose)
     return bivariate_ranks_v(y, v, n_nodes)

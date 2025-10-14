@@ -4,6 +4,7 @@ Contains `scipy` utility programs:
 * `describe_array`: report descriptive statistics on a vectorized array
 * `spline_reg`: spline interpolation in one dimension.
 """
+
 from math import sqrt
 from typing import Any, cast
 
@@ -16,15 +17,14 @@ from bs_python_utils.bsutils import bs_error_abort, print_stars
 
 
 def describe_array(v: np.ndarray, name: str | None = "v") -> Any:
-    """
-    descriptive statistics on an array interpreted as a vector
+    """Print a summary of descriptive statistics for a 1-D array.
 
     Args:
-        v: the array
-        name: its name
+        v: Array to summarise (flattened to one dimension).
+        name: Optional label printed alongside the summary.
 
     Returns:
-        the `scipy.stats.describe` object
+        The ``scipy.stats.describe`` result for ``v``.
     """
     print_stars(f"{name} has:")
     d = sts.describe(v, None)
@@ -32,7 +32,7 @@ def describe_array(v: np.ndarray, name: str | None = "v") -> Any:
     print(f"Minimum: {d.minmax[0]}")
     print(f"Maximum: {d.minmax[1]}")
     print(f"Mean: {d.mean}")
-    print(f"Stderr: {sqrt(d.variance)}")
+    print(f"Std deviation: {sqrt(d.variance)}")
     return d
 
 
@@ -43,18 +43,18 @@ def spline_reg(
     is_sorted: bool | None = False,
     smooth: bool | None = True,
 ) -> np.ndarray:
-    """
-    one-dimensional spline interpolation of vector `y` on vector `x`
+    """Interpolate ``y`` as a function of ``x`` using univariate splines.
 
     Args:
-        y: vector of y-values
-        x: vector of x-values
-        x_new: where we evaluate (at the points in `x` by default)
-        is_sorted: True if `x` is sorted in increasing order
-        smooth: True if we want a smoother; otherwise we go through all points provided
+        y: Observed response values.
+        x: Covariate locations.
+        x_new: Evaluation points; defaults to ``x``.
+        is_sorted: Set to ``True`` when ``x`` is already sorted in ascending order.
+        smooth: When ``True`` estimate weights via ``rice_stderr`` and fit a smoothing spline;
+            otherwise enforce an interpolating spline with ``s=0``.
 
     Returns:
-        values interpolated at `x_new`.
+        The interpolated values evaluated at ``x_new``.
     """
     n = check_vector(x)
     ny = check_vector(y)
@@ -75,7 +75,7 @@ def spline_reg(
         w = 1 / sigyx
         spl = UnivariateSpline(rhs, lhs, w=w)
     else:
-        spl = UnivariateSpline(rhs, lhs)
+        spl = UnivariateSpline(rhs, lhs, s=0)
 
     xeval = x if x_new is None else x_new
     y_pred = spl(xeval)

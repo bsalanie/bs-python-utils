@@ -1,6 +1,9 @@
 import numpy as np
+import pytest
 
 from bs_python_utils.bivariate_quantiles import (
+    _compute_ab,
+    _compute_u2_bounds,
     bivariate_quantiles,
     bivariate_quantiles_v,
     bivariate_ranks,
@@ -10,31 +13,68 @@ from bs_python_utils.bivariate_quantiles import (
 from bs_python_utils.bsnputils import bsgrid, ecdf, npmaxabs
 
 
-def test_bivariate_quantiles():
-    n = 200
-    n_nodes = 32
+def test_bivariate_quantiles_recompute_matches():
+    rng = np.random.default_rng(123)
+    y = rng.normal(size=(64, 2))
+    nodes = 16
 
-    rng = np.random.default_rng(seed=None)
-    y = rng.normal(loc=0, scale=1, size=(n, 2))
+    weights = solve_for_v_(y, n_nodes=nodes, verbose=False)
 
-    verbose = False
+    q = np.linspace(0.0, 1.0, 5)
+    u_points = bsgrid(q, q)
 
-    vstar1 = solve_for_v_(y, n_nodes, verbose)
+    direct = bivariate_quantiles_v(y, u_points, weights)
+    via_solver = bivariate_quantiles(y, u_points, n_nodes=nodes, verbose=False)
 
-    n_qtiles = 4
-    qtiles = np.arange(n_qtiles + 1) / n_qtiles
-    u_qtiles = bsgrid(qtiles, qtiles)
-    y_qtiles = bivariate_quantiles_v(y, u_qtiles, vstar1)
-    print(f"{y_qtiles=}")
+    ranks_direct = bivariate_ranks_v(y, weights, n_nodes=nodes)
+    ranks_via_solver = bivariate_ranks(y, n_nodes=nodes, verbose=False)
 
-    y_ranks = bivariate_ranks_v(y, vstar1, n_nodes=n_nodes)
+    assert np.allclose(direct, via_solver)
+    assert np.allclose(ranks_direct, ranks_via_solver)
+    assert (
+        npmaxabs(ranks_direct - np.column_stack((ecdf(y[:, 0]), ecdf(y[:, 1])))) < 0.2
+    )
 
-    indep_ranks = np.column_stack((ecdf(y[:, 0]), ecdf(y[:, 1])))
-    print(f"max difference with indep ranks: {npmaxabs(y_ranks - indep_ranks)}")
 
-    y_qtiles2 = bivariate_quantiles(y, u_qtiles, n_nodes=n_nodes)
+def test_chunked_quantiles_matches_numpy_argmax():
+    rng = np.random.default_rng(7)
+    y = rng.normal(size=(10, 2))
+    v = rng.normal(size=10)
+    u = rng.uniform(0.0, 1.0, size=(6000, 2))
 
-    y_ranks2 = bivariate_ranks(y, n_nodes=n_nodes)
+    chunked = bivariate_quantiles_v(y, u, v)
+    expected = y[np.argmax(u @ y.T - v, axis=1)]
 
-    assert np.allclose(y_qtiles, y_qtiles2)
-    assert np.allclose(y_ranks, y_ranks2)
+    assert np.allclose(chunked, expected)
+
+
+def test_compute_ab_handles_ties():
+    y = np.array([[0.0, 1.0], [1.0, 1.0]])
+    v = np.array([0.2, -0.2])
+    a_mat, b_mat = _compute_ab(y, v)
+
+    assert np.isfinite(a_mat).all()
+    assert np.isfinite(b_mat).all()
+
+
+@pytest.mark.parametrize("k", [0, 1])
+def test_compute_u2_bounds_degenerate(k):
+    y = np.array([[0.0, 0.0], [1.0, 1.0]])
+    v = np.array([0.1, -0.1])
+    a_mat, b_mat = _compute_ab(y, v)
+    nodes = np.linspace(0.0, 1.0, 5)
+
+    left, right = _compute_u2_bounds(k, nodes, a_mat, b_mat)
+
+    assert np.isfinite(left).all()
+    assert np.isfinite(right).all()
+    assert (right >= left).all()
+
+
+def test_bivariate_ranks_zero_mass_returns_nan():
+    y = np.array([[0.0, 0.0], [1.0, 1.0]])
+    v = np.array([0.1, -0.1])
+    ranks = bivariate_ranks_v(y, v, n_nodes=8, presorted=True)
+
+    assert np.isnan(ranks[0]).all()
+    assert np.isfinite(ranks[1]).all()

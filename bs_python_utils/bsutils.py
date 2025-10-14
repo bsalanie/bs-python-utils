@@ -89,8 +89,7 @@ def final_s(n: int, word: str) -> str:
     Returns:
         `1 word` or `n words`
     """
-    suffix = "s" if n > 1 else ""
-    return f"{n} {word}{suffix}"
+    return f"{n} {word}{'s' if n > 1 else ''}"
 
 
 def fstring_integer_with_significant_digits(number: int, m: int) -> str:
@@ -155,14 +154,13 @@ def bs_switch(
         "no match"
     """
     if strict:
-        for key in dico:
-            if match == key:
-                return dico.get(key)
+        return dico.get(match, default)
     else:
-        for key in dico:
-            if match in key:
-                return dico.get(key)
-    return default
+        try:
+            key = next(k for k in dico if match in k)
+            return dico[key]
+        except StopIteration:
+            return default
 
 
 def find_first(iterable: Iterable, condition: Callable = lambda x: True) -> Any:
@@ -196,15 +194,11 @@ def find_first(iterable: Iterable, condition: Callable = lambda x: True) -> Any:
 
 
 def print_stars(title: str | None = None, n: int = 70) -> None:
-    """
-    prints a title within stars
+    """Print a horizontal bar of ``*`` characters, optionally framing a title.
 
     Args:
-        title:  title
-        n: number of stars on line
-
-    Returns:
-        prints a starred line, or two around the title
+        title: Optional text centred between two star lines.
+        n: Length of the star line.
     """
     line_stars = "*" * n
     print()
@@ -218,17 +212,7 @@ def print_stars(title: str | None = None, n: int = 70) -> None:
 def file_print_stars(
     file_handle: TextIOBase, title: str | None = None, n: int = 70
 ) -> None:
-    """
-    prints to a file a title within stars
-
-    Args:
-        file_handle: file handle
-        title:  title
-        n:   length of line
-
-    Returns:
-        prints a starred line to the file, or two around the title
-    """
+    """Write the ``print_stars`` output to a file-like object."""
     line_stars = "*" * n
     file_handle.write("\n")
     file_handle.write(line_stars)

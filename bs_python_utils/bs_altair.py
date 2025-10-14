@@ -1,14 +1,20 @@
-""" Some Altair plots.
+"""Some Altair plots.
 
 * `alt_lineplot`, `alt_superposed_lineplot`, `alt_superposed_faceted_lineplot`
 * `alt_plot_fun`: plots a function
-* `alt_density`, `alt_faceted_densities`: plots the density of `x`, or of `x` conditional on a category
-* `alt_superposed_faceted_densities`: plots the density of `x` superposed by `f` and faceted by `g`
-* `alt_scatterplot`, `alt_scatterplot_with_histo`, `alt-linked_scatterplots`: variants of scatter plots
-* `alt_histogram_by`, `alt_histogram_continuous`: histograms of `x` by `y`, and of a continuous `x`
+* `alt_density`, `alt_faceted_densities`: plots the density of `x`, or of `x`
+  conditional on a category
+* `alt_superposed_faceted_densities`: plots the density of `x` superposed by
+  `f` and faceted by `g`
+* `alt_scatterplot`, `alt_scatterplot_with_histo`, `alt-linked_scatterplots`:
+  variants of scatter plots
+* `alt_histogram_by`, `alt_histogram_continuous`: histograms of `x` by `y`,
+  and of a continuous `x`
 * `alt_stacked_area`,`alt_stacked_area_facets`: stacked area plots
-* `plot_parameterized_estimates`: plots densities of estimates of coefficients, with the true values,  as a function of a parameter
-* `plot_true_sim_facets, plot_true_sim2_facets`:  plot two simulated values and  the true values of statistics as a function of a parameter
+* `plot_parameterized_estimates`: plots densities of estimates of
+  coefficients, with the true values, as a function of a parameter
+* `plot_true_sim_facets, plot_true_sim2_facets`: plot two simulated values
+  and the true values of statistics as a function of a parameter
 * `alt_tick_plots`: vertically arranged tick plots of variables
 * `alt_matrix_heatmap`: plots a heatmap of a matrix.
 """
@@ -32,10 +38,9 @@ def _maybe_save(ch: alt.Chart, save: str | None = None):
 
 def _add_title(ch: alt.Chart, title: str | None = None) -> alt.Chart:
     if title is not None:
-        if isinstance(title, str):
-            ch = ch.properties(title=title)
-        else:
-            bs_error_abort(f"title must be a string, not {title}")
+        if not isinstance(title, str):
+            raise TypeError(f"title must be a string, not {title!r}")
+        ch = ch.properties(title=title)
     return cast(alt.Chart, ch)
 
 
@@ -53,75 +58,74 @@ def alt_scatterplot(
     aggreg: str | None = None,
     selection: bool = False,
 ) -> alt.Chart:
-    """
-    Scatterplot of `df[str_x]` vs `df[str_y]`.
+    """Scatter ``df[str_y]`` against ``df[str_x]`` with optional coloring/selection.
 
     Args:
-        df: the data with columns for x, y
-        str_x: the name of a continuous x column
-        str_y: the name of a continuous y column
-        time_series: `True` if x is a time series
-        xlabel: label for the horizontal axis
-        ylabel: label for the vertical axis
-        title: title for the graph
-        size: radius of the circles
-        color: variable that determines the color of the circles
-        selection: if `True`, the user can select interactively from the `color` legend, if any
-        save: the name of a file to save to (HTML extension will be added)
-        aggreg: the name of an aggregating function for `y`
+        df: Data frame holding the features to plot.
+        str_x: Column name for the horizontal axis (continuous or time series).
+        str_y: Column name for the vertical axis (continuous).
+        time_series: If ``True`` encodes the x-axis as temporal.
+        save: Optional basename to save the chart as HTML.
+        xlabel: Optional label for the x-axis; must be a string when provided.
+        ylabel: Optional label for the y-axis; must be a string when provided.
+        size: Marker size (integer radius in pixels).
+        title: Optional chart title.
+        color: Column used for color encoding.
+        aggreg: Optional aggregation function for ``str_y`` (e.g. ``"mean"``).
+        selection: When ``True`` and a ``color`` is supplied, enable
+            legend-based multi-selection.
 
     Returns:
-        the `alt.Chart` object.
+        The Altair ``Chart`` for further composition or rendering.
     """
     type_x = "T" if time_series else "Q"
     var_x = alt.X(f"{str_x}:{type_x}")
 
     if xlabel is not None:
-        if isinstance(xlabel, str):
-            var_x = alt.X(f"{str_x}:{type_x}", axis=alt.Axis(title=xlabel))
-        else:
-            bs_error_abort(f"xlabel must be a string, not {xlabel}")
+        if not isinstance(xlabel, str):
+            raise TypeError(f"xlabel must be a string, not {xlabel!r}")
+        var_x = alt.X(f"{str_x}:{type_x}", axis=alt.Axis(title=xlabel))
 
     var_y = f"{aggreg}({str_y}):Q" if aggreg is not None else str_y
+    y_encoding: alt.Y | str
 
     if ylabel is not None:
-        if isinstance(ylabel, str):
-            var_y_lab = alt.Y(var_y, axis=alt.Axis(title=ylabel))
-        else:
-            bs_error_abort(f"ylabel must be a string, not {ylabel}")
-
-    if isinstance(size, int):
-        circles_size = size
+        if not isinstance(ylabel, str):
+            raise TypeError(f"ylabel must be a string, not {ylabel!r}")
+        y_encoding = alt.Y(var_y, axis=alt.Axis(title=ylabel))
     else:
-        bs_error_abort(f"size must be an integer, not {size}")
+        y_encoding = var_y
+
+    if not isinstance(size, int):
+        raise TypeError(f"size must be an integer, not {size!r}")
+    circles_size = size
 
     if color is not None:
-        if isinstance(color, str):
-            if selection:
-                selection_criterion = alt.selection_multi(fields=[color], bind="legend")
-                ch = (
-                    alt.Chart(df)
-                    .mark_circle(size=circles_size)
-                    .encode(
-                        x=var_x,
-                        y=var_y if ylabel is None else var_y_lab,
-                        color=color,
-                        opacity=alt.condition(
-                            selection_criterion, alt.value(1), alt.value(0.1)
-                        ),
-                    )
-                    .add_params(selection_criterion)
+        if not isinstance(color, str):
+            raise TypeError(f"color must be a string, not {color!r}")
+        if selection:
+            selection_criterion = alt.selection_multi(fields=[color], bind="legend")
+            ch = (
+                alt.Chart(df)
+                .mark_circle(size=circles_size)
+                .encode(
+                    x=var_x,
+                    y=y_encoding,
+                    color=color,
+                    opacity=alt.condition(
+                        selection_criterion, alt.value(1), alt.value(0.1)
+                    ),
                 )
-            else:
-                ch = (
-                    alt.Chart(df)
-                    .mark_circle(size=circles_size)
-                    .encode(x=var_x, y=var_y, color=color)
-                )
+                .add_params(selection_criterion)
+            )
         else:
-            bs_error_abort(f"color must be a string, not {color}")
+            ch = (
+                alt.Chart(df)
+                .mark_circle(size=circles_size)
+                .encode(x=var_x, y=y_encoding, color=color)
+            )
     else:
-        ch = alt.Chart(df).mark_circle(size=circles_size).encode(x=var_x, y=var_y)
+        ch = alt.Chart(df).mark_circle(size=circles_size).encode(x=var_x, y=y_encoding)
 
     ch = _add_title(ch, title)
     _maybe_save(ch, save)
@@ -137,7 +141,8 @@ def alt_boxes(
     title: str | None = None,
     save: str | None = None,
 ) -> alt.Chart:
-    """horizontal boxplots of `df[continuous_var]` by `df[discrete_var]` and `df[group_var]`
+    """horizontal boxplots of `df[continuous_var]` by `df[discrete_var]` and
+    `df[group_var]`
 
     Args:
         df: datframe with the three variables
@@ -146,7 +151,8 @@ def alt_boxes(
         group_var: name of the grouping variable
         max_cols: maximum number of columns. Defaults to 3.
         title: a plot title. Defaults to None.
-        save: the name of a file to save to (HTML extension will be added). Defaults to None.
+        save: the name of a file to save to (HTML extension will be added).
+            Defaults to None.
 
     Returns:
         the chart.
@@ -211,44 +217,31 @@ def alt_matrix_heatmap(
     str_cols: str | None = "Column",
     save: str | None = None,
 ) -> alt.Chart:
-    """Plots a heatmap of a matrix
+    """Plot a matrix heatmap using circle size and text annotations.
 
     Args:
-        mat: the matrix to plot
-        str_format: the string to format the values, e.g. "d" or ".3f"
-        multiple: increases the size of the circles
-        title: a title, if any
-        str_rows: the name of the variable in the rows
-        str_cols: the name of the variable in the columns
-        save: the name of a file to save to (HTML extension will be added)
+        mat: Matrix to visualise; converted to a long-form data frame internally.
+        str_format: Format specifier for the textual values (e.g. ``"d"`` or ``".2f"``).
+        multiple: Multiplier applied to the circle size scale.
+        title: Optional chart title.
+        str_rows: Label used for the row coordinate in the long-form frame.
+        str_cols: Label used for the column coordinate in the long-form frame.
+        save: Optional basename to save the chart as HTML.
 
     Returns:
-        the heatmap
+        The Altair ``Chart`` showing the heatmap.
     """
     n_rows, n_cols = check_matrix(mat)
-    mat_arr = np.empty((mat.size, 4))
-    type_vals = "float"
-    if "d" in str_format:  # integer values
-        mat = np.round(mat)
-        type_vals = "int"
-    mat_min = np.min(mat)
-    i = 0
-    for ix in range(n_rows):
-        for iy in range(n_cols):
-            m = mat[ix, iy]
-            s = m - mat_min + 1
-            mat_arr[i, :] = np.array([ix, iy, m, s])
-            i += 1
-
-    mat_df = pd.DataFrame(mat_arr, columns=[str_rows, str_cols, "Value", "Size"])
-    if type_vals == "int":
-        mat_df = mat_df.astype(
-            dtype={str_rows: int, str_cols: int, "Value": int, "Size": float}
-        )
-    else:
-        mat_df = mat_df.astype(
-            dtype={str_rows: int, str_cols: int, "Value": float, "Size": float}
-        )
+    mat_df = (
+        pd.DataFrame(mat)
+        .stack()
+        .rename_axis([str_rows, str_cols])
+        .reset_index(name="Value")
+    )
+    if "d" in str_format:
+        mat_df["Value"] = mat_df["Value"].round().astype(int)
+    mat_min = mat_df["Value"].min()
+    mat_df["Size"] = (mat_df["Value"] - mat_min + 1).astype(float)
     base = alt.Chart(mat_df).encode(
         x=f"{str_rows}:O", y=alt.Y(f"{str_cols}:O", sort="descending")
     )
@@ -278,21 +271,19 @@ def alt_plot_fun(
     npoints: int = 100,
     save: str | None = None,
 ) -> alt.Chart:
-    """
-    Plots the function `f` from `start` to `end`.
+    """Plot the scalar function ``f`` on ``[start, end]`` using ``npoints`` samples.
 
     Args:
-        f: returns a Numpy array from a Numpy array
-        start: first point on `x` axis
-        end: last point on `x` axis
-        npoints: number of points
-        save: the name of a file to save to (HTML extension will be added)
+        f: Callable mapping a NumPy array of x-values to an array of y-values.
+        start: Lower bound of the plotting interval.
+        end: Upper bound of the plotting interval.
+        npoints: Number of sampling points (generated with ``np.linspace``).
+        save: Optional basename to save the chart as HTML.
 
     Returns:
-        the `alt.Chart` object.
+        The Altair ``Chart`` for further composition or rendering.
     """
-    step = (end - start) / npoints
-    points = np.arange(start, end + step, step)
+    points = np.linspace(start, end, num=npoints)
     fun_data = pd.DataFrame({"x": points, "y": f(points)})
 
     ch = (
@@ -390,8 +381,10 @@ def alt_linked_scatterplots(
     save: str | None = None,
 ) -> alt.Chart:
     """
-    Creates two scatterplots: of `df[str_x1]` vs `df[str_y]` and of `df[str_x2]` vs `df[str_y]`,
-    both with color as per `df[str_f]`. Selecting an interval in one shows up in the other.
+    Creates two scatterplots: of `df[str_x1]` vs `df[str_y]` and of
+    `df[str_x2]` vs `df[str_y]`,
+    both with color as per `df[str_f]`. Selecting an interval in one shows up
+    in the other.
 
     Args:
         df:
@@ -426,7 +419,8 @@ def alt_scatterplot_with_histo(
 ) -> alt.Chart:
     """
     Scatterplot of `df[str_x]` vs `df[str_y]` with colors as per `df[str_f]`
-    allows to select an interval and histograns the counts of `df[str_f]` in the interval.
+    allows to select an interval and histograns the counts of `df[str_f]` in
+    the interval.
 
     Args:
         df: the data with the `str_x` and `str_f` variables
@@ -562,7 +556,8 @@ def alt_superposed_faceted_lineplot(
     save: str | None = None,
 ) -> alt.Chart:
     """
-    Plots `df[str_x]` vs `df[str_y]` superposed by `df[str_f]` and faceted by `df[str_g]`
+    Plots `df[str_x]` vs `df[str_y]` superposed by `df[str_f]` and faceted by
+    `df[str_g]`
 
     Args:
         df: the data with the `str_x`, `str_y`, and `str_f` variables
@@ -701,7 +696,8 @@ def alt_stacked_area_facets(
     save: str | None = None,
 ) -> alt.Chart:
     """
-    Normalized stacked lineplots of `df[str_x]` vs `df[str_y]` by `df[str_f]`, faceted by `df[str_g]`
+    Normalized stacked lineplots of `df[str_x]` vs `df[str_y]` by `df[str_f]`,
+    faceted by `df[str_g]`
 
     Args:
         df: the data with columns for `str_x`, `str_y`, and `str_f`
@@ -739,7 +735,8 @@ def _stack_estimates(
     estimate_names: str | list[str], estimates: np.ndarray, df: pd.DataFrame
 ) -> tuple[pd.DataFrame, list[str]]:
     """
-    adds to a dataframe `df` columns with names `estimate_names` for various `estimates of one coefficient
+    adds to a dataframe `df` columns with names `estimate_names` for various
+    `estimates of one coefficient
 
     Args:
         estimate_names: names of the n estimate columns to be added
@@ -785,7 +782,8 @@ def plot_parameterized_estimates(
     save: str | None = None,
 ) -> alt.Chart:
     """
-    Plots estimates of coefficients, with the true values,  as a function of a parameter; one facet per coefficient
+    Plots estimates of coefficients, with the true values, as a function of a
+    parameter; one facet per coefficient
 
     Args:
         parameter_name: the name of the parameter
@@ -889,7 +887,8 @@ def plot_true_sim_facets(
     save: str | None = None,
 ) -> alt.Chart:
     """
-    Plots simulated and true values of statistics as a function of a parameter; one facet per coefficient
+    Plots simulated and true values of statistics as a function of a parameter;
+    one facet per coefficient
 
     Args:
         parameter_name: the name of the parameter
@@ -990,7 +989,8 @@ def plot_true_sim2_facets(
     save: str | None = None,
 ) -> alt.Chart:
     """
-    Plots simulated values for two methods and true values of statistics as a function of a parameter;
+    Plots simulated values for two methods and true values of statistics as a
+    function of a parameter;
     one facet per coefficient
 
     Args:

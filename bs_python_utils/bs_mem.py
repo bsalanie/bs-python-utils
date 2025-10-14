@@ -1,8 +1,10 @@
 """Reports on memory usage:
 
 * `mem_usage`: prints the top `n` largest global items in memory
-* `memory_display_top`: prints the top `n` largest memory allocations since tracing started
-* `memory_display_top_diffs`: prints the top `n` largest memory allocations since the last snapshot.
+* `memory_display_top`: prints the top `n` largest memory allocations
+  since tracing started
+* `memory_display_top_diffs`: prints the top `n` largest memory
+  allocations since the last snapshot.
 """
 
 import linecache
@@ -67,7 +69,8 @@ def memory_display_top(
     snapshot: tracemalloc.Snapshot, key_type: str = "lineno", limit: int | None = 5
 ) -> None:
     """
-    prints out the lines with the top `limit` allocations of memory since `tracemalloc.start()`
+    prints out the lines with the top `limit` allocations of memory since
+    `tracemalloc.start()`
 
     Args:
         snapshot: obtained from tracemalloc.take_snapshot()
