@@ -161,7 +161,7 @@ def cheb_get_coefficients_1d(
         x = cast(np.ndarray, move_from1m1(t, interval))
         return fun(x)
 
-    c = ncheb.chebinterpolate(fun_t, degree)
+    c = ncheb.chebinterpolate(fun_t, degree)  # type: ignore
     return cast(np.ndarray, c)
 
 

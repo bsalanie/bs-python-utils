@@ -240,7 +240,7 @@ def _pdcovs_bootstrap(
         C_YZ = _dcov_prod(Y_ddi, Z_ddi, unbiased)
         C_ZZ = _dcov_prod(Z_ddi, Z_ddi, unbiased)
         pdcov_stats_boot[idraw] = C_XY - (C_XZ * C_YZ) / C_ZZ
-    return n * pdcov_stats_boot
+    return cast(np.ndarray, n * pdcov_stats_boot)
 
 
 def pvalue_pdcov(pdcov_results: PdcovResults, ndraws: int = 199) -> float:

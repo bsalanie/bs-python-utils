@@ -781,7 +781,7 @@ def outer_bivar(pol1: Polynomial, pol2: Polynomial) -> BivariatePolynomial:
     """
     p1 = pol1.coef
     p2 = pol2.coef
-    prod_coef = np.outer(p1, p2)
+    prod_coef = np.outer(p1, p2)  # type: ignore
     return BivariatePolynomial(prod_coef)
 
 

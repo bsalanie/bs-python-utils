@@ -13,6 +13,9 @@
 
 ### Release notes
 
+#### 0.8.1 (October 18, 2025)
+Deleted extra examples scripts.
+
 #### 0.8 (October 14, 2025)
 Switched to `uv` for project management. Used Codex to clean up the code and generate more tests. Added the `examples` subdirectory.
 
