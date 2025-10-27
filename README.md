@@ -1,5 +1,5 @@
 # bs-python-utils
-
+Remote changes merged.
 ![GitHub last commit](https://img.shields.io/github/last-commit/bsalanie/bs-python-utils)
 
 <!-- [![Release](https://img.shields.io/github/v/release/bsalanie/bs-python-utils)](https://img.shields.io/github/v/release/bsalanie/bs-python-utils) -->
