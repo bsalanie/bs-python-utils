@@ -8,7 +8,7 @@ from bs_python_utils.bs_sparse_gaussian import setup_sparse_gaussian
 
 def sum_x_to_the_fourth(x: np.ndarray) -> np.ndarray:
     """Vectorized integrand f(x) = sum(x**4) evaluated at the sparse grid nodes."""
-    return cast(np.ndarray, np.sum(x ** 4, axis=1))
+    return cast(np.ndarray, np.sum(x**4, axis=1))
 
 
 def main() -> None:

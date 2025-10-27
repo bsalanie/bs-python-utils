@@ -11,6 +11,7 @@ with the weights in the first column.
 The nodes and weights are rescaled so that `f(nodes) @ weights` approximates
 `Ef(X)` for `X` an `N(0,I)` variable.
 """
+
 from importlib import resources
 
 import numpy as np
@@ -57,7 +58,7 @@ def setup_sparse_gaussian(
         )
 
     if ndims in [1, 2, 3, 4, 5]:
-        grid = read_grid_file(f"{ndims}prec{iprec}").reshape((-1, ndims + 1))
+        grid = read_grid_file(f"{ndims}prec{iprec}")
 
         if ndims == 1:
             weights = grid[:, 0]
