@@ -30,7 +30,7 @@ dependencies = [
 packages = ["bs_python_utils"]
 
 [tool.setuptools.package-data]
-"bs_python_utils" = ["examples/*", "examples/**/*"]
+"bs_python_utils" = ["examples/*", "examples/**/*", "GaussHermiteSparseGrids/*"]
 
 [tool.ruff]
 line-length = 88
