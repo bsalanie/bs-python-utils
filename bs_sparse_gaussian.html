@@ -844,6 +844,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#bs_python_utils.bs_sparse_gaussian.read_grid_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      read_grid_file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bs_python_utils.bs_sparse_gaussian.setup_sparse_gaussian" class="md-nav__link">
     <span class="md-ellipsis">
       setup_sparse_gaussian
@@ -1152,6 +1161,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#bs_python_utils.bs_sparse_gaussian.read_grid_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      read_grid_file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bs_python_utils.bs_sparse_gaussian.setup_sparse_gaussian" class="md-nav__link">
     <span class="md-ellipsis">
       setup_sparse_gaussian
@@ -1222,8 +1240,47 @@ with the weights in the first column.</p>
 <div class="doc doc-object doc-function">
 
 
+<h2 id="bs_python_utils.bs_sparse_gaussian.read_grid_file" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">read_grid_file</span><span class="p">(</span><span class="n">grid_name</span><span class="p">)</span></code>
+
+<a href="#bs_python_utils.bs_sparse_gaussian.read_grid_file" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Load a sparse Gauss-Hermite grid stored inside the package.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>bs_python_utils/bs_sparse_gaussian.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">read_grid_file</span><span class="p">(</span><span class="n">grid_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load a sparse Gauss-Hermite grid stored inside the package.&quot;&quot;&quot;</span>
+    <span class="n">resource</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="s2">&quot;bs_python_utils&quot;</span><span class="p">)</span>
+        <span class="o">/</span> <span class="s2">&quot;GaussHermiteSparseGrids&quot;</span>
+        <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;GHsparseGrid</span><span class="si">{</span><span class="n">grid_name</span><span class="si">}</span><span class="s2">.txt&quot;</span>
+    <span class="p">)</span>
+    <span class="k">with</span> <span class="n">resources</span><span class="o">.</span><span class="n">as_file</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span> <span class="k">as</span> <span class="n">grid_path</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">grid_path</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h2 id="bs_python_utils.bs_sparse_gaussian.setup_sparse_gaussian" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">setup_sparse_gaussian</span><span class="p">(</span><span class="n">ndims</span><span class="p">,</span> <span class="n">iprec</span><span class="p">,</span> <span class="n">GHsparsedir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">setup_sparse_gaussian</span><span class="p">(</span><span class="n">ndims</span><span class="p">,</span> <span class="n">iprec</span><span class="p">)</span></code>
 
 <a href="#bs_python_utils.bs_sparse_gaussian.setup_sparse_gaussian" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -1284,22 +1341,6 @@ with the weights in the first column.</p>
                 <em>required</em>
             </td>
           </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>GHsparsedir</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span> | None</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>the name of a directory that contains nodes and weights</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
       </tbody>
     </table>
 
@@ -1340,18 +1381,7 @@ number of rows.</p>
 
             <details class="quote">
               <summary>Source code in <code>bs_python_utils/bs_sparse_gaussian.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">34</span>
 <span class="normal">35</span>
 <span class="normal">36</span>
 <span class="normal">37</span>
@@ -1388,8 +1418,12 @@ number of rows.</p>
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
-<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">setup_sparse_gaussian</span><span class="p">(</span>
-    <span class="n">ndims</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">iprec</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">GHsparsedir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">setup_sparse_gaussian</span><span class="p">(</span>
+    <span class="n">ndims</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">iprec</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TwoArrays</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get nodes and weights for sparse integration Ef(X) with X = N(0,1) in</span>
@@ -1402,29 +1436,20 @@ number of rows.</p>
 <span class="sd">    Args:</span>
 <span class="sd">        ndims: number of dimensions (1 to 5)</span>
 <span class="sd">        iprec: precision (must be 9, 13, or 17)</span>
-<span class="sd">        GHsparsedir: the name of a directory that contains nodes and weights</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        a pair of  arrays `nodes` and `weights`;</span>
 <span class="sd">        `nodes` has `ndims-1` columns and `weights` is a vector with the same</span>
 <span class="sd">            number of rows.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">GHdir</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;Dropbox&quot;</span> <span class="o">/</span> <span class="s2">&quot;GHsparseGrids&quot;</span>
-        <span class="k">if</span> <span class="n">GHsparsedir</span> <span class="ow">is</span> <span class="kc">None</span>
-        <span class="k">else</span> <span class="n">Path</span><span class="p">(</span><span class="n">GHsparsedir</span><span class="p">)</span>
-    <span class="p">)</span>
     <span class="k">if</span> <span class="n">iprec</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">]:</span>
         <span class="n">bs_error_abort</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;We only do sparse integration with precision 9, 13, or 17, not </span><span class="si">{</span><span class="n">iprec</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">ndims</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">GHdir</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-            <span class="n">bs_error_abort</span><span class="p">(</span><span class="s2">&quot;I did not find the directory with the nodes/weights files.&quot;</span><span class="p">)</span>
-        <span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">GHdir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;GHsparseGrid</span><span class="si">{</span><span class="n">ndims</span><span class="si">}</span><span class="s2">prec</span><span class="si">{</span><span class="n">iprec</span><span class="si">}</span><span class="s2">.txt&quot;</span><span class="p">)</span>
+        <span class="n">grid</span> <span class="o">=</span> <span class="n">read_grid_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ndims</span><span class="si">}</span><span class="s2">prec</span><span class="si">{</span><span class="n">iprec</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">grid</span><span class="o">.</span><span class="n">shape</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">ndims</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">weights</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
             <span class="n">nodes</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
