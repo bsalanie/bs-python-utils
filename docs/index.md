@@ -1,5 +1,5 @@
 # bs-python-utils
-
+Remote changes merged.
 ![GitHub last commit](https://img.shields.io/github/last-commit/bsalanie/bs-python-utils)
 
 <!-- [![Release](https://img.shields.io/github/v/release/bsalanie/bs-python-utils)](https://img.shields.io/github/v/release/bsalanie/bs-python-utils) -->
@@ -12,6 +12,9 @@
 - **Documentation** <https://bsalanie.github.io/bs-python-utils/>
 
 ### Release notes
+
+#### 0.8.2 (October 26, 2025)
+Included grids for sparse Gaussian integration.
 
 #### 0.8.1 (October 18, 2025)
 Deleted extra examples scripts.

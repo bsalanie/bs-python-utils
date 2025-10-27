@@ -13,6 +13,9 @@ Remote changes merged.
 
 ### Release notes
 
+#### 0.8.2 (October 26, 2025)
+Included grids for sparse Gaussian integration.
+
 #### 0.8.1 (October 18, 2025)
 Deleted extra examples scripts.
 
