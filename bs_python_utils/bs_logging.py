@@ -44,8 +44,13 @@ class ColorFormatter(logging.Formatter):
         return output
 
 
-def get_logger(name: str, level=logging.INFO, log_to_file=False) -> logging.Logger:
+def get_logger(
+    name: str,
+    level=logging.INFO,
+    log_to_file: bool = False,
+) -> logging.Logger:
     """Create and return a logger with colored output.
+
     Args:
         name: Name of the logger.
         level: Minimum logging level.
