@@ -46,7 +46,7 @@ class ColorFormatter(logging.Formatter):
 
 def get_logger(
     name: str,
-    level=logging.INFO,
+    level: int = logging.INFO,
     log_to_file: bool = False,
 ) -> logging.Logger:
     """Create and return a logger with colored output.
