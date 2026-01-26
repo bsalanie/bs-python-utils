@@ -13,6 +13,9 @@
 
 ### Release notes
 
+#### 0.8.5 (January 25, 2026)
+Added colored logger.
+
 #### 0.8.2 (October 26, 2025)
 Included grids for sparse Gaussian integration.
 
