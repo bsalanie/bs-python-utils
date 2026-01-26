@@ -1,13 +1,76 @@
 """Utilities for logging:
 
+* `get_logger` creates and returns a logger with colored output
 * `init_logger` initializes and returns a customized logger
-* `log_execution` ia a decorator to log entry into and ext from a function.
+* `log_execution` is a decorator to log entry into and ext from a function.
 """
 
 import functools
 import logging
+import sys
 from pathlib import Path
 from typing import Callable
+
+from colorama import Fore, Style, init
+
+# Initialize colorama
+init(autoreset=True)
+
+COLOR_MAP = {
+    "DEBUG": Fore.CYAN,
+    "INFO": Fore.GREEN,
+    "WARNING": Fore.YELLOW,
+    "ERROR": Fore.RED,
+    "CRITICAL": Fore.MAGENTA,
+}
+
+
+class ColorFormatter(logging.Formatter):
+    def format(self, record):
+        # Mirror the standard Formatter logic so we still get message, asctime, and exception text
+        record.message = record.getMessage()
+        if self.usesTime():
+            record.asctime = self.formatTime(record, self.datefmt)
+
+        color = COLOR_MAP.get(record.levelname, "")
+        level = f"{color}{record.levelname}{Style.RESET_ALL}"
+        output = f"{record.asctime} [{record.name}] {level}: {record.message}"
+
+        if record.exc_info and not record.exc_text:
+            record.exc_text = self.formatException(record.exc_info)
+        if record.exc_text:
+            output = f"{output}\n{record.exc_text}"
+
+        return output
+
+
+def get_logger(name: str, level=logging.INFO, log_to_file=False) -> logging.Logger:
+    """Create and return a logger with colored output.
+    Args:
+        name: Name of the logger.
+        level: Minimum logging level.
+        log_to_file: If True, also log to a file named '{name}.log'.
+
+    Returns:
+        Configured logger instance.
+
+    Examples:
+        >>> logger = get_logger("my_logger", level=logging.DEBUG, log_to_file=True)
+        >>> logger.debug("This is a debug message.")
+    """
+    logger = logging.getLogger(name)
+    if logger.handlers:
+        return logger  # Already configured
+    logger.setLevel(level)
+    formatter = ColorFormatter("%(asctime)s", datefmt="%H:%M:%S")
+    stream_handler = logging.StreamHandler(sys.stdout)
+    stream_handler.setFormatter(formatter)
+    logger.addHandler(stream_handler)
+    if log_to_file:
+        file_handler = logging.FileHandler(f"{name}.log")
+        file_handler.setFormatter(formatter)
+        logger.addHandler(file_handler)
+    return logger
 
 
 def init_logger(
@@ -94,4 +157,7 @@ def log_execution(func: Callable) -> Callable:
         loglevel(f"Finished executing {func.__name__}")
         return result
 
+    return wrapper
+
+    return wrapper
     return wrapper

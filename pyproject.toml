@@ -24,6 +24,7 @@ dependencies = [
     "statsmodels>=0.14.5",
     "streamlit>=1.49.1",
     "vega-datasets>=0.9.0",
+    "colorama>=0.4.6",
 ]
 
 [tool.setuptools]
