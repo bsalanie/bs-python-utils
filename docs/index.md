@@ -13,6 +13,9 @@
 
 ### Release notes
 
+#### 0.9 (March 18, 2026)
+Improved bivariate quantiles.
+
 #### 0.8.5 (January 25, 2026)
 Added colored logger.
 
