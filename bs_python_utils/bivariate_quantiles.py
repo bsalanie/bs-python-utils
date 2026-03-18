@@ -73,7 +73,7 @@ def bivariate_quantiles_v(y: np.ndarray, tau: np.ndarray, v: np.ndarray) -> np.n
 
     Args:
         y: Observations with shape ``(n, 2)``.
-        u: Evaluation points in ``[0, 1]^2`` (shape ``(m, 2)``).
+        tau: Evaluation points in ``[0, 1]^2`` (shape ``(m, 2)``).
         v: Dual weights solving the optimal transport problem (length ``n``).
 
     Returns:
@@ -227,7 +227,7 @@ def bivariate_quantiles(
 
     Args:
         y: Observations, shape ``(n, 2)``.
-        u: Query points in ``[0, 1]^2`` (shape ``(m, 2)``).
+        tau: Query points in ``[0, 1]^2`` (shape ``(m, 2)``).
         n_nodes: Number of Chebyshev nodes for the quadrature.
         verbose: Print optimisation diagnostics when ``True``.
 
