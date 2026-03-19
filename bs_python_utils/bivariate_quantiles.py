@@ -115,31 +115,24 @@ def _objgrad(
     # sys.exit(1)
 
     EPS = 1e-12
-    obj_val = 0.0
-    probs = np.zeros(n)
     bivrank = np.zeros((n, 2))
-    for k in range(n):
-        Mk = M[k, :]
-        mk = m[k, :]
-        pos_diffs = np.maximum(Mk - mk, 0.0)
-        # print(f"pos_diffs for k={k} are {pos_diffs}")
-        pos_diffs_sq = np.maximum(Mk * Mk - mk * mk, 0.0)
-        probs[k] = pos_diffs @ tau1_weights
-        # print(f"probs[{k}] = {probs[k]}")
-        factor1 = (tau1_nodes * pos_diffs) @ tau1_weights
-        factor2 = (pos_diffs_sq @ tau1_weights) / 2.0
-        obj_val += y1[k] * factor1 + y2[k] * factor2 - vs1[k] * probs[k]
-        if probs[k] > EPS:
-            bivrank[k, 0] = factor1 / probs[k]
-            bivrank[k, 1] = factor2 / probs[k]
 
-    # print(f"{np.min(probs)=}")
+    pos_diffs = np.maximum(M - m, 0.0)
+    pos_diffs_sq = np.maximum(M * M - m * m, 0.0)
+    probs = pos_diffs @ tau1_weights
+    factor1 = (pos_diffs * tau1_nodes) @ tau1_weights
+    factor2 = (pos_diffs_sq @ tau1_weights) / 2.0
+    obj_val = y1 @ factor1 + y2 @ factor2 - vs1 @ probs
+
+    if np.min(probs) > EPS:
+        bivrank[:, 0] = factor1 / probs
+        bivrank[:, 1] = factor2 / probs
 
     if gr:
         grad_val = probs[-1] - probs[:-1]
         return obj_val, grad_val, bivrank
     else:
-        return obj_val
+        return cast(float, obj_val)
 
 
 def _obj(v: np.ndarray, args: list):
