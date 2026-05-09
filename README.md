@@ -19,6 +19,9 @@
 
 ### Release notes
 
+#### 1.0.1 (May 9, 2026)
+Fixed badges.
+
 #### 1.0 (May 9, 2026)
 Created subpackages (no change in the API).
 
