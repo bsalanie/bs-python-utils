@@ -28,8 +28,9 @@ dependencies = [
     "pyarrow>=23.0.0",
 ]
 
-[tool.setuptools]
-packages = ["bs_python_utils"]
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["bs_python_utils*"]
 
 [tool.setuptools.package-data]
 "bs_python_utils" = ["examples/*", "examples/**/*", "GaussHermiteSparseGrids/*"]
