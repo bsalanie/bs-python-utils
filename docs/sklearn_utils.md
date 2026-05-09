@@ -1,5 +1,5 @@
 # sklearn_utils module
 
-::: bs_python_utils.sklearn_utils
+::: bs_python_utils.data_anal.sklearn_utils
 
 

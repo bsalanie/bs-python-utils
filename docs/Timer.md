@@ -1,6 +1,6 @@
 # Timer module
 
-::: bs_python_utils.Timer
+::: bs_python_utils.core.Timer
 
 
 

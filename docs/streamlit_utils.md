@@ -1,3 +1,3 @@
 # streamlit_utils module
 
-::: bs_python_utils.streamlit_utils
+::: bs_python_utils.viz.streamlit_utils

@@ -1,4 +1,4 @@
 # bs_mem module
 
-::: bs_python_utils.bs_mem
+::: bs_python_utils.core.bs_mem
 

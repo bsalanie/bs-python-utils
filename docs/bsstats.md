@@ -1,4 +1,4 @@
 # bsstats module
 
-::: bs_python_utils.bsstats
+::: bs_python_utils.stats.bsstats
 

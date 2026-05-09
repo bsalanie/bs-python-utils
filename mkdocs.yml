@@ -9,31 +9,33 @@ copyright: Maintained by <a href="https://bsalanie.github.io">Bernard Salanie</a
 
 nav:
   - Home: index.md
-  - API Reference: 
-    - General utilities:
+  - API Reference:
+    - core:
       - error reporting and other utilities: bsutils.md
       - logging: bs_logging.md
       - math strings: bs_mathstr.md
       - timing routines: Timer.md
       - memory usage: bs_mem.md
-    - Scientific:
-      - Numpy: bsnputils.md
-      - Scipy: bssputils.md
+    - numerical:
+      - NumPy: bsnputils.md
+      - SciPy: bssputils.md
       - Chebyshev interpolation and integration: chebyshev.md
-      - Pandas: pandas_utils.md
-      - statistics: bsstats.md
-      - Sklearn: sklearn_utils.md
-      - nonlinear dependence: distance_covariances.md
-      - optimization: bs_opt.md
       - sparse integration for functions of Gaussians: bs_sparse_gaussian.md
+    - opt:
+      - optimization: bs_opt.md
+    - stats:
+      - statistics: bsstats.md
+      - nonlinear dependence: distance_covariances.md
       - bivariate quantiles and ranks: bivariate_quantiles.md
-    - Plotting:
+    - data_anal:
+      - Pandas: pandas_utils.md
+      - scikit-learn: sklearn_utils.md
+    - viz:
       - plotting interface: bs_plots.md
       - Matplotlib: bsmplutils.md
       - Seaborn: bs_seaborn.md
       - Altair: bs_altair.md
-    - Streamlit:
-      - Utilities: streamlit_utils.md
+      - Streamlit: streamlit_utils.md
 
 plugins:
   - search:

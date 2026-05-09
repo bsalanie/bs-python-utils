@@ -1,3 +1,3 @@
 # bsnputils module
 
-::: bs_python_utils.bsnputils
+::: bs_python_utils.numerical.bsnputils

@@ -1,3 +1,3 @@
 # bs_plots module
 
-::: bs_python_utils.bs_plots
+::: bs_python_utils.viz.bs_plots

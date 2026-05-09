@@ -1,3 +1,3 @@
 # bs_opt module
 
-::: bs_python_utils.bs_opt
+::: bs_python_utils.opt.bs_opt
