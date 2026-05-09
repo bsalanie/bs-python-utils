@@ -1,6 +1,6 @@
 import numpy as np
 
-from bs_python_utils import bsstats
+from bs_python_utils.stats import bsstats
 
 
 def test_proj_Z_multivariate_degree_two():

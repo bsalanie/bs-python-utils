@@ -2,7 +2,11 @@
 
 import numpy as np
 
-from bs_python_utils.distance_covariances import dcov_dcor, pdcov_pdcor, pvalue_pdcov
+from bs_python_utils.stats.distance_covariances import (
+    dcov_dcor,
+    pdcov_pdcor,
+    pvalue_pdcov,
+)
 
 # example page 2396 of Szekely and Rizzo 2014
 n = 2000

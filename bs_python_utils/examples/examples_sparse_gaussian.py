@@ -1,9 +1,10 @@
 """Integrate x -> x**4 over N(0, 1) using the sparse Gaussian grids."""
 
 from typing import cast
+
 import numpy as np
 
-from bs_python_utils.bs_sparse_gaussian import setup_sparse_gaussian
+from bs_python_utils.numerical.bs_sparse_gaussian import setup_sparse_gaussian
 
 
 def sum_x_to_the_fourth(x: np.ndarray) -> np.ndarray:

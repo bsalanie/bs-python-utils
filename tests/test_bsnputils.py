@@ -2,7 +2,8 @@ from math import exp, isclose, log, pi, sqrt
 
 import numpy as np
 
-from bs_python_utils.bsnputils import (
+from bs_python_utils.core.bsutils import bsexp, bslog
+from bs_python_utils.numerical.bsnputils import (
     bs_sqrt_pdmatrix,
     bsgrid,
     ecdf,
@@ -23,7 +24,6 @@ from bs_python_utils.bsnputils import (
     print_quantiles,
     rice_stderr,
 )
-from bs_python_utils.bsutils import bsexp, bslog
 
 
 def test_print_quantiles_vec():

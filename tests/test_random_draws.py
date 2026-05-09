@@ -1,6 +1,6 @@
 import numpy as np
 
-from bs_python_utils.bsstats import emcee_draw, kde_resample
+from bs_python_utils.stats.bsstats import emcee_draw, kde_resample
 
 
 def log_gauss2(x, *args):

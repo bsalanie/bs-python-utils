@@ -3,9 +3,9 @@ from math import exp, isclose, sqrt
 import numpy as np
 import pytest
 
-from bs_python_utils.bsnputils import FloatOrArray, bsgrid
-from bs_python_utils.bsutils import bs_error_abort
-from bs_python_utils.chebyshev import (
+from bs_python_utils.core.bsutils import bs_error_abort
+from bs_python_utils.numerical.bsnputils import FloatOrArray, bsgrid
+from bs_python_utils.numerical.chebyshev import (
     Interval,
     Rectangle,
     cheb_eval_fun_at_nodes_1d,

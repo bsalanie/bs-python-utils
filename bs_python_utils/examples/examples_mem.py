@@ -4,7 +4,7 @@ import tracemalloc
 
 import numpy as np
 
-from bs_python_utils.bs_mem import (
+from bs_python_utils.core.bs_mem import (
     memory_display_top,
     memory_display_top_diffs,
     memory_usage,

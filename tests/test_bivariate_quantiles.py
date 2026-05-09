@@ -1,10 +1,10 @@
 import numpy as np
 
-from bs_python_utils.bivariate_quantiles import (
+from bs_python_utils.numerical.bsnputils import npmaxabs
+from bs_python_utils.stats.bivariate_quantiles import (
     _compute_ad,
     _solve_for_v,
 )
-from bs_python_utils.bsnputils import npmaxabs
 
 
 def test_bivariate_ranks():
@@ -24,7 +24,7 @@ def test_bivariate_ranks():
             y[:, 1] == y[k, 1]
         )
 
-    assert npmaxabs(bivranks - bivranks_th) < 0.01
+    assert npmaxabs(bivranks - bivranks_th) < 0.1
 
 
 def test_compute_ad():

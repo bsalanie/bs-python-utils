@@ -1,7 +1,7 @@
 import numpy as np
 import scipy.stats as sts
 
-from bs_python_utils import bssputils
+from bs_python_utils.numerical import bssputils
 
 
 def test_describe_array_reports_std_deviation(capsys):

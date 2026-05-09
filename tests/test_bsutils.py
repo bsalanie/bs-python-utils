@@ -2,7 +2,7 @@ from math import exp, isclose, log, sqrt
 
 import numpy as np
 
-from bs_python_utils.bsutils import (
+from bs_python_utils.core.bsutils import (
     bs_projection_point,
     bs_switch,
     bscomb,

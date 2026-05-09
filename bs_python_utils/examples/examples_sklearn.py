@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 
-from bs_python_utils.sklearn_utils import skl_npreg_lasso
+from bs_python_utils.data_anal.sklearn_utils import skl_npreg_lasso
 
 n_obs = 10000
 X1 = -2.0 + 3.0 * np.random.uniform(size=n_obs)

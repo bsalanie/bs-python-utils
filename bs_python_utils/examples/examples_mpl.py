@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from bs_python_utils.bsmplutils import bs_mpl_plot_dcm_fit
+from bs_python_utils.viz.bsmplutils import bs_mpl_plot_dcm_fit
 
 n_obs = 100
 n_y = 4

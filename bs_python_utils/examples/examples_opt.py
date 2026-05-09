@@ -2,14 +2,14 @@
 
 import numpy as np
 
-from bs_python_utils.bs_opt import (
+from bs_python_utils.core.bsutils import print_stars
+from bs_python_utils.numerical.bssputils import describe_array
+from bs_python_utils.opt.bs_opt import (
     acc_grad_descent,
     armijo_alpha,
     barzilai_borwein_alpha,
     minimize_some_fixed,
 )
-from bs_python_utils.bssputils import describe_array
-from bs_python_utils.bsutils import print_stars
 
 print_stars("Testing acc_grad_descent")
 

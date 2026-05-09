@@ -1,8 +1,9 @@
-import numpy as np
+from typing import cast
 
 import matplotlib.pyplot as plt
+import numpy as np
 
-from bs_python_utils import sklearn_utils
+from bs_python_utils.data_anal import sklearn_utils
 
 
 def test_skl_npreg_lasso_returns_predictions_and_model():
@@ -29,7 +30,7 @@ def test_skl_npreg_lasso_returns_predictions_and_model():
     assert model.named_steps["lasso"].fit_intercept is False
 
     # ensure pipeline can predict out-of-sample without errors
-    preds_new = model.predict(X[:5])
+    preds_new = cast(np.ndarray, model.predict(X[:5]))
     assert preds_new.shape == (5,)
 
 

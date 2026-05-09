@@ -5,7 +5,7 @@ import numpy as np
 from vega_datasets import data
 
 
-from bs_python_utils.bs_altair import (
+from bs_python_utils.viz.bs_altair import (
     alt_boxes,
     alt_density,
     alt_faceted_densities,

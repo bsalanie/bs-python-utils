@@ -3,7 +3,11 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from bs_python_utils.bs_seaborn import bs_regplot, bs_sns_bar_x_byf, bs_sns_bar_x_byfg
+from bs_python_utils.viz.bs_seaborn import (
+    bs_regplot,
+    bs_sns_bar_x_byf,
+    bs_sns_bar_x_byfg,
+)
 
 cars = sns.load_dataset("mpg")
 

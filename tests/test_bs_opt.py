@@ -1,6 +1,6 @@
 import numpy as np
 
-from bs_python_utils import bs_opt
+from bs_python_utils.opt import bs_opt
 
 
 def quadratic_objective(x, args):

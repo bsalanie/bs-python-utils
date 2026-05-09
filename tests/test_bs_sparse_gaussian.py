@@ -2,7 +2,7 @@ from math import isclose
 
 import numpy as np
 
-from bs_python_utils.bs_sparse_gaussian import setup_sparse_gaussian
+from bs_python_utils.numerical.bs_sparse_gaussian import setup_sparse_gaussian
 
 
 def test_sparse_gaussian():

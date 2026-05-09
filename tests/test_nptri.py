@@ -1,6 +1,6 @@
 import numpy as np
 
-from bs_python_utils.bsnputils import set_elements_abovebelow_diagonal
+from bs_python_utils.numerical.bsnputils import set_elements_abovebelow_diagonal
 
 
 def test_nptril():
