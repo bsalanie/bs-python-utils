@@ -319,13 +319,17 @@ def _grad(v: np.ndarray, args: list):
     return grad_val
 
 
-def _solve_for_v(y: np.ndarray, n_nodes: int = 32, verbose: bool = False) -> TwoArrays:
+def _solve_for_v(
+    y: np.ndarray, n_nodes: int = 32, verbose: bool = False, use_jax: bool = True
+) -> TwoArrays:
     """Solve the dual optimization problem for the sample.
 
     Args:
         y: Observations with shape ``(n, 2)``.
         n_nodes: Number of Chebyshev nodes used for quadrature.
         verbose: Print optimisation diagnostics when ``True``.
+        use_jax: Use the JAX-accelerated path when JAX is installed.
+            Set to ``False`` to force the pure-NumPy path regardless.
 
     Returns:
         A tuple ``(vstar, bivranks)`` where ``vstar`` has length ``n`` and
@@ -349,7 +353,7 @@ def _solve_for_v(y: np.ndarray, n_nodes: int = 32, verbose: bool = False) -> Two
 
     argsog = [y, a_mat, dy2, tau1_nodes, tau1_weights, verbose]
 
-    if _JAX:
+    if _JAX and use_jax:
         solver = _JaxSolver(y, a_mat, dy2, tau1_nodes, tau1_weights, verbose)
         res = minimize_free(solver.obj, solver.grad, v0, args=argsog)
     else:
@@ -366,7 +370,7 @@ def _solve_for_v(y: np.ndarray, n_nodes: int = 32, verbose: bool = False) -> Two
     if verbose:
         print(f"The final gradient over v is close to 0: error {npmaxabs(res.jac)}")
 
-    if _JAX:
+    if _JAX and use_jax:
         solver._refresh(vstar_free)
         bivranks = solver.bivranks
     else:
@@ -380,6 +384,7 @@ def bivariate_ranks(
     y: np.ndarray,
     n_nodes: int = 32,
     verbose: bool = False,
+    use_jax: bool = True,
 ) -> np.ndarray:
     """Compute barycentric ranks for each observation.
 
@@ -387,6 +392,8 @@ def bivariate_ranks(
         y: Observations with shape ``(n, 2)``.
         n_nodes: Number of Chebyshev nodes used in the quadrature.
         verbose: Print diagnostics when ``True``.
+        use_jax: Use the JAX-accelerated path when JAX is installed.
+            Set to ``False`` to force the pure-NumPy path regardless.
 
     Returns:
         Array of average ranks (shape ``(n, 2)``) with ``nan`` for zero-mass cells.
@@ -396,12 +403,16 @@ def bivariate_ranks(
     if d != 2:
         bs_error_abort(f"only works for 2-dimensional y, not for {d}")
 
-    _, bivranks = _solve_for_v(y, n_nodes, verbose)
+    _, bivranks = _solve_for_v(y, n_nodes, verbose, use_jax=use_jax)
     return cast(np.ndarray, bivranks)
 
 
 def bivariate_quantiles(
-    y: np.ndarray, tau: np.ndarray, n_nodes: int = 32, verbose: bool = False
+    y: np.ndarray,
+    tau: np.ndarray,
+    n_nodes: int = 32,
+    verbose: bool = False,
+    use_jax: bool = True,
 ) -> np.ndarray:
     """Solve for the dual weights and evaluate bivariate quantiles.
 
@@ -410,9 +421,11 @@ def bivariate_quantiles(
         tau: Query points in ``[0, 1]^2`` with shape ``(m, 2)``.
         n_nodes: Number of Chebyshev nodes for the quadrature.
         verbose: Print optimisation diagnostics when ``True``.
+        use_jax: Use the JAX-accelerated path when JAX is installed.
+            Set to ``False`` to force the pure-NumPy path regardless.
 
     Returns:
         Bivariate quantiles evaluated at ``tau``.
     """
-    v, _ = _solve_for_v(y, n_nodes, verbose)
+    v, _ = _solve_for_v(y, n_nodes, verbose, use_jax=use_jax)
     return bivariate_quantiles_v(y, tau, v)

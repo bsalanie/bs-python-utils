@@ -292,6 +292,7 @@ def acc_grad_descent(
     alpha: float = 1.01,
     beta: float = 0.5,
     maxiter: int = 10000,
+    use_jax: bool = False,
 ) -> tuple[np.ndarray, int]:
     """Accelerated gradient descent with optional proximal operator.
 
@@ -302,14 +303,36 @@ def acc_grad_descent(
         prox_h: Proximal operator for the nonsmooth term ``h``. Defaults to identity.
         print_result: Print a convergence message on exit.
         verbose: When ``True`` report gradient errors every 10 iterations.
+            Ignored when ``use_jax=True`` (loop body cannot print).
         tol: Infinity-norm tolerance on the gradient for declaring convergence.
         alpha: Upper bound used when adapting the step size.
         beta: Lower bound used when adapting the step size.
         maxiter: Maximum number of iterations.
+        use_jax: Dispatch to :func:`acc_grad_descent_jax` when JAX is installed.
+            Faster for large ``n`` (≥ ~2000 on CPU, all sizes on GPU); slower
+            for small ``n``.  ``grad_f`` must be JAX-traceable.  Defaults to
+            ``False``.
 
     Returns:
         A pair ``(x_star, status)`` where ``status`` is ``0`` on convergence and ``1`` otherwise.
     """
+    if use_jax and _JAX:
+        x_conv, ret_code = acc_grad_descent_jax(
+            grad_f,
+            x_init,
+            other_params,
+            prox_h=prox_h,
+            tol=tol,
+            alpha=alpha,
+            beta=beta,
+            maxiter=maxiter,
+        )
+        if print_result:
+            if ret_code == 0:
+                print_stars(" AGD (JAX) converged")
+            else:
+                print_stars(" Problem in AGD (JAX): did not converge")
+        return x_conv, ret_code
 
     # no proximal projection if no h
     local_prox_h: ProximalFunction = prox_h if prox_h else lambda x, t, p: x
