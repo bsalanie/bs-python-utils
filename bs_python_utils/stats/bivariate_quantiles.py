@@ -10,10 +10,17 @@ The main workflow is:
    :func:`bivariate_quantiles`.
 3. Read off barycentric ranks with :func:`bivariate_ranks`.
 
+If ``jax`` is installed (``pip install 'bs-python-utils[jax]'``), the inner
+optimization loop is JIT-compiled and the Python for-loop over quadrature nodes
+is eliminated, giving a significant speedup on both CPU and (with
+``jax[cuda]``) GPU.  The NumPy path is used transparently when JAX is absent.
+
 References:
     Chernozhukov, Galichon, Hallin, and Henry. "Monge-Kantorovich Depth,
     Quantiles, Ranks and Signs." *Annals of Statistics* 45(1), 2017.
 """
+
+from __future__ import annotations
 
 from typing import cast
 
@@ -23,6 +30,15 @@ from bs_python_utils.core.bsutils import bs_error_abort
 from bs_python_utils.numerical.bsnputils import TwoArrays, npmaxabs
 from bs_python_utils.numerical.chebyshev import Interval, cheb_get_nodes_1d
 from bs_python_utils.opt.bs_opt import minimize_free, print_optimization_results
+
+try:
+    import jax
+    import jax.numpy as jnp
+
+    jax.config.update("jax_enable_x64", True)
+    _JAX = True
+except ImportError:
+    _JAX = False
 
 
 def _compute_ad(y: np.ndarray) -> TwoArrays:
@@ -54,16 +70,11 @@ def _compute_m_M(
     Args:
         v: Dual weights of length ``n``.
         a_mat: Pairwise slope matrix returned by :func:`_compute_ad`.
-        dy2: Pairwise differences in the second coordinate.
+        dy2: Pairwise differences in the second coordinate (1 on diagonal).
         tau1_nodes: Quadrature nodes for the first coordinate.
 
     Returns:
         A tuple ``(m, M)`` with arrays of shape ``(n, len(tau1_nodes))``.
-
-    Warning:
-        The (rare) ``dy2 == 0`` case currently raises warnings in computing ``b_mat``.
-        That logic works for the present implementation but should be refactored into a cleaner, more explicit
-        branch.
     """
     dv = np.subtract.outer(v, v)
     b_mat = dv / dy2
@@ -71,18 +82,141 @@ def _compute_m_M(
     EPS = 1e-12
     maskp = dy2 < EPS
     maskm = dy2 > -EPS
-    n, n_nodes = v.size, tau1_nodes.size
-    m_low = np.empty((n, n_nodes))
-    m_high = np.empty((n, n_nodes))
-    for i, tau1 in enumerate(tau1_nodes):
-        f_mat = tau1 * a_mat - b_mat
-        f_matp = f_mat.copy()
-        f_matm = f_mat.copy()
-        f_matp[maskp] = 1
-        f_matm[maskm] = 0
-        m_low[:, i] = np.max(f_matm, axis=1)
-        m_high[:, i] = np.min(f_matp, axis=1)
+    # Vectorised over all quadrature nodes at once: (n_nodes, n, n)
+    f_mats = tau1_nodes[:, None, None] * a_mat[None, :, :] - b_mat[None, :, :]
+    f_mats_p = np.where(maskp, 1.0, f_mats)
+    f_mats_m = np.where(maskm, 0.0, f_mats)
+    m_low = np.max(f_mats_m, axis=2).T  # (n, n_nodes)
+    m_high = np.min(f_mats_p, axis=2).T
     return np.clip(m_low, 0.0, 1.0), np.clip(m_high, 0.0, 1.0)
+
+
+# ---------------------------------------------------------------------------
+# JAX-accelerated path
+# ---------------------------------------------------------------------------
+if _JAX:
+
+    def _compute_m_M_jax(
+        vs1: "jnp.ndarray",
+        a_mat: "jnp.ndarray",
+        dy2: "jnp.ndarray",
+        tau1_nodes: "jnp.ndarray",
+    ) -> tuple["jnp.ndarray", "jnp.ndarray"]:
+        """Pure-JAX equivalent of :func:`_compute_m_M` (non-mutating)."""
+        n = vs1.shape[0]
+        dv = vs1[:, None] - vs1[None, :]
+        b_mat = dv / dy2  # dy2 has 1 on diagonal → diagonal of b_mat is 0
+        # Zero diagonal for masking without mutating the input array
+        idx = jnp.arange(n)
+        dy2_z = dy2.at[idx, idx].set(0.0)
+        EPS = 1e-12
+        maskp = dy2_z < EPS
+        maskm = dy2_z > -EPS
+        f_mats = tau1_nodes[:, None, None] * a_mat[None, :, :] - b_mat[None, :, :]
+        f_mats_p = jnp.where(maskp, 1.0, f_mats)
+        f_mats_m = jnp.where(maskm, 0.0, f_mats)
+        m_low = jnp.clip(jnp.max(f_mats_m, axis=2).T, 0.0, 1.0)
+        m_high = jnp.clip(jnp.min(f_mats_p, axis=2).T, 0.0, 1.0)
+        return m_low, m_high
+
+    @jax.jit
+    def _jax_obj_grad_biv(
+        v_free: "jnp.ndarray",
+        y: "jnp.ndarray",
+        a_mat: "jnp.ndarray",
+        dy2: "jnp.ndarray",
+        tau1_nodes: "jnp.ndarray",
+        tau1_weights: "jnp.ndarray",
+    ) -> tuple["jnp.ndarray", "jnp.ndarray", "jnp.ndarray"]:
+        """JIT-compiled joint evaluation of objective, gradient, and bivranks.
+
+        Uses the analytically derived gradient (``probs[-1] - probs[:-1]``)
+        rather than AD through ``jnp.max``/``jnp.min`` to avoid subgradient
+        ambiguity at kink points.
+        """
+        vs1 = jnp.append(v_free, -jnp.sum(v_free))
+        m, M = _compute_m_M_jax(vs1, a_mat, dy2, tau1_nodes)
+        EPS = 1e-12
+        pos_diffs = jnp.maximum(M - m, 0.0)
+        pos_diffs_sq = jnp.maximum(M * M - m * m, 0.0)
+        probs = pos_diffs @ tau1_weights
+        factor1 = (pos_diffs * tau1_nodes) @ tau1_weights
+        factor2 = (pos_diffs_sq @ tau1_weights) / 2.0
+        obj_val = y[:, 0] @ factor1 + y[:, 1] @ factor2 - vs1 @ probs
+        grad_val = probs[-1] - probs[:-1]
+        valid = jnp.min(probs) > EPS
+        biv = jnp.stack(
+            [
+                jnp.where(valid, factor1 / probs, 0.0),
+                jnp.where(valid, factor2 / probs, 0.0),
+            ],
+            axis=1,
+        )
+        return obj_val, grad_val, biv
+
+    class _JaxSolver:
+        """Manages JAX-accelerated optimization with per-step result caching.
+
+        Static arrays (``y``, ``a_mat``, ``dy2``, quadrature nodes/weights)
+        are converted to JAX once at construction.  The cached ``(obj, grad,
+        bivrank)`` triple is reused when scipy calls ``obj`` and ``grad`` at
+        the same point, avoiding a second JIT call per step.
+        """
+
+        def __init__(
+            self,
+            y: np.ndarray,
+            a_mat: np.ndarray,
+            dy2: np.ndarray,
+            tau1_nodes: np.ndarray,
+            tau1_weights: np.ndarray,
+            verbose: bool,
+        ) -> None:
+            self._y_j = jnp.array(y)
+            self._a_j = jnp.array(a_mat)
+            self._d_j = jnp.array(dy2)
+            self._t_j = jnp.array(tau1_nodes)
+            self._w_j = jnp.array(tau1_weights)
+            self._verbose = verbose
+            self._key: bytes | None = None
+            self._obj_val: float = 0.0
+            self._grad_val: np.ndarray = np.empty(0)
+            self._biv: np.ndarray = np.empty(0)
+
+        def _refresh(self, v: np.ndarray) -> None:
+            key = v.tobytes()
+            if key != self._key:
+                obj, grad, biv = _jax_obj_grad_biv(
+                    jnp.array(v),
+                    self._y_j,
+                    self._a_j,
+                    self._d_j,
+                    self._t_j,
+                    self._w_j,
+                )
+                self._key = key
+                self._obj_val = float(obj)
+                self._grad_val = np.asarray(grad)
+                self._biv = np.asarray(biv)
+
+        def obj(self, v: np.ndarray, args: list) -> float:
+            self._refresh(v)
+            return self._obj_val
+
+        def grad(self, v: np.ndarray, args: list) -> np.ndarray:
+            self._refresh(v)
+            if self._verbose:
+                print(f"The error on the gradient is {npmaxabs(self._grad_val)}")
+            return self._grad_val
+
+        @property
+        def bivranks(self) -> np.ndarray:
+            return self._biv
+
+
+# ---------------------------------------------------------------------------
+# NumPy path (used when JAX is absent, and for the bivariate_quantiles_v API)
+# ---------------------------------------------------------------------------
 
 
 def bivariate_quantiles_v(y: np.ndarray, tau: np.ndarray, v: np.ndarray) -> np.ndarray:
@@ -132,11 +266,6 @@ def _objgrad(
     tau1_weights = args[4]
     vs1 = np.append(v, -np.sum(v))
     m, M = _compute_m_M(vs1, a_mat, dy2, tau1_nodes)
-    # print(f"m is {m}")
-    # print(f"M  is {M}")
-    # import sys
-
-    # sys.exit(1)
 
     EPS = 1e-12
     bivrank = np.zeros((n, 2))
@@ -220,17 +349,30 @@ def _solve_for_v(y: np.ndarray, n_nodes: int = 32, verbose: bool = False) -> Two
 
     argsog = [y, a_mat, dy2, tau1_nodes, tau1_weights, verbose]
 
-    res = minimize_free(_obj, _grad, v0, args=argsog)
+    if _JAX:
+        solver = _JaxSolver(y, a_mat, dy2, tau1_nodes, tau1_weights, verbose)
+        res = minimize_free(solver.obj, solver.grad, v0, args=argsog)
+    else:
+        res = minimize_free(_obj, _grad, v0, args=argsog)
+
     if verbose:
         print_optimization_results(res, "Minimizing over v")
 
     if not res.success:
         bs_error_abort("Problem! the optimization failed.")
-    vstar = res.x
+
+    vstar_free = res.x
+
     if verbose:
         print(f"The final gradient over v is close to 0: error {npmaxabs(res.jac)}")
-    _, _, bivranks = cast(tuple, _objgrad(vstar, argsog, gr=True))
-    vstar = np.append(vstar, -np.sum(vstar))
+
+    if _JAX:
+        solver._refresh(vstar_free)
+        bivranks = solver.bivranks
+    else:
+        _, _, bivranks = cast(tuple, _objgrad(vstar_free, argsog, gr=True))
+
+    vstar = np.append(vstar_free, -np.sum(vstar_free))
     return cast(np.ndarray, vstar), cast(np.ndarray, bivranks)
 
 
