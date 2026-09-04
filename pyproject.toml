@@ -1,6 +1,6 @@
 [project]
 name = "bs-python-utils"
-version = "1.1"
+version = "1.1.1"
 description = "Utilities programs for my Python code"
 readme = "README.md"
 requires-python = ">=3.13"

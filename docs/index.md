@@ -19,6 +19,9 @@
 
 ### Release notes
 
+#### 1.1.1 (September 04, 2026)
+Added simulation-based bivariate ranks.
+
 #### 1.0.1 (May 9, 2026)
 Fixed badges.
 
