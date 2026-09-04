@@ -10,11 +10,6 @@ The main workflow is:
    :func:`bivariate_quantiles`.
 3. Read off barycentric ranks with :func:`bivariate_ranks`.
 
-If ``jax`` is installed (``pip install 'bs-python-utils[jax]'``), the inner
-optimization loop is JIT-compiled and the Python for-loop over quadrature nodes
-is eliminated, giving a significant speedup on both CPU and (with
-``jax[cuda]``) GPU.  The NumPy path is used transparently when JAX is absent.
-
 References:
     Chernozhukov, Galichon, Hallin, and Henry. "Monge-Kantorovich Depth,
     Quantiles, Ranks and Signs." *Annals of Statistics* 45(1), 2017.
@@ -30,15 +25,74 @@ from bs_python_utils.core.bsutils import bs_error_abort
 from bs_python_utils.numerical.bsnputils import TwoArrays, npmaxabs
 from bs_python_utils.numerical.chebyshev import Interval, cheb_get_nodes_1d
 from bs_python_utils.opt.bs_opt import minimize_free, print_optimization_results
+from bs_python_utils.numerical.bsnputils import check_matrix
+from scipy.special import logsumexp
 
-try:
-    import jax
-    import jax.numpy as jnp
 
-    jax.config.update("jax_enable_x64", True)
-    _JAX = True
-except ImportError:
-    _JAX = False
+def bivariate_ranks_simul(
+    x: np.ndarray,
+    rng: np.random.Generator,
+    n_draws: int = 10_000,
+    h_mult: float = 100.0,
+) -> np.ndarray:
+    """This computes bivariate ranks for a matrix ``x` using simulations
+
+    Args:
+        x: Input matrix of shape ``(n, 2)``.
+        rng: Random number generator for reproducibility.
+        n_draws: Number of random draws for the simulation.
+        h_mult: we set the bandwidth h as std(v_init)/h_mult, default is 100.0
+    """
+    n, d = check_matrix(x)
+    if d != 2:
+        bs_error_abort("Input matrix x must have 2 columns for bivariate ranks.")
+
+    v_init = np.mean(x, axis=1)[:-1]
+    h = np.std(v_init) / 100.0
+
+    tau_draws = rng.uniform(low=0.0, high=1.0, size=2 * n_draws).reshape((n_draws, 2))
+
+    def objv_and_grad(
+        v: np.ndarray,
+        ret: int = 0,
+    ) -> float | np.ndarray | None:
+        vn = np.zeros(n)
+        vn[:-1] = v.copy()
+        vn[-1] = -np.sum(v)
+        psi_vals = tau_draws @ x.T - vn
+        lse_vals = logsumexp(psi_vals / h, axis=1)
+        psi_maxs = h * lse_vals
+        obj_val = np.mean(psi_maxs)
+        probs = np.exp(psi_vals / h - lse_vals.reshape((-1, 1)))
+        mean_probs = np.mean(probs, axis=0)
+        if ret == 0:
+            return obj_val
+        elif ret == 1:
+            grad = -mean_probs[:-1] + mean_probs[-1]
+            return grad
+        elif ret == 2:
+            ranks = (probs.T @ tau_draws / n_draws) / mean_probs.reshape((-1, 1))
+            return ranks
+        else:
+            bs_error_abort("Invalid value for ret. Must be 0, 1, or 2.")
+            return None
+
+    def objv(v: np.ndarray, args: list) -> float:
+        return objv_and_grad(v, ret=0)
+
+    def grad_objv(v: np.ndarray, args: list) -> np.ndarray:
+        return objv_and_grad(v, ret=1)
+
+    def ranks(v: np.ndarray, args: list) -> np.ndarray:
+        return objv_and_grad(v, ret=2)
+
+    resv = minimize_free(objv, grad_objv, v_init, args=[])
+    if not resv.success:
+        bs_error_abort(f"Optimization failed, message: {resv.message}")
+
+    v_sol = resv.x
+    r_x = ranks(v_sol, args=[])
+    return r_x
 
 
 def _compute_ad(y: np.ndarray) -> TwoArrays:
@@ -89,134 +143,6 @@ def _compute_m_M(
     m_low = np.max(f_mats_m, axis=2).T  # (n, n_nodes)
     m_high = np.min(f_mats_p, axis=2).T
     return np.clip(m_low, 0.0, 1.0), np.clip(m_high, 0.0, 1.0)
-
-
-# ---------------------------------------------------------------------------
-# JAX-accelerated path
-# ---------------------------------------------------------------------------
-if _JAX:
-
-    def _compute_m_M_jax(
-        vs1: "jnp.ndarray",
-        a_mat: "jnp.ndarray",
-        dy2: "jnp.ndarray",
-        tau1_nodes: "jnp.ndarray",
-    ) -> tuple["jnp.ndarray", "jnp.ndarray"]:
-        """Pure-JAX equivalent of :func:`_compute_m_M` (non-mutating)."""
-        n = vs1.shape[0]
-        dv = vs1[:, None] - vs1[None, :]
-        b_mat = dv / dy2  # dy2 has 1 on diagonal → diagonal of b_mat is 0
-        # Zero diagonal for masking without mutating the input array
-        idx = jnp.arange(n)
-        dy2_z = dy2.at[idx, idx].set(0.0)
-        EPS = 1e-12
-        maskp = dy2_z < EPS
-        maskm = dy2_z > -EPS
-        f_mats = tau1_nodes[:, None, None] * a_mat[None, :, :] - b_mat[None, :, :]
-        f_mats_p = jnp.where(maskp, 1.0, f_mats)
-        f_mats_m = jnp.where(maskm, 0.0, f_mats)
-        m_low = jnp.clip(jnp.max(f_mats_m, axis=2).T, 0.0, 1.0)
-        m_high = jnp.clip(jnp.min(f_mats_p, axis=2).T, 0.0, 1.0)
-        return m_low, m_high
-
-    @jax.jit
-    def _jax_obj_grad_biv(
-        v_free: "jnp.ndarray",
-        y: "jnp.ndarray",
-        a_mat: "jnp.ndarray",
-        dy2: "jnp.ndarray",
-        tau1_nodes: "jnp.ndarray",
-        tau1_weights: "jnp.ndarray",
-    ) -> tuple["jnp.ndarray", "jnp.ndarray", "jnp.ndarray"]:
-        """JIT-compiled joint evaluation of objective, gradient, and bivranks.
-
-        Uses the analytically derived gradient (``probs[-1] - probs[:-1]``)
-        rather than AD through ``jnp.max``/``jnp.min`` to avoid subgradient
-        ambiguity at kink points.
-        """
-        vs1 = jnp.append(v_free, -jnp.sum(v_free))
-        m, M = _compute_m_M_jax(vs1, a_mat, dy2, tau1_nodes)
-        EPS = 1e-12
-        pos_diffs = jnp.maximum(M - m, 0.0)
-        pos_diffs_sq = jnp.maximum(M * M - m * m, 0.0)
-        probs = pos_diffs @ tau1_weights
-        factor1 = (pos_diffs * tau1_nodes) @ tau1_weights
-        factor2 = (pos_diffs_sq @ tau1_weights) / 2.0
-        obj_val = y[:, 0] @ factor1 + y[:, 1] @ factor2 - vs1 @ probs
-        grad_val = probs[-1] - probs[:-1]
-        valid = jnp.min(probs) > EPS
-        biv = jnp.stack(
-            [
-                jnp.where(valid, factor1 / probs, 0.0),
-                jnp.where(valid, factor2 / probs, 0.0),
-            ],
-            axis=1,
-        )
-        return obj_val, grad_val, biv
-
-    class _JaxSolver:
-        """Manages JAX-accelerated optimization with per-step result caching.
-
-        Static arrays (``y``, ``a_mat``, ``dy2``, quadrature nodes/weights)
-        are converted to JAX once at construction.  The cached ``(obj, grad,
-        bivrank)`` triple is reused when scipy calls ``obj`` and ``grad`` at
-        the same point, avoiding a second JIT call per step.
-        """
-
-        def __init__(
-            self,
-            y: np.ndarray,
-            a_mat: np.ndarray,
-            dy2: np.ndarray,
-            tau1_nodes: np.ndarray,
-            tau1_weights: np.ndarray,
-            verbose: bool,
-        ) -> None:
-            self._y_j = jnp.array(y)
-            self._a_j = jnp.array(a_mat)
-            self._d_j = jnp.array(dy2)
-            self._t_j = jnp.array(tau1_nodes)
-            self._w_j = jnp.array(tau1_weights)
-            self._verbose = verbose
-            self._key: bytes | None = None
-            self._obj_val: float = 0.0
-            self._grad_val: np.ndarray = np.empty(0)
-            self._biv: np.ndarray = np.empty(0)
-
-        def _refresh(self, v: np.ndarray) -> None:
-            key = v.tobytes()
-            if key != self._key:
-                obj, grad, biv = _jax_obj_grad_biv(
-                    jnp.array(v),
-                    self._y_j,
-                    self._a_j,
-                    self._d_j,
-                    self._t_j,
-                    self._w_j,
-                )
-                self._key = key
-                self._obj_val = float(obj)
-                self._grad_val = np.asarray(grad)
-                self._biv = np.asarray(biv)
-
-        def obj(self, v: np.ndarray, args: list) -> float:
-            self._refresh(v)
-            return self._obj_val
-
-        def grad(self, v: np.ndarray, args: list) -> np.ndarray:
-            self._refresh(v)
-            if self._verbose:
-                print(f"The error on the gradient is {npmaxabs(self._grad_val)}")
-            return self._grad_val
-
-        @property
-        def bivranks(self) -> np.ndarray:
-            return self._biv
-
-
-# ---------------------------------------------------------------------------
-# NumPy path (used when JAX is absent, and for the bivariate_quantiles_v API)
-# ---------------------------------------------------------------------------
 
 
 def bivariate_quantiles_v(y: np.ndarray, tau: np.ndarray, v: np.ndarray) -> np.ndarray:
@@ -320,7 +246,9 @@ def _grad(v: np.ndarray, args: list):
 
 
 def _solve_for_v(
-    y: np.ndarray, n_nodes: int = 32, verbose: bool = False, use_jax: bool = True
+    y: np.ndarray,
+    n_nodes: int = 32,
+    verbose: bool = False,
 ) -> TwoArrays:
     """Solve the dual optimization problem for the sample.
 
@@ -328,8 +256,6 @@ def _solve_for_v(
         y: Observations with shape ``(n, 2)``.
         n_nodes: Number of Chebyshev nodes used for quadrature.
         verbose: Print optimisation diagnostics when ``True``.
-        use_jax: Use the JAX-accelerated path when JAX is installed.
-            Set to ``False`` to force the pure-NumPy path regardless.
 
     Returns:
         A tuple ``(vstar, bivranks)`` where ``vstar`` has length ``n`` and
@@ -353,11 +279,7 @@ def _solve_for_v(
 
     argsog = [y, a_mat, dy2, tau1_nodes, tau1_weights, verbose]
 
-    if _JAX and use_jax:
-        solver = _JaxSolver(y, a_mat, dy2, tau1_nodes, tau1_weights, verbose)
-        res = minimize_free(solver.obj, solver.grad, v0, args=argsog)
-    else:
-        res = minimize_free(_obj, _grad, v0, args=argsog)
+    res = minimize_free(_obj, _grad, v0, args=argsog)
 
     if verbose:
         print_optimization_results(res, "Minimizing over v")
@@ -370,11 +292,7 @@ def _solve_for_v(
     if verbose:
         print(f"The final gradient over v is close to 0: error {npmaxabs(res.jac)}")
 
-    if _JAX and use_jax:
-        solver._refresh(vstar_free)
-        bivranks = solver.bivranks
-    else:
-        _, _, bivranks = cast(tuple, _objgrad(vstar_free, argsog, gr=True))
+    _, _, bivranks = cast(tuple, _objgrad(vstar_free, argsog, gr=True))
 
     vstar = np.append(vstar_free, -np.sum(vstar_free))
     return cast(np.ndarray, vstar), cast(np.ndarray, bivranks)
@@ -384,7 +302,6 @@ def bivariate_ranks(
     y: np.ndarray,
     n_nodes: int = 32,
     verbose: bool = False,
-    use_jax: bool = True,
 ) -> np.ndarray:
     """Compute barycentric ranks for each observation.
 
@@ -392,8 +309,6 @@ def bivariate_ranks(
         y: Observations with shape ``(n, 2)``.
         n_nodes: Number of Chebyshev nodes used in the quadrature.
         verbose: Print diagnostics when ``True``.
-        use_jax: Use the JAX-accelerated path when JAX is installed.
-            Set to ``False`` to force the pure-NumPy path regardless.
 
     Returns:
         Array of average ranks (shape ``(n, 2)``) with ``nan`` for zero-mass cells.
@@ -403,8 +318,7 @@ def bivariate_ranks(
     if d != 2:
         bs_error_abort(f"only works for 2-dimensional y, not for {d}")
 
-    _, bivranks = _solve_for_v(y, n_nodes, verbose, use_jax=use_jax)
-    return cast(np.ndarray, bivranks)
+    _, bivranks = _solve_for_v(y, n_nodes, verbose)
 
 
 def bivariate_quantiles(
@@ -412,7 +326,6 @@ def bivariate_quantiles(
     tau: np.ndarray,
     n_nodes: int = 32,
     verbose: bool = False,
-    use_jax: bool = True,
 ) -> np.ndarray:
     """Solve for the dual weights and evaluate bivariate quantiles.
 
@@ -421,11 +334,9 @@ def bivariate_quantiles(
         tau: Query points in ``[0, 1]^2`` with shape ``(m, 2)``.
         n_nodes: Number of Chebyshev nodes for the quadrature.
         verbose: Print optimisation diagnostics when ``True``.
-        use_jax: Use the JAX-accelerated path when JAX is installed.
-            Set to ``False`` to force the pure-NumPy path regardless.
 
     Returns:
         Bivariate quantiles evaluated at ``tau``.
     """
-    v, _ = _solve_for_v(y, n_nodes, verbose, use_jax=use_jax)
+    v, _ = _solve_for_v(y, n_nodes, verbose)
     return bivariate_quantiles_v(y, tau, v)

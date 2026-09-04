@@ -3,11 +3,8 @@
 * `ScalarFunctionAndGradient`, `ProximalFunction` type aliases
 * an `OptimizeParams` class
 * `check_gradient_scalar_function` checks whether an analytical gradient is correct
-  (supports ``mode='jax'`` for exact AD-based checking when JAX is installed)
 * `acc_grad_descent`: accelerated gradient descent for convex, possibly
   non-smooth functions
-* `acc_grad_descent_jax`: JAX-accelerated variant using ``lax.while_loop``
-  (available when JAX is installed)
 * `minimize_some_fixed`: minimizes a function with some parameter values
   possibly fixed and some possibly within bounds, using L-BFGS-B
 * `minimize_free`: minimizes a function with some parameter values possibly
@@ -28,14 +25,6 @@ import numpy as np
 import scipy.linalg as spla
 import scipy.optimize as spopt
 
-try:
-    import jax
-    import jax.numpy as jnp
-
-    jax.config.update("jax_enable_x64", True)
-    _JAX = True
-except ImportError:
-    _JAX = False
 
 from bs_python_utils.numerical.bsnputils import TwoArrays, check_vector, npmaxabs
 from bs_python_utils.core.bsutils import bs_error_abort, print_stars
@@ -233,12 +222,8 @@ def check_gradient_scalar_function(
         fg: should return the scalar value, and the gradient if its `gr` argument is `True`
         p: where we are checking the gradient
         args: other arguments passed to `fg`
-        mode: ``"central"``, ``"forward"``, or ``"jax"`` (exact AD via
-            ``jax.grad``; requires JAX and a JAX-differentiable ``fg`` — the
-            scalar returned by ``fg(..., gr=False)`` must be a JAX array, not
-            wrapped in ``float()``)
-        EPS: the step for forward or central finite differences (ignored for
-            ``mode='jax'``)
+        mode: ``"central"`` or ``"forward"``
+        EPS: the step for forward or central finite differences
 
     Returns:
         the analytic and numeric (or AD) gradients.
@@ -265,17 +250,8 @@ def check_gradient_scalar_function(
             f_plus = cast(float, fg(p1, args, gr=False))  # type: ignore
             g[i] = (f_plus - f0) / EPS
             print(f"{i}: {f_grad[i]}, {g[i]}")
-    elif mode == "jax":
-        if not _JAX:
-            bs_error_abort("mode='jax' requires JAX; install bs-python-utils[jax]")
-            return f_grad, g
-        # fg must be JAX-differentiable (uses jnp ops internally)
-        jax_grad_fn = jax.grad(lambda p_arr: fg(p_arr, args, gr=False))
-        g = np.asarray(jax_grad_fn(jnp.array(p)))
-        for i in range(len(p)):
-            print(f"{i}: {f_grad[i]}, {g[i]}")
     else:
-        bs_error_abort("mode must be 'central', 'forward', or 'jax'")
+        bs_error_abort("mode must be 'central' or 'forward'")
 
     return f_grad, g
 
@@ -292,7 +268,6 @@ def acc_grad_descent(
     alpha: float = 1.01,
     beta: float = 0.5,
     maxiter: int = 10000,
-    use_jax: bool = False,
 ) -> tuple[np.ndarray, int]:
     """Accelerated gradient descent with optional proximal operator.
 
@@ -303,37 +278,14 @@ def acc_grad_descent(
         prox_h: Proximal operator for the nonsmooth term ``h``. Defaults to identity.
         print_result: Print a convergence message on exit.
         verbose: When ``True`` report gradient errors every 10 iterations.
-            Ignored when ``use_jax=True`` (loop body cannot print).
         tol: Infinity-norm tolerance on the gradient for declaring convergence.
         alpha: Upper bound used when adapting the step size.
         beta: Lower bound used when adapting the step size.
         maxiter: Maximum number of iterations.
-        use_jax: Dispatch to :func:`acc_grad_descent_jax` when JAX is installed.
-            Faster for large ``n`` (≥ ~2000 on CPU, all sizes on GPU); slower
-            for small ``n``.  ``grad_f`` must be JAX-traceable.  Defaults to
-            ``False``.
 
     Returns:
         A pair ``(x_star, status)`` where ``status`` is ``0`` on convergence and ``1`` otherwise.
     """
-    if use_jax and _JAX:
-        x_conv, ret_code = acc_grad_descent_jax(
-            grad_f,
-            x_init,
-            other_params,
-            prox_h=prox_h,
-            tol=tol,
-            alpha=alpha,
-            beta=beta,
-            maxiter=maxiter,
-        )
-        if print_result:
-            if ret_code == 0:
-                print_stars(" AGD (JAX) converged")
-            else:
-                print_stars(" Problem in AGD (JAX): did not converge")
-        return x_conv, ret_code
-
     # no proximal projection if no h
     local_prox_h: ProximalFunction = prox_h if prox_h else lambda x, t, p: x
 
@@ -402,138 +354,6 @@ def acc_grad_descent(
             )
 
     return x_conv, ret_code
-
-
-if _JAX:
-    from functools import partial as _partial
-
-    @_partial(jax.jit, static_argnums=(0, 1, 5, 6, 7, 8))
-    def _agd_jit_loop(
-        grad_f: Callable,
-        local_prox_h: Callable,
-        x0: "jnp.ndarray",
-        g0: "jnp.ndarray",
-        t0: "jnp.ndarray",
-        tol: float,
-        alpha: float,
-        beta: float,
-        maxiter: int,
-        other_params: Any,
-    ) -> tuple:
-        """Inner JIT-compiled while loop for :func:`acc_grad_descent_jax`.
-
-        ``grad_f``, ``local_prox_h``, ``tol``, ``alpha``, ``beta``, and
-        ``maxiter`` are static: XLA compiles one program per distinct
-        combination of these values and reuses it for all subsequent calls with
-        the same shapes.
-        """
-        eps = 1e-12
-
-        def cond_fn(state: tuple) -> "jnp.ndarray":
-            _, _, g, _, _, n_iter = state
-            return jnp.logical_and(n_iter < maxiter, jnp.max(jnp.abs(g)) >= tol)
-
-        def body_fn(state: tuple) -> tuple:
-            x, y, g, t, theta, n_iter = state
-            xi, yi = x, y
-
-            x_new = local_prox_h(y - t * g, t, other_params)
-            new_theta = 2.0 / (1.0 + jnp.sqrt(1.0 + 4.0 / (theta * theta)))
-
-            # Restart if the update step is in the wrong direction
-            restart = jnp.dot(y - x_new, x_new - xi) > 0
-            x_out = jnp.where(restart, xi, x_new)
-            y_out = jnp.where(
-                restart,
-                xi,
-                x_new + (1.0 - new_theta) * (x_new - xi),
-            )
-            theta_out = jnp.where(restart, jnp.array(1.0), new_theta)
-
-            g_new = grad_f(y_out, other_params)
-
-            # Barzilai–Borwein step size update
-            diff_y = y_out - yi
-            ndy_sq = jnp.dot(diff_y, diff_y)
-            denom = jnp.dot(diff_y, g - g_new)
-            t_hat = jnp.where(jnp.abs(denom) > eps, 0.5 * ndy_sq / jnp.abs(denom), t)
-            t_out = jnp.clip(t_hat, beta * t, alpha * t)
-
-            return x_out, y_out, g_new, t_out, theta_out, n_iter + 1
-
-        return jax.lax.while_loop(
-            cond_fn,
-            body_fn,
-            (x0, x0, g0, t0, jnp.array(1.0), jnp.array(0)),
-        )
-
-    def acc_grad_descent_jax(
-        grad_f: Callable,
-        x_init: np.ndarray,
-        other_params: Any,
-        prox_h: ProximalFunction | None = None,
-        tol: float = 1e-9,
-        alpha: float = 1.01,
-        beta: float = 0.5,
-        maxiter: int = 10000,
-    ) -> tuple[np.ndarray, int]:
-        """JAX-accelerated accelerated gradient descent via ``lax.while_loop``.
-
-        Equivalent to :func:`acc_grad_descent` but compiles the entire iteration
-        loop with XLA via ``jax.jit``, eliminating Python overhead per step.
-        The speedup is most pronounced when ``grad_f`` is already JIT-compiled
-        (e.g. with ``@jax.jit``) and the problem is large enough for XLA to
-        amortise its dispatch overhead.  On CPU, expect a cross-over around
-        **n ≈ 2000**; on GPU the JAX path wins for all practical n.  For small
-        n, :func:`acc_grad_descent` with a plain NumPy ``grad_f`` is faster.
-
-        ``other_params`` must be a pytree of JAX arrays (or Python scalars).
-        Pass plain NumPy arrays through ``jnp.array(...)`` first.
-
-        Verbose printing and the ``@timeit`` wrapper are intentionally absent:
-        the loop body cannot contain Python side-effects.
-
-        Args:
-            grad_f: Gradient of the smooth component; must be JAX-traceable
-                (uses JAX ops or decorated with ``@jax.jit``).
-            x_init: Initial iterate (NumPy or JAX array).
-            other_params: Extra arguments forwarded to ``grad_f`` and ``prox_h``;
-                must be a pytree of JAX arrays.
-            prox_h: Proximal operator for the non-smooth term; must be
-                JAX-traceable if provided.  Defaults to identity.
-            tol: Infinity-norm tolerance on the gradient for convergence.
-            alpha: Upper-bound multiplier for the adaptive step size.
-            beta: Lower-bound multiplier for the adaptive step size.
-            maxiter: Maximum iterations (static — changing this value triggers
-                XLA recompilation).
-
-        Returns:
-            A pair ``(x_star, status)`` where ``status`` is ``0`` on convergence
-            and ``1`` otherwise.
-        """
-        local_prox_h: Callable = prox_h if prox_h else lambda x, t, p: x
-
-        x0 = jnp.array(x_init, dtype=jnp.float64)
-        eps = 1e-12
-
-        # Barzilai–Borwein initial step (eager, feeds the JIT loop)
-        g0 = grad_f(x0, other_params)
-        norm_g = jnp.linalg.norm(g0)
-        t0 = 1.0 / jnp.maximum(norm_g, eps)
-        x_hat = x0 - t0 * g0
-        g_hat = grad_f(x_hat, other_params)
-        diff_g0 = g0 - g_hat
-        norm_dg = jnp.linalg.norm(diff_g0)
-        numerator = jnp.abs(jnp.dot(x0 - x_hat, diff_g0))
-        t_bb = jnp.maximum(numerator / jnp.maximum(norm_dg * norm_dg, eps), eps)
-        t0 = jnp.where(norm_dg > eps, t_bb, t0)
-
-        _, y_final, g_final, _, _, _ = _agd_jit_loop(
-            grad_f, local_prox_h, x0, g0, t0, tol, alpha, beta, maxiter, other_params
-        )
-
-        grad_err = float(jnp.max(jnp.abs(g_final)))
-        return np.asarray(y_final), 0 if grad_err < tol else 1
 
 
 def _fix_some(
