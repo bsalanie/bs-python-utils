@@ -1500,8 +1500,7 @@ Quantiles, Ranks and Signs." <em>Annals of Statistics</em> 45(1), 2017.</p>
 
             <details class="quote">
               <summary>Source code in <code>bs_python_utils/stats/bivariate_quantiles.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">324</span>
-<span class="normal">325</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">325</span>
 <span class="normal">326</span>
 <span class="normal">327</span>
 <span class="normal">328</span>
@@ -1518,7 +1517,8 @@ Quantiles, Ranks and Signs." <em>Annals of Statistics</em> 45(1), 2017.</p>
 <span class="normal">339</span>
 <span class="normal">340</span>
 <span class="normal">341</span>
-<span class="normal">342</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">bivariate_quantiles</span><span class="p">(</span>
+<span class="normal">342</span>
+<span class="normal">343</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">bivariate_quantiles</span><span class="p">(</span>
     <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">tau</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">n_nodes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
@@ -1834,7 +1834,8 @@ Quantiles, Ranks and Signs." <em>Annals of Statistics</em> 45(1), 2017.</p>
 <span class="normal">318</span>
 <span class="normal">319</span>
 <span class="normal">320</span>
-<span class="normal">321</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">bivariate_ranks</span><span class="p">(</span>
+<span class="normal">321</span>
+<span class="normal">322</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">bivariate_ranks</span><span class="p">(</span>
     <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">n_nodes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
     <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -1855,6 +1856,7 @@ Quantiles, Ranks and Signs." <em>Annals of Statistics</em> 45(1), 2017.</p>
         <span class="n">bs_error_abort</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;only works for 2-dimensional y, not for </span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">_</span><span class="p">,</span> <span class="n">bivranks</span> <span class="o">=</span> <span class="n">_solve_for_v</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">n_nodes</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">bivranks</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -2056,25 +2058,25 @@ Quantiles, Ranks and Signs." <em>Annals of Statistics</em> 45(1), 2017.</p>
         <span class="n">probs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">psi_vals</span> <span class="o">/</span> <span class="n">h</span> <span class="o">-</span> <span class="n">lse_vals</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
         <span class="n">mean_probs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">probs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">ret</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">obj_val</span>
+            <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">obj_val</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">ret</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">grad</span> <span class="o">=</span> <span class="o">-</span><span class="n">mean_probs</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">mean_probs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            <span class="k">return</span> <span class="n">grad</span>
+            <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">grad</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">ret</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="n">ranks</span> <span class="o">=</span> <span class="p">(</span><span class="n">probs</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">tau_draws</span> <span class="o">/</span> <span class="n">n_draws</span><span class="p">)</span> <span class="o">/</span> <span class="n">mean_probs</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-            <span class="k">return</span> <span class="n">ranks</span>
+            <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">ranks</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">bs_error_abort</span><span class="p">(</span><span class="s2">&quot;Invalid value for ret. Must be 0, 1, or 2.&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">None</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">objv</span><span class="p">(</span><span class="n">v</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">objv_and_grad</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">ret</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">objv_and_grad</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">ret</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">grad_objv</span><span class="p">(</span><span class="n">v</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">objv_and_grad</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">ret</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">objv_and_grad</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">ret</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">ranks</span><span class="p">(</span><span class="n">v</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">objv_and_grad</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">ret</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">objv_and_grad</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">ret</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 
     <span class="n">resv</span> <span class="o">=</span> <span class="n">minimize_free</span><span class="p">(</span><span class="n">objv</span><span class="p">,</span> <span class="n">grad_objv</span><span class="p">,</span> <span class="n">v_init</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[])</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">resv</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
