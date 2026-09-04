@@ -300,9 +300,7 @@ def npmaxabs(arr: np.ndarray) -> float:
     return cast(float, np.max(np.abs(arr)))
 
 
-def rice_stderr(
-    y: np.ndarray, x: np.ndarray, is_sorted: bool = False
-) -> np.ndarray | float:
+def rice_stderr(y: np.ndarray, x: np.ndarray, is_sorted: bool = False) -> np.ndarray:
     """
     computes the Rice local estimators of the standard error of y | x
 

@@ -420,8 +420,8 @@ def minimize_some_fixed(
             obj,
             x_init,
             method="L-BFGS-B",
-            args=args,
-            options=options,
+            args=(args,),
+            options=cast(Any, options),
             jac=grad_obj,
             bounds=bounds,
         )
@@ -453,8 +453,8 @@ def minimize_some_fixed(
             fixed_obj,
             t_init,
             method="L-BFGS-B",
-            args=args,
-            options=options,
+            args=(args,),
+            options=cast(Any, options),
             jac=fixed_grad_obj,
             bounds=t_bounds,
         )
@@ -508,8 +508,8 @@ def minimize_free(
             obj,
             x_init,
             method="BFGS",
-            args=args,
-            options=options,
+            args=(args,),
+            options=cast(Any, options),
             jac=grad_obj,
         )
     else:
@@ -517,8 +517,8 @@ def minimize_free(
             obj,
             x_init,
             method="L-BFGS-B",
-            args=args,
-            options=options,
+            args=(args,),
+            options=cast(Any, options),
             jac=grad_obj,
             bounds=bounds,
         )

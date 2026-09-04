@@ -342,6 +342,7 @@ def bs_multivariate_normal_pdf(
             bs_error_abort(
                 f"cov_mat should be a matrix ({nvars}, {nvars}) not ({nrows}, {ncols})"
             )
+        cov_mat = cast(np.ndarray, cov_mat)
         resid = values_x - means_x
         argresid = spla.solve(cov_mat, resid.T)
         argexp = np.zeros(n)

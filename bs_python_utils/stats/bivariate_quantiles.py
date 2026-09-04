@@ -66,25 +66,25 @@ def bivariate_ranks_simul(
         probs = np.exp(psi_vals / h - lse_vals.reshape((-1, 1)))
         mean_probs = np.mean(probs, axis=0)
         if ret == 0:
-            return obj_val
+            return cast(float, obj_val)
         elif ret == 1:
             grad = -mean_probs[:-1] + mean_probs[-1]
-            return grad
+            return cast(np.ndarray, grad)
         elif ret == 2:
             ranks = (probs.T @ tau_draws / n_draws) / mean_probs.reshape((-1, 1))
-            return ranks
+            return cast(np.ndarray, ranks)
         else:
             bs_error_abort("Invalid value for ret. Must be 0, 1, or 2.")
             return None
 
     def objv(v: np.ndarray, args: list) -> float:
-        return objv_and_grad(v, ret=0)
+        return cast(float, objv_and_grad(v, ret=0))
 
     def grad_objv(v: np.ndarray, args: list) -> np.ndarray:
-        return objv_and_grad(v, ret=1)
+        return cast(np.ndarray, objv_and_grad(v, ret=1))
 
     def ranks(v: np.ndarray, args: list) -> np.ndarray:
-        return objv_and_grad(v, ret=2)
+        return cast(np.ndarray, objv_and_grad(v, ret=2))
 
     resv = minimize_free(objv, grad_objv, v_init, args=[])
     if not resv.success:
@@ -319,6 +319,7 @@ def bivariate_ranks(
         bs_error_abort(f"only works for 2-dimensional y, not for {d}")
 
     _, bivranks = _solve_for_v(y, n_nodes, verbose)
+    return bivranks
 
 
 def bivariate_quantiles(
