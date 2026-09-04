@@ -1619,15 +1619,15 @@ parameter vector</p>
 
               <details class="quote">
                 <summary>Source code in <code>bs_python_utils/opt/bs_opt.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">44</span>
-<span class="normal">45</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">45</span>
 <span class="normal">46</span>
 <span class="normal">47</span>
 <span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span>
-<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="normal">52</span>
+<span class="normal">53</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">OptimizeParams</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;used for optimization; combines values, bounds and initial values for a</span>
 <span class="sd">    parameter vector</span>
@@ -1879,8 +1879,7 @@ parameter vector</p>
 
             <details class="quote">
               <summary>Source code in <code>bs_python_utils/opt/bs_opt.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">258</span>
-<span class="normal">259</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">259</span>
 <span class="normal">260</span>
 <span class="normal">261</span>
 <span class="normal">262</span>
@@ -2007,7 +2006,6 @@ parameter vector</p>
 <span class="sd">    Returns:</span>
 <span class="sd">        A pair ``(x_star, status)`` where ``status`` is ``0`` on convergence and ``1`` otherwise.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="c1"># no proximal projection if no h</span>
     <span class="n">local_prox_h</span><span class="p">:</span> <span class="n">ProximalFunction</span> <span class="o">=</span> <span class="n">prox_h</span> <span class="k">if</span> <span class="n">prox_h</span> <span class="k">else</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="n">x</span>
 
@@ -2291,8 +2289,7 @@ supplied direction</p>
 
             <details class="quote">
               <summary>Source code in <code>bs_python_utils/opt/bs_opt.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">124</span>
-<span class="normal">125</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">125</span>
 <span class="normal">126</span>
 <span class="normal">127</span>
 <span class="normal">128</span>
@@ -2343,7 +2340,8 @@ supplied direction</p>
 <span class="normal">173</span>
 <span class="normal">174</span>
 <span class="normal">175</span>
-<span class="normal">176</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">armijo_alpha</span><span class="p">(</span>
+<span class="normal">176</span>
+<span class="normal">177</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">armijo_alpha</span><span class="p">(</span>
     <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
     <span class="n">grad_f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
     <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
@@ -2505,8 +2503,7 @@ step size.</p>
 
             <details class="quote">
               <summary>Source code in <code>bs_python_utils/opt/bs_opt.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">179</span>
-<span class="normal">180</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">180</span>
 <span class="normal">181</span>
 <span class="normal">182</span>
 <span class="normal">183</span>
@@ -2534,7 +2531,8 @@ step size.</p>
 <span class="normal">205</span>
 <span class="normal">206</span>
 <span class="normal">207</span>
-<span class="normal">208</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">barzilai_borwein_alpha</span><span class="p">(</span>
+<span class="normal">208</span>
+<span class="normal">209</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">barzilai_borwein_alpha</span><span class="p">(</span>
     <span class="n">grad_f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="n">Iterable</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Estimate a Barzilai–Borwein step size and return the gradient at ``x``.</span>
@@ -2809,7 +2807,7 @@ step size.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>"central" or "forward" derivatives</p>
+                <p><code>"central"</code> or <code>"forward"</code></p>
               </div>
             </td>
             <td>
@@ -2825,7 +2823,7 @@ step size.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>the step for forward or central derivatives</p>
+                <p>the step for forward or central finite differences</p>
               </div>
             </td>
             <td>
@@ -2851,7 +2849,7 @@ step size.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>the analytic and numeric gradients.</p>
+                <p>the analytic and numeric (or AD) gradients.</p>
               </div>
             </td>
           </tr>
@@ -2861,8 +2859,7 @@ step size.</p>
 
             <details class="quote">
               <summary>Source code in <code>bs_python_utils/opt/bs_opt.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">211</span>
-<span class="normal">212</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">212</span>
 <span class="normal">213</span>
 <span class="normal">214</span>
 <span class="normal">215</span>
@@ -2905,7 +2902,8 @@ step size.</p>
 <span class="normal">252</span>
 <span class="normal">253</span>
 <span class="normal">254</span>
-<span class="normal">255</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_gradient_scalar_function</span><span class="p">(</span>
+<span class="normal">255</span>
+<span class="normal">256</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_gradient_scalar_function</span><span class="p">(</span>
     <span class="n">fg</span><span class="p">:</span> <span class="n">ScalarFunctionAndGradient</span><span class="p">,</span>
     <span class="n">p</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">args</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span>
@@ -2918,11 +2916,11 @@ step size.</p>
 <span class="sd">        fg: should return the scalar value, and the gradient if its `gr` argument is `True`</span>
 <span class="sd">        p: where we are checking the gradient</span>
 <span class="sd">        args: other arguments passed to `fg`</span>
-<span class="sd">        mode: &quot;central&quot; or &quot;forward&quot; derivatives</span>
-<span class="sd">        EPS: the step for forward or central derivatives</span>
+<span class="sd">        mode: ``&quot;central&quot;`` or ``&quot;forward&quot;``</span>
+<span class="sd">        EPS: the step for forward or central finite differences</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        the analytic and numeric gradients.</span>
+<span class="sd">        the analytic and numeric (or AD) gradients.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">f0</span><span class="p">,</span> <span class="n">f_grad</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">gr</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
     <span class="n">f0</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">f0</span><span class="p">)</span>
@@ -3863,8 +3861,7 @@ not used)</p>
 
             <details class="quote">
               <summary>Source code in <code>bs_python_utils/opt/bs_opt.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 88</span>
-<span class="normal"> 89</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 89</span>
 <span class="normal"> 90</span>
 <span class="normal"> 91</span>
 <span class="normal"> 92</span>
@@ -3896,7 +3893,8 @@ not used)</p>
 <span class="normal">118</span>
 <span class="normal">119</span>
 <span class="normal">120</span>
-<span class="normal">121</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">print_constrained_optimization_results</span><span class="p">(</span>
+<span class="normal">121</span>
+<span class="normal">122</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">print_constrained_optimization_results</span><span class="p">(</span>
     <span class="n">resus</span><span class="p">:</span> <span class="n">spopt</span><span class="o">.</span><span class="n">OptimizeResult</span><span class="p">,</span>
     <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Minimizing&quot;</span><span class="p">,</span>
     <span class="n">print_constr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -4022,8 +4020,7 @@ not used)</p>
 
             <details class="quote">
               <summary>Source code in <code>bs_python_utils/opt/bs_opt.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">55</span>
-<span class="normal">56</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">56</span>
 <span class="normal">57</span>
 <span class="normal">58</span>
 <span class="normal">59</span>
@@ -4052,7 +4049,8 @@ not used)</p>
 <span class="normal">82</span>
 <span class="normal">83</span>
 <span class="normal">84</span>
-<span class="normal">85</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">print_optimization_results</span><span class="p">(</span>
+<span class="normal">85</span>
+<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">print_optimization_results</span><span class="p">(</span>
     <span class="n">resus</span><span class="p">:</span> <span class="n">spopt</span><span class="o">.</span><span class="n">OptimizeResult</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Minimizing&quot;</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;print results from unconstrained optimization.</span>
