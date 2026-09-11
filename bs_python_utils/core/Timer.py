@@ -9,12 +9,27 @@ import time
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass, field
 from functools import wraps
-from typing import Any, ClassVar
+from typing import Any, ClassVar, Self
 
 
 def timeit(func: Callable) -> Callable:
-    """
-    Decorator to time a function
+    """Decorator to measure and print execution time of a function.
+
+    Wraps a function to measure its execution time using perf_counter()
+    for high precision, and prints the elapsed time to stdout.
+
+    Args:
+        func: The function to be timed.
+
+    Returns:
+        A wrapped function that prints the execution time when called.
+
+    Example:
+        >>> @timeit
+        ... def slow_function():
+        ...     time.sleep(0.1)  # doctest: +SKIP
+        >>> slow_function()  # doctest: +SKIP
+        slow_function executed in 0.100 seconds
     """
 
     @wraps(func)
@@ -133,7 +148,7 @@ class Timer:
             raise TimerError("Timer is not running. Use .start() to start it")
 
         # Calculate elapsed time
-        elapsed_time = time.perf_counter() - self._start_time
+        elapsed_time: float = time.perf_counter() - self._start_time
         self._start_time = None
 
         # Report elapsed time
@@ -144,7 +159,7 @@ class Timer:
 
         return elapsed_time
 
-    def __enter__(self):
+    def __enter__(self) -> Self:
         """Enter context manager: start the timer.
 
         Returns:

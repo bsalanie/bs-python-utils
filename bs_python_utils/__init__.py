@@ -6,7 +6,8 @@ programming.
 * `bs_logging` has customized logging
 * `bs_mathstr` has Unicode for math strings
 * `bs_mem` reports memory usage
-* `Timer` has a `Timer` class to time code execution.
+* `Timer` has a `Timer` context manager to time code execution.
+* `bs_derivs` has Richardson derivatives
 * `bsnputils` has Numpy functions
 * `bssputils` has Scipy functions
 * `sklearn_utils` has Sklearn functions

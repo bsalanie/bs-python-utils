@@ -17,6 +17,7 @@ nav:
       - timing routines: Timer.md
       - memory usage: bs_mem.md
     - numerical:
+      - derivatives: bs_derivs.md
       - NumPy: bsnputils.md
       - SciPy: bssputils.md
       - Chebyshev interpolation and integration: chebyshev.md

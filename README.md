@@ -19,6 +19,10 @@
 
 ### Release notes
 
+#### 1.1.2 and 1.1.3(September 11, 2026)
+- Improved the `Timer` class.
+- added `bs_derivs` with Richardson derivatives.
+
 #### 1.1.1 (September 04, 2026)
 Added simulation-based bivariate ranks.
 
