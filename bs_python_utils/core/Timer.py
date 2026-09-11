@@ -104,7 +104,7 @@ class Timer:
         {'db_queries': 0.05}
     """
 
-    timers: ClassVar = {}
+    timers: ClassVar[dict[str, float]] = {}
     name: Any = None
     text: Any = "Elapsed time: {:0.4f} seconds"
     logger: Any = print
